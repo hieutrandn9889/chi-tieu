@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ChiTieu — Mockups</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ChiTieu design tokens — dark theme (real values, static board) */
+      :root {
+        --background: #0f172a;
+        --foreground: #f8fafc;
+        --card: #111c33;
+        --primary: #1e40af;
+        --secondary: #3b82f6;
+        --accent: #059669; /* income green */
+        --destructive: #dc2626; /* expense red */
+        --muted: #1e293b;
+        --muted-foreground: #94a3b8;
+        --border: rgba(255, 255, 255, 0.08);
+        --radius: 0.75rem;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--background);
+        color: var(--foreground);
+        font-family: 'Inter', system-ui, sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      h1, h2, h3, h4 {
+        font-family: 'Space Grotesk', 'Inter', sans-serif;
+        letter-spacing: -0.015em;
+        margin: 0;
+      }
+
+      .tabular {
+        font-variant-numeric: tabular-nums;
+      }
+
+      .board {
+        max-width: 1240px;
+        margin: 0 auto;
+        padding: 40px 24px 80px;
+      }
+
+      .board-head {
+        margin-bottom: 32px;
+      }
+
+      .board-head .kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--muted-foreground);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: var(--accent);
+      }
+
+      .board-head h1 {
+        font-size: 30px;
+        margin-top: 8px;
+      }
+
+      .board-head p {
+        color: var(--muted-foreground);
+        margin: 6px 0 0;
+      }
+
+      .screens {
+        display: grid;
+        gap: 28px;
+        grid-template-columns: 1fr;
+      }
+
+      @media (min-width: 1024px) {
+        .screens {
+          grid-template-columns: 1fr 1fr;
+        }
+        .screen.landing {
+          grid-column: 1 / -1;
+        }
+      }
+
+      .screen {
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        background: var(--card);
+        overflow: hidden;
+        box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.55);
+      }
+
+      .screen-label {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 16px;
+        border-bottom: 1px solid var(--border);
+        background: var(--muted);
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--muted-foreground);
+      }
+
+      .traffic {
+        display: inline-flex;
+        gap: 6px;
+      }
+      .traffic span {
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        display: inline-block;
+      }
+      .traffic .r { background: #ef4444; }
+      .traffic .y { background: #eab308; }
+      .traffic .g { background: #22c55e; }
+
+      .frame {
+        padding: 24px;
+        background: var(--background);
+      }
+
+      /* ---- shared bits ---- */
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-family: 'Space Grotesk', sans-serif;
+        font-weight: 700;
+        font-size: 18px;
+      }
+      .logo {
+        width: 30px;
+        height: 30px;
+        border-radius: 8px;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 15px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        height: 40px;
+        padding: 0 18px;
+        border-radius: calc(var(--radius) - 4px);
+        font-weight: 500;
+        font-size: 14px;
+        border: 1px solid transparent;
+      }
+      .btn.primary {
+        background: var(--primary);
+        color: #f8fafc;
+      }
+      .btn.accent {
+        background: var(--accent);
+        color: #f8fafc;
+      }
+      .btn.outline {
+        background: transparent;
+        color: var(--foreground);
+        border-color: var(--border);
+      }
+      .btn.block { width: 100%; }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        border: 1px solid var(--border);
+        background: var(--muted);
+        color: var(--muted-foreground);
+        border-radius: 999px;
+        padding: 6px 12px;
+        font-size: 12px;
+        font-weight: 500;
+      }
+
+      .muted { color: var(--muted-foreground); }
+
+      /* ---- landing hero ---- */
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-bottom: 20px;
+        border-bottom: 1px solid var(--border);
+      }
+      .nav .links { display: flex; gap: 16px; align-items: center; }
+
+      .hero {
+        display: grid;
+        gap: 32px;
+        grid-template-columns: 1fr;
+        padding-top: 32px;
+      }
+      @media (min-width: 900px) {
+        .hero { grid-template-columns: 1.05fr 0.95fr; align-items: center; }
+      }
+      .hero h2 {
+        font-size: 44px;
+        line-height: 1.05;
+        margin-top: 16px;
+      }
+      .hero p {
+        color: var(--muted-foreground);
+        font-size: 17px;
+        margin: 16px 0 24px;
+        max-width: 34ch;
+      }
+      .hero .cta { display: flex; gap: 12px; flex-wrap: wrap; }
+
+      /* ---- balance card / transactions ---- */
+      .balance {
+        border-radius: calc(var(--radius) - 2px);
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        color: #f8fafc;
+        padding: 20px;
+      }
+      .balance .label { font-size: 13px; opacity: 0.9; display: flex; gap: 6px; align-items: center; }
+      .balance .amount {
+        font-family: 'Space Grotesk', sans-serif;
+        font-weight: 700;
+        font-size: 34px;
+        margin-top: 10px;
+      }
+      .balance .split { display: flex; gap: 18px; margin-top: 14px; font-size: 14px; }
+
+      .card-panel {
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        background: var(--card);
+        padding: 16px;
+      }
+
+      .txn {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 6px;
+      }
+      .txn + .txn { border-top: 1px solid var(--border); }
+      .txn .left { display: flex; align-items: center; gap: 12px; }
+      .icon-badge {
+        width: 34px;
+        height: 34px;
+        border-radius: 999px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 15px;
+        font-weight: 700;
+      }
+      .icon-badge.in { background: rgba(5, 150, 105, 0.16); color: var(--accent); }
+      .icon-badge.out { background: rgba(220, 38, 38, 0.16); color: var(--destructive); }
+      .txn .cat { font-weight: 500; }
+      .txn .meta { font-size: 12px; color: var(--muted-foreground); }
+      .amt { font-weight: 600; }
+      .amt.in { color: var(--accent); }
+      .amt.out { color: var(--destructive); }
+      .section-label {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--muted-foreground);
+        font-weight: 600;
+        margin: 4px 4px 8px;
+      }
+
+      /* summary row */
+      .summary { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+      .stat {
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        background: var(--card);
+        padding: 14px;
+      }
+      .stat .k { font-size: 12px; color: var(--muted-foreground); }
+      .stat .v { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 22px; margin-top: 6px; }
+
+      /* auth form */
+      .field { margin-bottom: 14px; }
+      .field label { display: block; font-size: 13px; font-weight: 500; margin-bottom: 6px; }
+      .input {
+        height: 40px;
+        border-radius: calc(var(--radius) - 4px);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: transparent;
+        color: var(--foreground);
+        padding: 0 12px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+      }
+      .input.placeholder { color: var(--muted-foreground); }
+      .auth-card {
+        max-width: 360px;
+        margin: 0 auto;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        background: var(--card);
+        padding: 26px;
+      }
+
+      /* type toggle */
+      .toggle { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; border: 1px solid var(--border); border-radius: calc(var(--radius) - 4px); padding: 4px; }
+      .toggle .seg { text-align: center; padding: 7px; border-radius: calc(var(--radius) - 8px); font-size: 14px; font-weight: 500; color: var(--muted-foreground); }
+      .toggle .seg.active-out { background: var(--destructive); color: #f8fafc; }
+      .toggle .seg.active-in { background: var(--accent); color: #f8fafc; }
+
+      .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 24px; }
+      @media (max-width: 720px) { .feature-grid, .summary { grid-template-columns: 1fr; } }
+      .feature {
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        background: var(--card);
+        padding: 16px;
+      }
+      .feature .fi {
+        width: 40px; height: 40px; border-radius: 10px;
+        background: rgba(30, 64, 175, 0.18); color: var(--secondary);
+        display: inline-flex; align-items: center; justify-content: center; font-size: 18px;
+      }
+      .feature h4 { margin-top: 12px; font-size: 15px; }
+      .feature p { margin: 6px 0 0; font-size: 13px; color: var(--muted-foreground); }
+    </style>
+  </head>
+  <body>
+    <div class="board">
+      <div class="board-head">
+        <span class="kicker"><span class="dot"></span> ChiTieu · static mockup board</span>
+        <h1>Screens</h1>
+        <p>Landing, Login, and Dashboard rendered with the real design tokens (dark theme).</p>
+      </div>
+
+      <div class="screens">
+        <!-- LANDING -->
+        <section class="screen landing">
+          <div class="screen-label">
+            <span class="traffic"><span class="r"></span><span class="y"></span><span class="g"></span></span>
+            Landing
+          </div>
+          <div class="frame">
+            <div class="nav">
+              <span class="brand"><span class="logo">₫</span> ChiTieu</span>
+              <div class="links">
+                <span class="muted">Features</span>
+                <span class="muted">How it works</span>
+                <span class="btn outline">Log in</span>
+                <span class="btn primary">Sign up</span>
+              </div>
+            </div>
+            <div class="hero">
+              <div>
+                <span class="pill"><span class="dot"></span> Personal finance, simplified</span>
+                <h2>Know exactly where your money goes.</h2>
+                <p>A clean expense and income tracker. Log spending, watch your balance, and stay in control.</p>
+                <div class="cta">
+                  <span class="btn primary">Get started free →</span>
+                  <span class="btn outline">See how it works</span>
+                </div>
+              </div>
+              <div class="balance">
+                <div class="label">◈ Current balance</div>
+                <div class="amount tabular">$2,596.85</div>
+                <div class="split">
+                  <span>↑ <b class="tabular">+$2,720.00</b></span>
+                  <span style="opacity:.9">↓ <b class="tabular">-$123.15</b></span>
+                </div>
+                <div style="margin-top:16px; background:rgba(255,255,255,0.1); border-radius:10px; padding:10px 12px;">
+                  <div class="txn" style="padding:6px 0;">
+                    <span>Salary · Jul 1</span><b class="tabular">+$2,400.00</b>
+                  </div>
+                  <div class="txn" style="padding:6px 0; border-top:1px solid rgba(255,255,255,0.14);">
+                    <span>Groceries · Jul 3</span><b class="tabular">-$86.40</b>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="feature-grid">
+              <div class="feature"><span class="fi">◈</span><h4>Live balance</h4><p>Income minus expense, updated instantly.</p></div>
+              <div class="feature"><span class="fi">▤</span><h4>Categories &amp; notes</h4><p>Tag every entry and know where money went.</p></div>
+              <div class="feature"><span class="fi">◔</span><h4>Income vs. expense</h4><p>Totals split at a glance, colour-coded.</p></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- LOGIN -->
+        <section class="screen">
+          <div class="screen-label">
+            <span class="traffic"><span class="r"></span><span class="y"></span><span class="g"></span></span>
+            Login
+          </div>
+          <div class="frame">
+            <div class="auth-card">
+              <span class="brand" style="font-size:16px;"><span class="logo" style="width:26px;height:26px;">₫</span> ChiTieu</span>
+              <h3 style="font-size:22px; margin-top:18px;">Welcome back</h3>
+              <p class="muted" style="font-size:13px; margin:6px 0 20px;">Log in to see your balance and recent transactions.</p>
+              <div class="field">
+                <label>Email</label>
+                <div class="input placeholder">you@example.com</div>
+              </div>
+              <div class="field">
+                <label>Password</label>
+                <div class="input placeholder">••••••••</div>
+              </div>
+              <span class="btn primary block" style="margin-top:6px;">Log in</span>
+              <p class="muted" style="text-align:center; font-size:13px; margin-top:18px;">
+                Don't have an account? <span style="color:var(--secondary);">Sign up</span>
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- DASHBOARD -->
+        <section class="screen">
+          <div class="screen-label">
+            <span class="traffic"><span class="r"></span><span class="y"></span><span class="g"></span></span>
+            Dashboard
+          </div>
+          <div class="frame">
+            <div class="nav" style="padding-bottom:16px;">
+              <span class="brand" style="font-size:16px;"><span class="logo" style="width:26px;height:26px;">₫</span> ChiTieu</span>
+              <span class="btn outline" style="height:34px;">⤴ Sign out</span>
+            </div>
+            <h3 style="font-size:20px; margin-top:16px;">Hi, Alex</h3>
+            <p class="muted" style="font-size:13px; margin:4px 0 16px;">Here's where your money stands.</p>
+
+            <div class="summary">
+              <div class="stat" style="background:linear-gradient(135deg,var(--primary),var(--secondary)); border:none; color:#f8fafc;">
+                <div class="k" style="color:rgba(255,255,255,0.85);">Balance</div>
+                <div class="v tabular">$2,596.85</div>
+              </div>
+              <div class="stat">
+                <div class="k">Total income</div>
+                <div class="v tabular" style="color:var(--accent);">$2,720.00</div>
+              </div>
+              <div class="stat">
+                <div class="k">Total expense</div>
+                <div class="v tabular" style="color:var(--destructive);">$123.15</div>
+              </div>
+            </div>
+
+            <div style="display:grid; gap:16px; grid-template-columns:1fr; margin-top:18px;">
+              <div class="card-panel">
+                <h4 style="font-size:15px; margin-bottom:12px;">Add transaction</h4>
+                <div class="toggle" style="margin-bottom:12px;">
+                  <span class="seg active-out">↓ Expense</span>
+                  <span class="seg">↑ Income</span>
+                </div>
+                <div class="field"><label>Amount</label><div class="input placeholder tabular">0.00</div></div>
+                <div class="field"><label>Category</label><div class="input placeholder">e.g. Groceries</div></div>
+                <span class="btn primary block">+ Add transaction</span>
+              </div>
+
+              <div class="card-panel">
+                <div class="section-label">Transactions</div>
+                <div class="txn">
+                  <span class="left"><span class="icon-badge in">↑</span><span><div class="cat">Salary</div><div class="meta">July paycheck · Jul 1, 2026</div></span></span>
+                  <span class="amt in tabular">+$2,400.00</span>
+                </div>
+                <div class="txn">
+                  <span class="left"><span class="icon-badge out">↓</span><span><div class="cat">Groceries</div><div class="meta">Weekly shop · Jul 3, 2026</div></span></span>
+                  <span class="amt out tabular">-$86.40</span>
+                </div>
+                <div class="txn">
+                  <span class="left"><span class="icon-badge in">↑</span><span><div class="cat">Freelance</div><div class="meta">Logo design · Jul 6, 2026</div></span></span>
+                  <span class="amt in tabular">+$320.00</span>
+                </div>
+                <div class="txn">
+                  <span class="left"><span class="icon-badge out">↓</span><span><div class="cat">Transport</div><div class="meta">Metro pass · Jul 7, 2026</div></span></span>
+                  <span class="amt out tabular">-$32.00</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </body>
+</html>
