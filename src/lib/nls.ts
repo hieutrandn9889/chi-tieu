@@ -183,6 +183,113 @@ export function parseSequence(input: string) {
   });
 }
 
+export type NumberKind = "cccd" | "phone" | "house" | "plate" | "other";
+
+export interface NumberKindInfo {
+  id: NumberKind;
+  label: string;
+  placeholder: string;
+  examples: string[];
+  hint: string;
+  sources: { slide: number; label: string }[];
+}
+
+// Notes only restate what the checked slides say; no kind has its own reading rule yet.
+export const numberKinds: NumberKindInfo[] = [
+  {
+    id: "cccd",
+    label: "CCCD",
+    placeholder: "12 chữ số, ví dụ: 001431681414",
+    examples: ["001431681414"],
+    hint: "Slide 4 mô tả CCCD gồm 12 số: 3 số đầu là mã tỉnh, số thứ 4 là giới tính, 2 số tiếp theo là năm sinh, 6 số cuối thay đổi. Công cụ luận cả 12 số theo cặp liền nhau và không giải mã tỉnh, giới tính hay năm sinh từ dãy bạn nhập. Cách viết cặp cụm, cụm 0/5, lưu niên và nội lực chưa có công thức trong phần đã hiệu đính.",
+    sources: [
+      { slide: 4, label: "Cấu trúc CCCD" },
+      { slide: 2, label: "Nội dung học" },
+    ],
+  },
+  {
+    id: "phone",
+    label: "Số điện thoại",
+    placeholder: "Ví dụ: 0123 456 789 hoặc +84 123 456 789",
+    examples: ["0123 456 789", "+84 123 456 789"],
+    hint: "Slide 46 nêu: trong dãy số điện thoại, không phải cứ có cát tinh là tốt, cứ có hung tinh là xấu; còn tùy vị trí các cặp số và kết cấu năng lượng chuyển hóa. Vì vậy công cụ đọc cả dãy theo thứ tự, không chỉ xét vài số cuối. Đầu số +84 được đổi thành 0.",
+    sources: [
+      { slide: 46, label: "Lưu ý khi xem SIM" },
+      { slide: 36, label: "Quy trình luận số" },
+    ],
+  },
+  {
+    id: "house",
+    label: "Số nhà",
+    placeholder: "Ví dụ: 143/16 hoặc 12A",
+    examples: ["143/16", "12A"],
+    hint: "Slide 36 nhắc số nhà trong thông tin cần thu thập và tư vấn, nhưng tài liệu chưa có quy tắc riêng cho số nhà. Tài liệu cũng chưa nói cách xử lý chữ cái hay dấu “/”: công cụ chỉ lấy các chữ số theo đúng thứ tự xuất hiện.",
+    sources: [{ slide: 36, label: "Quy trình luận số" }],
+  },
+  {
+    id: "plate",
+    label: "Biển số",
+    placeholder: "Ví dụ: 30A-143.68",
+    examples: ["30A-143.68"],
+    hint: "Slide 36 nhắc biển số ở bước tư vấn, nhưng tài liệu chưa có quy tắc riêng cho biển số. Chữ cái, dấu gạch và dấu chấm được bỏ qua; công cụ chỉ lấy các chữ số theo đúng thứ tự xuất hiện.",
+    sources: [{ slide: 36, label: "Quy trình luận số" }],
+  },
+  {
+    id: "other",
+    label: "Dãy khác",
+    placeholder: "Ví dụ: 14, 68 hoặc 143168",
+    examples: ["143168", "105014"],
+    hint: "Nhập 2–32 chữ số. Tài liệu không hướng dẫn tách ngày sinh hoặc giờ sinh thành cặp; nếu nhập các dãy này, kết quả chỉ là phân loại cặp theo bảng.",
+    sources: [{ slide: 5, label: "Nguyên tắc khi luận" }],
+  },
+];
+
+export function findNumberKind(id: NumberKind) {
+  return numberKinds.find((kind) => kind.id === id) ?? numberKinds[4];
+}
+
+// Returns only the digits to read plus what was changed, so the UI can say so
+// without echoing the number itself.
+export function normalizeNumber(kind: NumberKind, input: string) {
+  const notes: string[] = [];
+  const value = input.trim();
+  if (kind === "house" || kind === "plate") {
+    const removed = [...new Set(value.replace(/[\d\s]/g, "").split(""))]
+      .map((char) => `“${char}”`)
+      .join(", ");
+    const digits = value.replace(/\D/g, "");
+    if (digits.length < 2)
+      throw new Error("Cần ít nhất 2 chữ số để tạo một cặp số.");
+    if (digits.length > 32)
+      throw new Error("Nhập từ 2 đến 32 chữ số để tra cứu.");
+    if (removed)
+      notes.push(
+        `Đã bỏ qua ký tự không phải số: ${removed}. Tài liệu chưa có quy tắc cho các ký tự này.`,
+      );
+    return { digits, notes };
+  }
+  if (!/^[\d\s()+.\-]+$/.test(value))
+    throw new Error(
+      "Chỉ nhập chữ số, khoảng trắng hoặc dấu phân cách thông thường.",
+    );
+  let digits = value.replace(/[\s()+.\-]/g, "");
+  if (kind === "phone" && /^(\+|00)84/.test(value.replace(/[\s().\-]/g, ""))) {
+    digits = "0" + digits.replace(/^(00)?84/, "");
+    notes.push("Đã đổi đầu số +84 thành 0.");
+  }
+  if (kind === "cccd" && digits.length !== 12)
+    throw new Error(
+      `CCCD gồm 12 số theo slide 4; dãy đang có ${digits.length} chữ số.`,
+    );
+  if (kind === "phone" && digits.length !== 10)
+    notes.push(
+      `Dãy có ${digits.length} chữ số; số di động hiện nay thường có 10 chữ số. Kiểm tra lại nếu nhập thiếu hoặc thừa.`,
+    );
+  if (digits.length < 2 || digits.length > 32)
+    throw new Error("Nhập từ 2 đến 32 chữ số để tra cứu.");
+  return { digits, notes };
+}
+
 // Each ordered row points only to an actual source section. No inferred reversals.
 const combinations: Record<string, Record<string, number>> = {
   TY: { TY: 50, SK: 52, DN: 54, PV: 55, HH: 56, LS: 58, TM: 59, NQ: 61 },
@@ -306,6 +413,62 @@ export function buildSequenceReport(input: string) {
 }
 
 export type SequenceReportData = ReturnType<typeof buildSequenceReport>;
+
+// Condenses only what the report already contains: counts, source keywords,
+// reading order and caveats. It adds no reading and no verdict about a person.
+export function buildReportSummary(report: SequenceReportData) {
+  const total = report.pairs.length;
+  const lead = report.leadingGroups;
+  const headline =
+    report.groups.length === 0
+      ? `Dãy có ${report.digitCount} chữ số, tạo ${total} cặp. Mọi cặp đều chứa 0 hoặc 5 nên chưa có chủ đề nào được phân loại.`
+      : `Dãy có ${report.digitCount} chữ số, tạo ${total} cặp thuộc ${report.groups.length}/8 nhóm. ` +
+        (lead.length === 1
+          ? `Xuất hiện nhiều nhất: ${lead[0].field.name} (${lead[0].count}/${total} cặp).`
+          : `Ngang nhau nhiều nhất: ${lead.map(({ field }) => field.name).join(", ")} (mỗi nhóm ${lead[0].count}/${total} cặp).`);
+  const flow = report.chains.map((chain) => {
+    const steps: { field: EnergyField; count: number }[] = [];
+    for (const field of chain.fields) {
+      const last = steps.at(-1);
+      if (last?.field.id === field.id) last.count++;
+      else steps.push({ field, count: 1 });
+    }
+    return {
+      start: chain.start,
+      end: chain.end,
+      text: steps
+        .map(({ field, count }) =>
+          count > 1 ? `${field.name} ×${count}` : field.name,
+        )
+        .join(" → "),
+    };
+  });
+  const cautions = report.repetitions.map(
+    (run) =>
+      `${run.field.name} lặp ${run.count} cặp liền nhau ở vị trí ${run.start}–${run.end}.`,
+  );
+  if (report.specialPairs.length > 0) {
+    const sources = [
+      ...new Set(report.specialPairs.map((pair) => pair.specialSource)),
+    ].sort((a, b) => a! - b!);
+    cautions.push(
+      `${report.specialPairs.length} cặp chứa 0/5 chưa được phân loại; đọc quy tắc riêng ở slide ${sources.join(", ")} trước khi diễn giải.`,
+    );
+  }
+  if (report.chains.length > 1)
+    cautions.push(
+      `Mạch đọc bị ngắt thành ${report.chains.length} đoạn bởi cặp 0/5; không nối các đoạn với nhau.`,
+    );
+  return {
+    headline,
+    themes: report.groups.map(({ field, count }) => ({ field, count })),
+    flow,
+    cautions,
+    questions: lead
+      .slice(0, 2)
+      .map(({ field, reading }) => ({ field, question: reading.question })),
+  };
+}
 
 export interface Lesson {
   id: string;

@@ -4,9 +4,11 @@ import {
   BookOpen,
   Layers3,
   Lightbulb,
+  ListChecks,
   ShieldCheck,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { buildReportSummary } from "@/lib/nls";
 import type { SequenceReportData } from "@/lib/nls";
 
 export function SequenceReport({
@@ -16,6 +18,7 @@ export function SequenceReport({
   report: SequenceReportData;
   children: ReactNode;
 }) {
+  const summary = buildReportSummary(report);
   return (
     <article className="sequence-report" aria-label="Bản luận giải dãy số">
       <header className="report-heading">
@@ -28,6 +31,71 @@ export function SequenceReport({
           khảo, không xác định tính cách hay cuộc đời một người từ số CCCD.
         </p>
       </header>
+
+      <section className="report-summary" aria-labelledby="report-summary-title">
+        <span className="section-label">
+          <ListChecks size={15} /> TÓM TẮT NHANH
+        </span>
+        <h3 id="report-summary-title">Những điểm chính</h3>
+        <p className="summary-headline">{summary.headline}</p>
+        <div className="summary-grid">
+          {summary.themes.length > 0 && (
+            <div className="summary-block">
+              <h4>Chủ đề theo tài liệu</h4>
+              <ul className="summary-themes">
+                {summary.themes.map(({ field, count }) => (
+                  <li className={`tone-${field.theme}`} key={field.id}>
+                    <strong>{field.name}</strong>
+                    <span className="summary-count">
+                      {count}/{report.pairs.length} cặp
+                    </span>
+                    <span className="summary-keywords">
+                      {field.keywords.join(" · ")}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+          {summary.flow.length > 0 && (
+            <div className="summary-block">
+              <h4>Mạch đọc theo thứ tự</h4>
+              {summary.flow.map((segment) => (
+                <p key={segment.start}>
+                  <span className="pair-position">
+                    VỊ TRÍ {segment.start}–{segment.end}
+                  </span>
+                  {segment.text}
+                </p>
+              ))}
+            </div>
+          )}
+          {summary.cautions.length > 0 && (
+            <div className="summary-block">
+              <h4>Cần lưu ý</h4>
+              <ul className="summary-list">
+                {summary.cautions.map((caution) => (
+                  <li key={caution}>{caution}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+          {summary.questions.length > 0 && (
+            <div className="summary-block">
+              <h4>Câu hỏi để tự đối chiếu</h4>
+              {summary.questions.map(({ field, question }) => (
+                <p key={field.id}>
+                  <strong>{field.name}:</strong> {question}
+                </p>
+              ))}
+            </div>
+          )}
+        </div>
+        <p className="quiet-note">
+          Tóm tắt rút gọn từ các phần chi tiết bên dưới. Số lần xuất hiện không
+          phải điểm tốt/xấu hay kết luận về một người.
+        </p>
+      </section>
 
       <nav className="reading-navigation" aria-label="Mục lục bản luận">
         <a href="#report-overview-title">Tổng hợp</a>
@@ -206,9 +274,7 @@ export function SequenceReport({
               .join("; ")}
             .
           </p>
-          <p>
-            Không bỏ hoặc thay chữ số để tạo cặp mới.
-          </p>
+          <p>Không bỏ hoặc thay chữ số để tạo cặp mới.</p>
           <div className="report-source-links">
             {[
               ...new Set(

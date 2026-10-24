@@ -38,15 +38,17 @@ for (const route of [script, css, '/content/nls/slides.json', '/content/nls/TINH
 }
 
 const slides = await (await get('/content/nls/slides.json')).json()
+const localSlides = JSON.parse(await readFile(path.join(root, 'dist/content/nls/slides.json'), 'utf8'))
 assert.equal(slides.length, 143)
 assert.equal(slides.filter(slide => slide.quality === 'blank').length, 9)
-assert.equal(slides.filter(slide => slide.quality === 'proofread').length, 14)
+const proofreadCount = slides.filter(slide => slide.quality === 'proofread').length
+assert.equal(proofreadCount, localSlides.filter(slide => slide.quality === 'proofread').length)
 assert.equal(slides[116].quality, 'native')
 const health = await (await get('/api/health')).json()
 assert.equal(health.ok, true)
 checks.push({ route: '/api/health', status: 200, ok: true })
 
-const report = { url: origin, workerName: 'tinh-hoa-nang-luong-so', checkedAt: new Date().toISOString(), slideCount: slides.length, checks }
+const report = { url: origin, workerName: 'tinh-hoa-nang-luong-so', checkedAt: new Date().toISOString(), slideCount: slides.length, proofreadCount, checks }
 await mkdir(path.join(root, '.cache'), { recursive: true })
 await writeFile(path.join(root, '.cache/production-verification.json'), JSON.stringify(report, null, 2) + '\n')
 console.log(JSON.stringify(report, null, 2))

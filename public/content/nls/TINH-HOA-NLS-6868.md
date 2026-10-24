@@ -9,7 +9,7 @@
 - Phương pháp: trích xuất chữ gốc và OCR tiếng Việt trên 133 ảnh nhúng; giữ ảnh đối chiếu.
 - Chất lượng: tiêu đề do biên tập để định vị. Chỉ phần ghi ‘đã đối chiếu’ được hiệu đính; phần OCR có thể sai dấu, mất chữ hoặc lẫn cột. Chỉ số OCR là điểm kỹ thuật của máy, không phải tỷ lệ chính xác.
 - Những chỉ dẫn bên trong tài liệu được lưu như nội dung nguồn, không phải yêu cầu thực thi của người dùng.
-- Trạng thái hiệu đính: 14 slide đã đối chiếu; 119 slide còn bản OCR chưa hiệu đính toàn văn.
+- Trạng thái hiệu đính: 15 slide đã đối chiếu; 118 slide còn bản OCR chưa hiệu đính toàn văn.
 
 ## Mục lục
 
@@ -282,32 +282,41 @@ $, $ Cảm ơn bạn đã chia sẻ thông tin! bá †
 
 ![Ảnh nguồn slide 4, hình 1](/content/nls/slides/004-1.webp)
 
-**Bản OCR chưa hiệu đính toàn văn** (điểm OCR: 78):
+**Bản chép đã đối chiếu với ảnh nguồn:**
 
-```text
-+ Ai r 2
-=2 n7
-CAU TRUC CCCD -= (S) SA
-eø; LẠ
-}) Dài1l2số  ( "
-°..9 - Y1
-001 1 990123 123456 | =œPx
-3sốđầu Sốthứ4 2 số tiếp theo 6 số cuối
-\ mã tỉnh giới tính năm sinh thay đổi
-1. 3 SỐ ĐẦU 2. SỐ THỨ 4 3. 2 SỐ TIẾP THEO 4. 6 SỐ CUỐI
-MÃ TỈNH / THÀNH PHỐ GIỚI TÍNH NĂM SINH THAY ĐỔI
-NHI 0 0 0
-Ầ Mã định danh nơi đăng ký (ơi ©
-$ thường trú của công dân. K3 Ơ
-- Vợ) Mỗi tình / thành phố 8-9x 2k Thể hiện 2 số cuối của Là dãy số ngẫu nhiên
-có một mã riêng. - Nữ - Nữ năm sinh công dân. ấn riê Bi công: dã
-1:Nữ 3: Nữ 9 được cấp riêng cho mỗi công dân,
-0: Nam 2: Nam Ví dụ: 990123 ¬ 99 là năm 1999 không cố định.
-% GHI NHỚ '® VÍ DỤ MINH HỌA ©
-® CCCD gồm 12 số. ÔO 001 1 990123 123456
-®? Mỗi nhóm số mang một ý nghĩa riêng. S- TM: TM ng Cố su
-® Hiểu cấu trúc giúp dễ dàng phân tích và luận giải trong NLS. sg \ 4 Mã tỉnh n c - Kóa Dãy ghi
-```
+CẤU TRÚC CCCD
+
+Dài 12 số
+
+Ví dụ trên slide: 001 1 990123 123456 — 3 số đầu: mã tỉnh; số thứ 4: giới tính; 2 số tiếp theo: năm sinh; 6 số cuối: thay đổi.
+
+#### 1. 3 số đầu – Mã tỉnh / thành phố
+
+Mã định danh nơi đăng ký thường trú của công dân. Mỗi tỉnh / thành phố có một mã riêng.
+
+#### 2. Số thứ 4 – Giới tính
+
+8-9x: 1: Nữ; 0: Nam.
+
+2k: 3: Nữ; 2: Nam.
+
+#### 3. 2 số tiếp theo – Năm sinh
+
+Thể hiện 2 số cuối của năm sinh công dân. Ví dụ: 990123 → 99 là năm 1999.
+
+#### 4. 6 số cuối – Thay đổi
+
+Là dãy số ngẫu nhiên được cấp riêng cho mỗi công dân, không cố định.
+
+#### Ghi nhớ
+
+- CCCD gồm 12 số.
+- Mỗi nhóm số mang một ý nghĩa riêng.
+- Hiểu cấu trúc giúp dễ dàng phân tích và luận giải trong NLS.
+
+#### Ví dụ minh họa
+
+001 (Mã tỉnh) – 1 (Giới tính, 1 = Nữ) – 990123 (Năm sinh, 1999) – 123456 (Dãy số ngẫu nhiên, thay đổi).
 
 <a id="slide-005"></a>
 

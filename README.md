@@ -12,6 +12,8 @@ Trang `/tra-cuu` có báo cáo gồm thống kê các cặp, phân bố nhóm, c
 
 Báo cáo tóm lược quan điểm tài liệu để tham khảo; tần suất không phải điểm tốt/xấu hoặc bằng chứng về một cá nhân. Cặp chứa 0/5 được đánh dấu riêng. Bài thiếu nguồn không lấy chiều ngược để thay thế. Chi tiết và bằng chứng kiểm tra tại [LUAN-GIAI.md](docs/nls/LUAN-GIAI.md).
 
+Ô tra cứu có bộ chọn loại số: CCCD (bắt buộc 12 số, chỉ giải thích cấu trúc theo slide 4, không giải mã tỉnh/giới tính/năm sinh), số điện thoại (đổi +84 thành 0), số nhà và biển số (chỉ lấy chữ số theo thứ tự, báo các ký tự đã bỏ qua), dãy khác. Cả năm loại dùng chung một cách luận cặp, vì tài liệu chưa có quy tắc riêng cho từng loại.
+
 Phần luận sâu hiện có 8 hồ sơ nhiều khía cạnh. Báo cáo đọc mạch các nhóm, giữ các đoạn ngắt 0/5 và nhận diện lặp liền nhau. Dữ liệu 48 chiều kết hợp vẫn còn trong mã nhưng không hiển thị. Mục lục trong báo cáo giúp đi thẳng tới từng phần.
 
 ## Chạy local
@@ -34,7 +36,7 @@ Các trang học và tra cứu chạy hoàn toàn trên frontend. Nếu cần ch
 - `docs/nls/hieu-dinh-slides.json`: các bản chép đã đối chiếu ảnh; không ghi đè kết quả OCR thô trong cache.
 - `docs/nls/conversion-report.json`: số slide đã đối chiếu, bản OCR còn lại, slide trống và chữ gốc.
 
-File có 143 slide, 133 ảnh nhúng được trích xuất, 9 slide trống và một slide dùng chữ PowerPoint. Đã hiệu đính 14 slide trọng tâm; 119 slide vẫn có bản OCR chưa hiệu đính toàn văn. Ảnh đối chiếu luôn được giữ trong thư viện. Nội dung huyền học phản ánh quan điểm tài liệu nguồn.
+File có 143 slide, 133 ảnh nhúng được trích xuất, 9 slide trống và một slide dùng chữ PowerPoint. Đã hiệu đính 15 slide trọng tâm; 118 slide vẫn có bản OCR chưa hiệu đính toàn văn. Ảnh đối chiếu luôn được giữ trong thư viện. Nội dung huyền học phản ánh quan điểm tài liệu nguồn.
 
 ## Luồng chuyển đổi có thể chạy lại
 
