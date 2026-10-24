@@ -12,6 +12,12 @@ export function createAuth(env: Env) {
     emailAndPassword: { enabled: true, autoSignIn: true, minPasswordLength: 8 },
     // Include the current origin (production via BETTER_AUTH_URL, or localhost in
     // dev) explicitly — some Better Auth versions do NOT auto-trust baseURL.
-    trustedOrigins: [env.BETTER_AUTH_URL, 'http://localhost:5173', 'http://localhost:8787'],
+    trustedOrigins: [
+      env.BETTER_AUTH_URL,
+      'http://localhost:5176',
+      'http://127.0.0.1:5176',
+      'http://localhost:8791',
+      'http://127.0.0.1:8791',
+    ],
   })
 }
