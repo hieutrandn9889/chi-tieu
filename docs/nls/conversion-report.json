@@ -1,0 +1,36 @@
+{
+  "source": "TINH HOA NLS 6868.pptx",
+  "sha256": "d41308a5161df5691dff493f3f20f3dd310c400354cf23f125414aaeeb7feae9",
+  "slideCount": 143,
+  "reviewedSlides": [
+    1,
+    2,
+    5,
+    6,
+    8,
+    10,
+    13,
+    15,
+    17,
+    19,
+    21,
+    25,
+    28,
+    36
+  ],
+  "unreviewedOcrSlideCount": 119,
+  "blankSlides": [
+    47,
+    136,
+    137,
+    138,
+    139,
+    140,
+    141,
+    142,
+    143
+  ],
+  "nativeTextSlides": [
+    117
+  ]
+}

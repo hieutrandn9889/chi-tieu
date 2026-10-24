@@ -1,260 +1,248 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import {
+  ArrowDown,
   ArrowRight,
-  ClipboardList,
-  LineChart,
-  ListChecks,
-  PiggyBank,
-  ShieldCheck,
-  Tags,
-  Wallet,
-  Zap,
+  ArrowUpRight,
+  BookOpen,
+  Check,
+  Compass,
+  Download,
+  Leaf,
 } from 'lucide-react'
-import { buttonVariants } from '@/components/ui/button'
-import { ThemeToggle } from '@/components/ThemeToggle'
-import { MockupPreview } from '@/components/MockupPreview'
-import { useAuth } from '@/lib/auth-context'
-
-const features = [
-  {
-    icon: Wallet,
-    title: 'Live balance',
-    body: 'Income minus expense, updated the moment you log a transaction. No spreadsheets.',
-  },
-  {
-    icon: Tags,
-    title: 'Categories & notes',
-    body: 'Tag every entry and jot a note so you always know where the money went.',
-  },
-  {
-    icon: LineChart,
-    title: 'Income vs. expense',
-    body: 'Totals split at a glance — green for money in, red for money out.',
-  },
-  {
-    icon: Zap,
-    title: 'Fast entry',
-    body: 'Add a transaction in a couple of taps with a clean, keyboard-friendly form.',
-  },
-  {
-    icon: ShieldCheck,
-    title: 'Private by default',
-    body: 'Email + password auth. Every transaction is scoped to your account only.',
-  },
-  {
-    icon: PiggyBank,
-    title: 'Stay in control',
-    body: 'A trustworthy, distraction-free view of your spending so you can plan ahead.',
-  },
-]
-
-const steps = [
-  {
-    icon: ClipboardList,
-    title: 'Log it',
-    body: 'Record income or an expense with an amount, category, and optional note.',
-  },
-  {
-    icon: ListChecks,
-    title: 'Track it',
-    body: 'Your transactions stack up newest-first, colour-coded by type.',
-  },
-  {
-    icon: LineChart,
-    title: 'See your balance',
-    body: 'Watch income, expense, and net balance update in real time.',
-  },
-]
+import { NlsLayout } from '@/components/NlsLayout'
+import { SequenceLookup } from '@/components/SequenceLookup'
+import { fields, lessons } from '@/lib/nls'
 
 export function Landing() {
-  const { session } = useAuth()
-  const primaryHref = session ? '/app' : '/signup'
-  const primaryLabel = session ? 'Go to dashboard' : 'Get started free'
-
+  const [selected, setSelected] = useState(fields[0])
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      {/* Sticky header */}
-      <header className="sticky top-0 z-40 border-b border-border bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container-page flex h-16 items-center justify-between">
-          <Link to="/" className="flex items-center gap-2 font-heading text-lg font-bold">
-            <span className="flex size-8 items-center justify-center rounded-md bg-gradient-to-br from-primary to-secondary text-primary-foreground">
-              <Wallet className="size-4" />
+    <NlsLayout>
+      <section className="hero-section">
+        <div className="site-container hero-grid">
+          <div className="hero-copy">
+            <span className="section-label">
+              <span className="tiny-line" /> KHÔNG GIAN HỌC & TRA CỨU
             </span>
-            ChiTieu
-          </Link>
-          <nav className="hidden items-center gap-6 text-sm text-muted-foreground md:flex">
-            <a href="#features" className="transition-colors hover:text-foreground">
-              Features
-            </a>
-            <a href="#how" className="transition-colors hover:text-foreground">
-              How it works
-            </a>
-          </nav>
-          <div className="flex items-center gap-2">
-            <ThemeToggle />
-            {session ? (
-              <Link to="/app" className={buttonVariants({ className: 'hidden sm:inline-flex' })}>
-                Dashboard
+            <h1>
+              Hiểu những con số.
+              <br />
+              <em>Mở rộng góc nhìn.</em>
+            </h1>
+            <p>
+              Khám phá Năng lượng số qua tám từ trường.
+              <br className="desktop-break" /> Học từng bước, tra cứu từng cặp số và luôn có tài
+              liệu gốc để đối chiếu.
+            </p>
+            <div className="hero-actions">
+              <Link className="nls-button" to="/lo-trinh">
+                Bắt đầu hành trình học <ArrowUpRight size={18} />
               </Link>
-            ) : (
-              <>
-                <Link
-                  to="/login"
-                  className={buttonVariants({ variant: 'ghost', className: 'hidden sm:inline-flex' })}
-                >
-                  Log in
-                </Link>
-                <Link to="/signup" className={buttonVariants()}>
-                  Sign up
-                </Link>
-              </>
-            )}
+              <Link className="text-link" to="/thu-vien">
+                <BookOpen size={17} /> Mở thư viện
+              </Link>
+            </div>
+            <div className="hero-stats">
+              <div>
+                <strong>08</strong>
+                <span>Từ trường</span>
+              </div>
+              <div>
+                <strong>64</strong>
+                <span>Cặp số cơ bản</span>
+              </div>
+              <div>
+                <strong>143</strong>
+                <span>Slide tài liệu gốc</span>
+              </div>
+            </div>
           </div>
-        </div>
-      </header>
-
-      <main>
-        {/* Hero */}
-        <section className="relative overflow-hidden">
           <div
-            className="pointer-events-none absolute inset-0 -z-10 opacity-60"
-            style={{
-              background:
-                'radial-gradient(60% 50% at 15% 0%, rgb(30 64 175 / 0.25), transparent 60%), radial-gradient(50% 45% at 95% 10%, rgb(5 150 105 / 0.18), transparent 60%)',
-            }}
-            aria-hidden="true"
-          />
-          <div className="container-page grid items-center gap-12 py-16 md:grid-cols-2 md:py-24">
-            <div className="animate-fade-up">
-              <span className="inline-flex items-center gap-2 rounded-full border border-border bg-muted px-3 py-1 text-xs font-medium text-muted-foreground">
-                <span className="size-1.5 rounded-full bg-accent" />
-                Personal finance, simplified
-              </span>
-              <h1 className="mt-5 font-heading text-4xl font-bold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
-                Know exactly where your money goes.
-              </h1>
-              <p className="mt-5 max-w-lg text-lg text-muted-foreground">
-                ChiTieu is a clean expense and income tracker. Log spending, watch your balance,
-                and stay in control — no clutter, no noise.
-              </p>
-              <div className="mt-8 flex flex-wrap items-center gap-3">
-                <Link to={primaryHref} className={buttonVariants({ size: 'lg' })}>
-                  {primaryLabel}
-                  <ArrowRight />
-                </Link>
-                <a href="#how" className={buttonVariants({ size: 'lg', variant: 'outline' })}>
-                  See how it works
-                </a>
-              </div>
-              <div className="mt-6 flex items-center gap-2 text-sm text-muted-foreground">
-                <ShieldCheck className="size-4 text-accent" />
-                Free to start · Your data stays private
-              </div>
+            className="hero-visual"
+            aria-label="Bản đồ tám từ trường, mỗi nhóm liên kết đến bài học tương ứng"
+          >
+            <div className="orbit-ring ring-outer" />
+            <div className="orbit-ring ring-inner" />
+            <div className="orbit-center">
+              <Compass size={38} strokeWidth={1} />
+              <span>BẢN ĐỒ</span>
+              <strong>Năng lượng số</strong>
+              <small>Từ kiến thức đến góc nhìn</small>
             </div>
-
-            <div className="flex justify-center md:justify-end">
-              <MockupPreview className="animate-fade-up" />
-            </div>
-          </div>
-        </section>
-
-        {/* Feature grid */}
-        <section id="features" className="border-t border-border py-16 md:py-24">
-          <div className="container-page">
-            <div className="mx-auto max-w-2xl text-center">
-              <h2 className="font-heading text-3xl font-bold tracking-tight sm:text-4xl">
-                Everything you need, nothing you don't
-              </h2>
-              <p className="mt-4 text-muted-foreground">
-                A focused set of tools to record, categorise, and understand your cash flow.
-              </p>
-            </div>
-            <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {features.map((f) => (
-                <div
-                  key={f.title}
-                  className="rounded-lg border border-border bg-card p-6 shadow-card transition-transform duration-200 hover:-translate-y-1"
-                >
-                  <span className="flex size-11 items-center justify-center rounded-md bg-primary/12 text-secondary">
-                    <f.icon className="size-5" />
-                  </span>
-                  <h3 className="mt-4 font-heading text-lg font-semibold">{f.title}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">{f.body}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* How it works */}
-        <section id="how" className="border-t border-border bg-muted/40 py-16 md:py-24">
-          <div className="container-page">
-            <div className="mx-auto max-w-2xl text-center">
-              <h2 className="font-heading text-3xl font-bold tracking-tight sm:text-4xl">
-                Up and running in three steps
-              </h2>
-              <p className="mt-4 text-muted-foreground">
-                No setup, no learning curve. Start tracking in under a minute.
-              </p>
-            </div>
-            <div className="mt-12 grid gap-6 md:grid-cols-3">
-              {steps.map((s, i) => (
-                <div key={s.title} className="relative rounded-lg border border-border bg-card p-6 shadow-card">
-                  <div className="flex items-center gap-3">
-                    <span className="tabular flex size-9 items-center justify-center rounded-full bg-primary font-heading text-sm font-bold text-primary-foreground">
-                      {i + 1}
-                    </span>
-                    <s.icon className="size-5 text-secondary" />
-                  </div>
-                  <h3 className="mt-4 font-heading text-lg font-semibold">{s.title}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">{s.body}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Final CTA */}
-        <section className="border-t border-border py-16 md:py-24">
-          <div className="container-page">
-            <div className="relative overflow-hidden rounded-lg border border-border bg-gradient-to-br from-primary to-secondary p-10 text-center text-primary-foreground shadow-elevated md:p-16">
-              <h2 className="font-heading text-3xl font-bold tracking-tight sm:text-4xl">
-                Take control of your spending today
-              </h2>
-              <p className="mx-auto mt-4 max-w-xl text-primary-foreground/90">
-                Create a free account and log your first transaction in seconds.
-              </p>
-              <div className="mt-8 flex justify-center">
-                <Link to={primaryHref} className={buttonVariants({ size: 'lg', variant: 'accent' })}>
-                  {primaryLabel}
-                  <ArrowRight />
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
-      </main>
-
-      {/* Footer */}
-      <footer className="border-t border-border py-10">
-        <div className="container-page flex flex-col items-center justify-between gap-4 text-sm text-muted-foreground sm:flex-row">
-          <div className="flex items-center gap-2 font-heading font-semibold text-foreground">
-            <span className="flex size-6 items-center justify-center rounded bg-gradient-to-br from-primary to-secondary text-primary-foreground">
-              <Wallet className="size-3.5" />
+            {fields.map((field, index) => (
+              <Link
+                key={field.id}
+                to={`/tu-truong/${field.id}`}
+                className={`orbit-field orbit-${index} tone-${field.theme}`}
+              >
+                <span className="orbit-abbr">{field.short}</span>
+                <strong>{field.name}</strong>
+                <small>
+                  {field.pairs[0]} · {field.pairs[1]}
+                </small>
+              </Link>
+            ))}
+            <span className="orbit-caption">
+              <Leaf size={14} /> Hiểu từng phần. Nhìn cả kết cấu.
             </span>
-            ChiTieu
-          </div>
-          <p>&copy; {new Date().getFullYear()} ChiTieu. A personal expense tracker.</p>
-          <div className="flex items-center gap-4">
-            <Link to="/login" className="transition-colors hover:text-foreground">
-              Log in
-            </Link>
-            <Link to="/signup" className="transition-colors hover:text-foreground">
-              Sign up
-            </Link>
           </div>
         </div>
-      </footer>
-    </div>
+        <div className="site-container hero-bottom">
+          <span>BIÊN SOẠN TỪ TÀI LIỆU LONG QUY TEAM</span>
+          <a href="#kham-pha">
+            Khám phá tiếp <ArrowDown size={14} />
+          </a>
+        </div>
+      </section>
+      <section className="site-container lookup-section" id="kham-pha">
+        <SequenceLookup compact />
+      </section>
+      <section className="site-container section-space" id="tu-truong">
+        <div className="section-heading">
+          <div>
+            <span className="section-label">NỀN TẢNG KIẾN THỨC</span>
+            <h2>
+              Tám từ trường.
+              <br />
+              <em>Mỗi nhóm một sắc thái.</em>
+            </h2>
+          </div>
+          <p>
+            Tìm hiểu tên gọi, cặp số và những chủ đề
+            <br className="desktop-break" /> mà tài liệu gắn với từng nhóm.
+          </p>
+        </div>
+        <div className="field-tabs" role="group" aria-label="Chọn nhóm từ trường">
+          {fields.map((field) => (
+            <button
+              key={field.id}
+              className={selected.id === field.id ? 'selected' : ''}
+              onClick={() => setSelected(field)}
+              aria-pressed={selected.id === field.id}
+            >
+              <span className={`field-dot tone-${field.theme}`} />
+              {field.name}
+            </button>
+          ))}
+        </div>
+        <div className={`field-feature tone-${selected.theme}`}>
+          <div className="field-feature-copy">
+            <span className="section-label">{selected.short} · THEO TÀI LIỆU NGUỒN</span>
+            <h3>{selected.name}</h3>
+            <div className="keyword-row">
+              {selected.keywords.map((word) => (
+                <span key={word}>{word}</span>
+              ))}
+            </div>
+            <p>{selected.description}</p>
+            <div className="field-pairs">
+              {selected.pairs.map((pair) => (
+                <span key={pair}>{pair}</span>
+              ))}
+            </div>
+            <Link className="text-link" to={`/tu-truong/${selected.id}`}>
+              Tìm hiểu {selected.name} <ArrowUpRight size={17} />
+            </Link>
+          </div>
+          <Link to={`/thu-vien?slide=${selected.source}`} className="field-source-preview">
+            <img
+              src={`/content/nls/slides/${String(selected.source).padStart(3, '0')}-1.webp`}
+              alt={`Trang tài liệu gốc về ${selected.name}`}
+              loading="lazy"
+            />
+            <span>
+              <BookOpen size={15} /> Mở slide {String(selected.source).padStart(2, '0')}{' '}
+              <ArrowUpRight size={16} />
+            </span>
+          </Link>
+        </div>
+      </section>
+      <section className="learning-section section-space">
+        <div className="site-container">
+          <div className="section-heading">
+            <div>
+              <span className="section-label">MỘT LỘ TRÌNH RÕ RÀNG</span>
+              <h2>
+                Học từ gốc.
+                <br />
+                <em>Hiểu từng bước.</em>
+              </h2>
+            </div>
+            <Link className="text-link" to="/lo-trinh">
+              Xem lộ trình học <ArrowUpRight size={17} />
+            </Link>
+          </div>
+          <div className="lesson-preview-grid">
+            {lessons.map((lesson, index) => (
+              <Link to={`/lo-trinh#${lesson.id}`} className="lesson-preview" key={lesson.id}>
+                <span className="lesson-number">0{index + 1}</span>
+                <div>
+                  <small>SLIDE {lesson.range}</small>
+                  <h3>{lesson.title}</h3>
+                  <p>{lesson.subtitle}</p>
+                </div>
+                <ArrowUpRight size={18} />
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+      <section className="site-container source-section section-space">
+        <div className="source-cover">
+          <img
+            src="/content/nls/slides/001-1.webp"
+            alt="Bìa tài liệu Chạm đến tinh hoa cuộc sống của Long Quy Team"
+            loading="lazy"
+          />
+          <span>
+            <BookOpen size={15} /> TÀI LIỆU GỐC · 143 SLIDE
+          </span>
+        </div>
+        <div className="source-copy">
+          <span className="section-label">LUÔN CÓ NGUỒN ĐỂ ĐỐI CHIẾU</span>
+          <h2>
+            Đọc sâu hơn.
+            <br />
+            <em>Hiểu rõ hơn.</em>
+          </h2>
+          <p>
+            Tài liệu PowerPoint đã được chuyển thành Markdown, kèm ảnh nguồn và mục lục theo từng
+            slide để bạn dễ tìm lại điều đang học.
+          </p>
+          <ul className="check-list">
+            <li>
+              <Check size={16} /> Giữ thứ tự và số trang của tài liệu gốc
+            </li>
+            <li>
+              <Check size={16} /> Tìm kiếm theo chủ đề hoặc từ khóa không dấu
+            </li>
+            <li>
+              <Check size={16} /> Phân biệt bản OCR và phần đã đối chiếu
+            </li>
+          </ul>
+          <div className="hero-actions">
+            <Link to="/thu-vien" className="nls-button">
+              Đọc tài liệu <ArrowRight size={17} />
+            </Link>
+            <a href="/content/nls/TINH-HOA-NLS-6868.md" download className="text-link">
+              <Download size={16} /> Tải Markdown
+            </a>
+          </div>
+        </div>
+      </section>
+      <section className="principle-section">
+        <div className="site-container principle-inner">
+          <Leaf size={28} strokeWidth={1.2} />
+          <p>
+            Không phán đoán vội.
+            <br />
+            Không hù dọa. Lắng nghe để thấu hiểu.
+          </p>
+          <Link to="/thu-vien?slide=5">
+            Nguyên tắc tiếp cận trong tài liệu · Slide 05 <ArrowUpRight size={14} />
+          </Link>
+        </div>
+      </section>
+    </NlsLayout>
   )
 }

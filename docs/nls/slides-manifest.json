@@ -1,0 +1,1962 @@
+{
+  "source": "TINH HOA NLS 6868.pptx",
+  "sha256": "d41308a5161df5691dff493f3f20f3dd310c400354cf23f125414aaeeb7feae9",
+  "slideCount": 143,
+  "slides": [
+    {
+      "slide": 1,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image1.png",
+          "web": "/content/nls/slides/001-1.webp",
+          "width": 1536,
+          "height": 1024
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 2,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image2.png",
+          "web": "/content/nls/slides/002-1.webp",
+          "width": 1536,
+          "height": 1024
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 3,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image3.png",
+          "web": "/content/nls/slides/003-1.webp",
+          "width": 1122,
+          "height": 1402
+        },
+        {
+          "original": ".cache/nls-source/image4.png",
+          "web": "/content/nls/slides/003-2.webp",
+          "width": 1491,
+          "height": 1055
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 4,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image5.png",
+          "web": "/content/nls/slides/004-1.webp",
+          "width": 1536,
+          "height": 1024
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 5,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image6.png",
+          "web": "/content/nls/slides/005-1.webp",
+          "width": 1536,
+          "height": 1024
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 6,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image7.png",
+          "web": "/content/nls/slides/006-1.webp",
+          "width": 1536,
+          "height": 1024
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 7,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image8.png",
+          "web": "/content/nls/slides/007-1.webp",
+          "width": 1491,
+          "height": 1055
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 8,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image9.png",
+          "web": "/content/nls/slides/008-1.webp",
+          "width": 1491,
+          "height": 1055
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 9,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image10.png",
+          "web": "/content/nls/slides/009-1.webp",
+          "width": 1491,
+          "height": 1055
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 10,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image11.png",
+          "web": "/content/nls/slides/010-1.webp",
+          "width": 1491,
+          "height": 1055
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 11,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image12.png",
+          "web": "/content/nls/slides/011-1.webp",
+          "width": 1491,
+          "height": 1055
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 12,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image13.png",
+          "web": "/content/nls/slides/012-1.webp",
+          "width": 1491,
+          "height": 1055
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 13,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image14.png",
+          "web": "/content/nls/slides/013-1.webp",
+          "width": 1491,
+          "height": 1055
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 14,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image15.png",
+          "web": "/content/nls/slides/014-1.webp",
+          "width": 1491,
+          "height": 1055
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 15,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image16.png",
+          "web": "/content/nls/slides/015-1.webp",
+          "width": 1491,
+          "height": 1055
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 16,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image17.png",
+          "web": "/content/nls/slides/016-1.webp",
+          "width": 1491,
+          "height": 1055
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 17,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image18.png",
+          "web": "/content/nls/slides/017-1.webp",
+          "width": 1491,
+          "height": 1055
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 18,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image19.png",
+          "web": "/content/nls/slides/018-1.webp",
+          "width": 1491,
+          "height": 1055
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 19,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image20.png",
+          "web": "/content/nls/slides/019-1.webp",
+          "width": 1492,
+          "height": 1054
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 20,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image21.png",
+          "web": "/content/nls/slides/020-1.webp",
+          "width": 1491,
+          "height": 1055
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 21,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image22.png",
+          "web": "/content/nls/slides/021-1.webp",
+          "width": 1491,
+          "height": 1055
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 22,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image23.png",
+          "web": "/content/nls/slides/022-1.webp",
+          "width": 1491,
+          "height": 1055
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 23,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image24.png",
+          "web": "/content/nls/slides/023-1.webp",
+          "width": 1491,
+          "height": 1055
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 24,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image25.png",
+          "web": "/content/nls/slides/024-1.webp",
+          "width": 1536,
+          "height": 1024
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 25,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image26.png",
+          "web": "/content/nls/slides/025-1.webp",
+          "width": 1536,
+          "height": 1024
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 26,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image27.png",
+          "web": "/content/nls/slides/026-1.webp",
+          "width": 1536,
+          "height": 1024
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 27,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image28.png",
+          "web": "/content/nls/slides/027-1.webp",
+          "width": 1536,
+          "height": 1024
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 28,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image29.png",
+          "web": "/content/nls/slides/028-1.webp",
+          "width": 1491,
+          "height": 1055
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 29,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image30.png",
+          "web": "/content/nls/slides/029-1.webp",
+          "width": 1536,
+          "height": 1024
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 30,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image31.png",
+          "web": "/content/nls/slides/030-1.webp",
+          "width": 1536,
+          "height": 1024
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 31,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image32.png",
+          "web": "/content/nls/slides/031-1.webp",
+          "width": 1536,
+          "height": 1024
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 32,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image33.png",
+          "web": "/content/nls/slides/032-1.webp",
+          "width": 1536,
+          "height": 1024
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 33,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image34.png",
+          "web": "/content/nls/slides/033-1.webp",
+          "width": 1536,
+          "height": 1024
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 34,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image35.png",
+          "web": "/content/nls/slides/034-1.webp",
+          "width": 1536,
+          "height": 1024
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 35,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image36.png",
+          "web": "/content/nls/slides/035-1.webp",
+          "width": 1536,
+          "height": 1024
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 36,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image37.png",
+          "web": "/content/nls/slides/036-1.webp",
+          "width": 1491,
+          "height": 1055
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 37,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image38.png",
+          "web": "/content/nls/slides/037-1.webp",
+          "width": 1491,
+          "height": 1055
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 38,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image39.png",
+          "web": "/content/nls/slides/038-1.webp",
+          "width": 1491,
+          "height": 1055
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 39,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image40.png",
+          "web": "/content/nls/slides/039-1.webp",
+          "width": 1491,
+          "height": 1055
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 40,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image40.png",
+          "web": "/content/nls/slides/039-1.webp",
+          "width": 1491,
+          "height": 1055
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 41,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image41.png",
+          "web": "/content/nls/slides/041-1.webp",
+          "width": 1491,
+          "height": 1055
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 42,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image42.png",
+          "web": "/content/nls/slides/042-1.webp",
+          "width": 1491,
+          "height": 1055
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 43,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image43.png",
+          "web": "/content/nls/slides/043-1.webp",
+          "width": 1491,
+          "height": 1055
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 44,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image44.png",
+          "web": "/content/nls/slides/044-1.webp",
+          "width": 1492,
+          "height": 1054
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 45,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image45.png",
+          "web": "/content/nls/slides/045-1.webp",
+          "width": 1491,
+          "height": 1055
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 46,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image46.png",
+          "web": "/content/nls/slides/046-1.webp",
+          "width": 1492,
+          "height": 1054
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 47,
+      "text": [],
+      "notes": [],
+      "images": [],
+      "hidden": false
+    },
+    {
+      "slide": 48,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image26.png",
+          "web": "/content/nls/slides/025-1.webp",
+          "width": 1536,
+          "height": 1024
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 49,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image47.png",
+          "web": "/content/nls/slides/049-1.webp",
+          "width": 1536,
+          "height": 1024
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 50,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image48.png",
+          "web": "/content/nls/slides/050-1.webp",
+          "width": 1672,
+          "height": 941
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 51,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image49.png",
+          "web": "/content/nls/slides/051-1.webp",
+          "width": 1536,
+          "height": 1024
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 52,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image50.png",
+          "web": "/content/nls/slides/052-1.webp",
+          "width": 1536,
+          "height": 1024
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 53,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image51.png",
+          "web": "/content/nls/slides/053-1.webp",
+          "width": 1536,
+          "height": 1024
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 54,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image52.png",
+          "web": "/content/nls/slides/054-1.webp",
+          "width": 1536,
+          "height": 1024
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 55,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image53.png",
+          "web": "/content/nls/slides/055-1.webp",
+          "width": 1536,
+          "height": 1024
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 56,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image54.png",
+          "web": "/content/nls/slides/056-1.webp",
+          "width": 1536,
+          "height": 1024
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 57,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image55.png",
+          "web": "/content/nls/slides/057-1.webp",
+          "width": 1536,
+          "height": 1024
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 58,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image56.png",
+          "web": "/content/nls/slides/058-1.webp",
+          "width": 1536,
+          "height": 1024
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 59,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image57.png",
+          "web": "/content/nls/slides/059-1.webp",
+          "width": 1536,
+          "height": 1024
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 60,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image58.png",
+          "web": "/content/nls/slides/060-1.webp",
+          "width": 1536,
+          "height": 1024
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 61,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image59.png",
+          "web": "/content/nls/slides/061-1.webp",
+          "width": 1536,
+          "height": 1024
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 62,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image60.png",
+          "web": "/content/nls/slides/062-1.webp",
+          "width": 1672,
+          "height": 941
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 63,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image61.png",
+          "web": "/content/nls/slides/063-1.webp",
+          "width": 1536,
+          "height": 1024
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 64,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image62.png",
+          "web": "/content/nls/slides/064-1.webp",
+          "width": 1536,
+          "height": 1024
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 65,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image63.png",
+          "web": "/content/nls/slides/065-1.webp",
+          "width": 1536,
+          "height": 1024
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 66,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image64.png",
+          "web": "/content/nls/slides/066-1.webp",
+          "width": 1536,
+          "height": 1024
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 67,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image65.png",
+          "web": "/content/nls/slides/067-1.webp",
+          "width": 1536,
+          "height": 1024
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 68,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image66.png",
+          "web": "/content/nls/slides/068-1.webp",
+          "width": 1491,
+          "height": 1055
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 69,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image67.png",
+          "web": "/content/nls/slides/069-1.webp",
+          "width": 1491,
+          "height": 1055
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 70,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image68.png",
+          "web": "/content/nls/slides/070-1.webp",
+          "width": 1742,
+          "height": 903
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 71,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image69.png",
+          "web": "/content/nls/slides/071-1.webp",
+          "width": 1742,
+          "height": 903
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 72,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image70.png",
+          "web": "/content/nls/slides/072-1.webp",
+          "width": 1742,
+          "height": 903
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 73,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image71.png",
+          "web": "/content/nls/slides/073-1.webp",
+          "width": 1536,
+          "height": 1024
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 74,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image72.png",
+          "web": "/content/nls/slides/074-1.webp",
+          "width": 1536,
+          "height": 1024
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 75,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image73.png",
+          "web": "/content/nls/slides/075-1.webp",
+          "width": 1536,
+          "height": 1024
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 76,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image74.png",
+          "web": "/content/nls/slides/076-1.webp",
+          "width": 1536,
+          "height": 1024
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 77,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image75.png",
+          "web": "/content/nls/slides/077-1.webp",
+          "width": 1536,
+          "height": 1024
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 78,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image76.png",
+          "web": "/content/nls/slides/078-1.webp",
+          "width": 1536,
+          "height": 1024
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 79,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image77.png",
+          "web": "/content/nls/slides/079-1.webp",
+          "width": 1536,
+          "height": 1024
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 80,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image78.png",
+          "web": "/content/nls/slides/080-1.webp",
+          "width": 1536,
+          "height": 1024
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 81,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image79.png",
+          "web": "/content/nls/slides/081-1.webp",
+          "width": 1536,
+          "height": 1024
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 82,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image80.png",
+          "web": "/content/nls/slides/082-1.webp",
+          "width": 1536,
+          "height": 1024
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 83,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image81.png",
+          "web": "/content/nls/slides/083-1.webp",
+          "width": 1536,
+          "height": 1024
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 84,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image82.png",
+          "web": "/content/nls/slides/084-1.webp",
+          "width": 1536,
+          "height": 1024
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 85,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image83.png",
+          "web": "/content/nls/slides/085-1.webp",
+          "width": 1536,
+          "height": 1024
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 86,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image84.png",
+          "web": "/content/nls/slides/086-1.webp",
+          "width": 1536,
+          "height": 1024
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 87,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image85.png",
+          "web": "/content/nls/slides/087-1.webp",
+          "width": 1672,
+          "height": 941
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 88,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image86.png",
+          "web": "/content/nls/slides/088-1.webp",
+          "width": 1536,
+          "height": 1024
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 89,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image87.png",
+          "web": "/content/nls/slides/089-1.webp",
+          "width": 1536,
+          "height": 1024
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 90,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image88.png",
+          "web": "/content/nls/slides/090-1.webp",
+          "width": 1536,
+          "height": 1024
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 91,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image89.png",
+          "web": "/content/nls/slides/091-1.webp",
+          "width": 1536,
+          "height": 1024
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 92,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image90.png",
+          "web": "/content/nls/slides/092-1.webp",
+          "width": 1536,
+          "height": 1024
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 93,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image91.png",
+          "web": "/content/nls/slides/093-1.webp",
+          "width": 1536,
+          "height": 1024
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 94,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image92.png",
+          "web": "/content/nls/slides/094-1.webp",
+          "width": 1536,
+          "height": 1024
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 95,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image93.png",
+          "web": "/content/nls/slides/095-1.webp",
+          "width": 1536,
+          "height": 1024
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 96,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image94.png",
+          "web": "/content/nls/slides/096-1.webp",
+          "width": 1536,
+          "height": 1024
+        },
+        {
+          "original": ".cache/nls-source/image95.png",
+          "web": "/content/nls/slides/096-2.webp",
+          "width": 1536,
+          "height": 1024
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 97,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image96.png",
+          "web": "/content/nls/slides/097-1.webp",
+          "width": 1536,
+          "height": 1024
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 98,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image97.png",
+          "web": "/content/nls/slides/098-1.webp",
+          "width": 1448,
+          "height": 1086
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 99,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image98.png",
+          "web": "/content/nls/slides/099-1.webp",
+          "width": 1672,
+          "height": 941
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 100,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image99.png",
+          "web": "/content/nls/slides/100-1.webp",
+          "width": 1672,
+          "height": 941
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 101,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image100.png",
+          "web": "/content/nls/slides/101-1.webp",
+          "width": 1672,
+          "height": 941
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 102,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image101.png",
+          "web": "/content/nls/slides/102-1.webp",
+          "width": 1672,
+          "height": 941
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 103,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image102.png",
+          "web": "/content/nls/slides/103-1.webp",
+          "width": 1672,
+          "height": 941
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 104,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image103.png",
+          "web": "/content/nls/slides/104-1.webp",
+          "width": 1672,
+          "height": 941
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 105,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image104.png",
+          "web": "/content/nls/slides/105-1.webp",
+          "width": 1672,
+          "height": 941
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 106,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image105.png",
+          "web": "/content/nls/slides/106-1.webp",
+          "width": 1671,
+          "height": 941
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 107,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image106.png",
+          "web": "/content/nls/slides/107-1.webp",
+          "width": 1672,
+          "height": 941
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 108,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image107.png",
+          "web": "/content/nls/slides/108-1.webp",
+          "width": 1672,
+          "height": 941
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 109,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image108.png",
+          "web": "/content/nls/slides/109-1.webp",
+          "width": 1672,
+          "height": 941
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 110,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image109.png",
+          "web": "/content/nls/slides/110-1.webp",
+          "width": 1672,
+          "height": 941
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 111,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image110.png",
+          "web": "/content/nls/slides/111-1.webp",
+          "width": 1672,
+          "height": 941
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 112,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image111.png",
+          "web": "/content/nls/slides/112-1.webp",
+          "width": 1672,
+          "height": 941
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 113,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image112.png",
+          "web": "/content/nls/slides/113-1.webp",
+          "width": 1672,
+          "height": 941
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 114,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image113.png",
+          "web": "/content/nls/slides/114-1.webp",
+          "width": 1672,
+          "height": 941
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 115,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image114.png",
+          "web": "/content/nls/slides/115-1.webp",
+          "width": 1672,
+          "height": 941
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 116,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image115.png",
+          "web": "/content/nls/slides/116-1.webp",
+          "width": 1672,
+          "height": 941
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 117,
+      "text": [
+        "NGŨ QUỶ",
+        "THIÊN Y",
+        "SINH KHÍ",
+        "DIÊN NIÊN",
+        "PHỤC VỊ",
+        "HOẠ HẠI",
+        "TUYỆT MỆNH",
+        "LỤC SÁT",
+        "NGŨ QUỶ",
+        "NGŨ QUỶ CHUYỂN HOÁ"
+      ],
+      "notes": [],
+      "images": [],
+      "hidden": false
+    },
+    {
+      "slide": 118,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image116.png",
+          "web": "/content/nls/slides/118-1.webp",
+          "width": 1536,
+          "height": 1024
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 119,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image117.png",
+          "web": "/content/nls/slides/119-1.webp",
+          "width": 1672,
+          "height": 941
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 120,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image118.png",
+          "web": "/content/nls/slides/120-1.webp",
+          "width": 1672,
+          "height": 941
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 121,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image119.png",
+          "web": "/content/nls/slides/121-1.webp",
+          "width": 1672,
+          "height": 941
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 122,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image120.png",
+          "web": "/content/nls/slides/122-1.webp",
+          "width": 1536,
+          "height": 1024
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 123,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image121.png",
+          "web": "/content/nls/slides/123-1.webp",
+          "width": 1672,
+          "height": 941
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 124,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image122.png",
+          "web": "/content/nls/slides/124-1.webp",
+          "width": 1672,
+          "height": 941
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 125,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image123.png",
+          "web": "/content/nls/slides/125-1.webp",
+          "width": 1672,
+          "height": 940
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 126,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image124.png",
+          "web": "/content/nls/slides/126-1.webp",
+          "width": 1672,
+          "height": 941
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 127,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image125.png",
+          "web": "/content/nls/slides/127-1.webp",
+          "width": 1672,
+          "height": 941
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 128,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image126.png",
+          "web": "/content/nls/slides/128-1.webp",
+          "width": 1672,
+          "height": 941
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 129,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image127.png",
+          "web": "/content/nls/slides/129-1.webp",
+          "width": 1672,
+          "height": 941
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 130,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image128.png",
+          "web": "/content/nls/slides/130-1.webp",
+          "width": 1672,
+          "height": 941
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 131,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image129.png",
+          "web": "/content/nls/slides/131-1.webp",
+          "width": 1672,
+          "height": 941
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 132,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image130.png",
+          "web": "/content/nls/slides/132-1.webp",
+          "width": 1672,
+          "height": 941
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 133,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image131.png",
+          "web": "/content/nls/slides/133-1.webp",
+          "width": 1672,
+          "height": 941
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 134,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image132.png",
+          "web": "/content/nls/slides/134-1.webp",
+          "width": 1672,
+          "height": 941
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 135,
+      "text": [],
+      "notes": [],
+      "images": [
+        {
+          "original": ".cache/nls-source/image133.png",
+          "web": "/content/nls/slides/135-1.webp",
+          "width": 1672,
+          "height": 941
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "slide": 136,
+      "text": [],
+      "notes": [],
+      "images": [],
+      "hidden": false
+    },
+    {
+      "slide": 137,
+      "text": [],
+      "notes": [],
+      "images": [],
+      "hidden": false
+    },
+    {
+      "slide": 138,
+      "text": [],
+      "notes": [],
+      "images": [],
+      "hidden": false
+    },
+    {
+      "slide": 139,
+      "text": [],
+      "notes": [],
+      "images": [],
+      "hidden": false
+    },
+    {
+      "slide": 140,
+      "text": [],
+      "notes": [],
+      "images": [],
+      "hidden": false
+    },
+    {
+      "slide": 141,
+      "text": [],
+      "notes": [],
+      "images": [],
+      "hidden": false
+    },
+    {
+      "slide": 142,
+      "text": [],
+      "notes": [],
+      "images": [],
+      "hidden": false
+    },
+    {
+      "slide": 143,
+      "text": [],
+      "notes": [],
+      "images": [],
+      "hidden": false
+    }
+  ]
+}

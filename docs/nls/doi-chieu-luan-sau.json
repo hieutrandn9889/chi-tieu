@@ -1,0 +1,524 @@
+{
+  "reviewedAt": "2026-10-24",
+  "scope": "Chi doi chieu phan tom luoc chu de phi y khoa, khong hieu dinh toan van OCR; cau hoi va thuc hanh la noi dung bien soan",
+  "profiles": [
+    {
+      "key": "SK",
+      "source": 6
+    },
+    {
+      "key": "TY",
+      "source": 10
+    },
+    {
+      "key": "DN",
+      "source": 13
+    },
+    {
+      "key": "PV",
+      "source": 8
+    },
+    {
+      "key": "LS",
+      "source": 15
+    },
+    {
+      "key": "HH",
+      "source": 17
+    },
+    {
+      "key": "TM",
+      "source": 19
+    },
+    {
+      "key": "NQ",
+      "source": 21
+    }
+  ],
+  "combinations": [
+    {
+      "key": "TY>TY",
+      "source": 50,
+      "images": [
+        {
+          "path": "/content/nls/slides/050-1.webp",
+          "sha256": "b8867e79b1c1fb6b04f1ee1829bd16f6f0fa194920fcc66f7f45021ccc123de4"
+        }
+      ]
+    },
+    {
+      "key": "TY>SK",
+      "source": 52,
+      "images": [
+        {
+          "path": "/content/nls/slides/052-1.webp",
+          "sha256": "91a4b9d5331d196900ba81367737e430143ee740f8e41334f44a51ee42db9bf1"
+        }
+      ]
+    },
+    {
+      "key": "TY>DN",
+      "source": 54,
+      "images": [
+        {
+          "path": "/content/nls/slides/054-1.webp",
+          "sha256": "2daa9e4bcee9319427b8e4643aa693fa41bdecfd8073f11fe834e5cb1ed8af8d"
+        }
+      ]
+    },
+    {
+      "key": "TY>PV",
+      "source": 55,
+      "images": [
+        {
+          "path": "/content/nls/slides/055-1.webp",
+          "sha256": "9fe567f543cb873d82f9af1122da10c4d90bc92a8ab7ff5c308f5fae1f9d7f66"
+        }
+      ]
+    },
+    {
+      "key": "TY>HH",
+      "source": 56,
+      "images": [
+        {
+          "path": "/content/nls/slides/056-1.webp",
+          "sha256": "03692de52d63b85a34ec9e89fb7eec662af2220a1886b711839e4a80140b3432"
+        }
+      ]
+    },
+    {
+      "key": "TY>LS",
+      "source": 58,
+      "images": [
+        {
+          "path": "/content/nls/slides/058-1.webp",
+          "sha256": "0664afd7c26820b87a7a553b535e15b9dd152003309c32ff9f94f3258a60465c"
+        }
+      ]
+    },
+    {
+      "key": "TY>TM",
+      "source": 59,
+      "images": [
+        {
+          "path": "/content/nls/slides/059-1.webp",
+          "sha256": "bbd6eb85227d0bdb2221750369b1a6e0c9eaa7bc4bbbb6088acf992442b5eafe"
+        }
+      ]
+    },
+    {
+      "key": "TY>NQ",
+      "source": 61,
+      "images": [
+        {
+          "path": "/content/nls/slides/061-1.webp",
+          "sha256": "b260d6332bf7e253f42405e35d22bb18aad1d723f7e5559ccd1c04b705d4538e"
+        }
+      ]
+    },
+    {
+      "key": "LS>SK",
+      "source": 63,
+      "images": [
+        {
+          "path": "/content/nls/slides/063-1.webp",
+          "sha256": "f77ef55eaaffe1199271a0a9953b7130373a7676402597c29b35406ae2702eac"
+        }
+      ]
+    },
+    {
+      "key": "LS>TY",
+      "source": 65,
+      "images": [
+        {
+          "path": "/content/nls/slides/065-1.webp",
+          "sha256": "bdb441ad9f8128cadf0c8c7a35122b6fdefdfce75cbc65d9b70a20ded19176e2"
+        }
+      ]
+    },
+    {
+      "key": "LS>DN",
+      "source": 67,
+      "images": [
+        {
+          "path": "/content/nls/slides/067-1.webp",
+          "sha256": "836246c24303922c91ddd307950e1b7fb61a34dd03495e8e4ad64fa1ff39cbe5"
+        }
+      ]
+    },
+    {
+      "key": "LS>PV",
+      "source": 69,
+      "images": [
+        {
+          "path": "/content/nls/slides/069-1.webp",
+          "sha256": "d5193ab69d697d5a14dcc83806a28974adb3ba9efc63323a6ba5cf722fae4e72"
+        }
+      ]
+    },
+    {
+      "key": "LS>HH",
+      "source": 71,
+      "images": [
+        {
+          "path": "/content/nls/slides/071-1.webp",
+          "sha256": "733f5292feac6c3b4bc2d5770b0df047a8da7d3bdbf7f3efae3d60a61f78cc1e"
+        }
+      ]
+    },
+    {
+      "key": "LS>LS",
+      "source": 73,
+      "images": [
+        {
+          "path": "/content/nls/slides/073-1.webp",
+          "sha256": "8992349ff3449d9e33231d946779b292f4fbe32015b251124d9f19296ddb7d25"
+        }
+      ]
+    },
+    {
+      "key": "LS>TM",
+      "source": 74,
+      "images": [
+        {
+          "path": "/content/nls/slides/074-1.webp",
+          "sha256": "56d7da22d486bf46536219152914f642488a2b02f66f5978717c27bae3b6e374"
+        }
+      ]
+    },
+    {
+      "key": "LS>NQ",
+      "source": 76,
+      "images": [
+        {
+          "path": "/content/nls/slides/076-1.webp",
+          "sha256": "482e2b2c355aae5bc2354a3e817a383c50b20d7148c8b84485e7206d4da15bfe"
+        }
+      ]
+    },
+    {
+      "key": "TM>TY",
+      "source": 79,
+      "images": [
+        {
+          "path": "/content/nls/slides/079-1.webp",
+          "sha256": "4a7aea3d772af0d179ab2980acf1e8de34f9d99aec72c3a9b7429843b7e11542"
+        }
+      ]
+    },
+    {
+      "key": "TM>DN",
+      "source": 81,
+      "images": [
+        {
+          "path": "/content/nls/slides/081-1.webp",
+          "sha256": "cb4e151483a1626ce5db55b30861f123654a46e3df57aa50f661b0095ffab700"
+        }
+      ]
+    },
+    {
+      "key": "TM>SK",
+      "source": 82,
+      "images": [
+        {
+          "path": "/content/nls/slides/082-1.webp",
+          "sha256": "ac996cb1b12c92048c7977d03b8904a58d30315685d1c356a52551e38c387c73"
+        }
+      ]
+    },
+    {
+      "key": "TM>PV",
+      "source": 83,
+      "images": [
+        {
+          "path": "/content/nls/slides/083-1.webp",
+          "sha256": "ad835709fb0307d5dee74ebe0191244dfc319bd88ef3cf9375a516055d7b1c02"
+        }
+      ]
+    },
+    {
+      "key": "TM>HH",
+      "source": 84,
+      "images": [
+        {
+          "path": "/content/nls/slides/084-1.webp",
+          "sha256": "9ee341984c79629d6cce98e9b092366808bb3b3afe933a2fc06fa6eba53e5737"
+        }
+      ]
+    },
+    {
+      "key": "TM>NQ",
+      "source": 85,
+      "images": [
+        {
+          "path": "/content/nls/slides/085-1.webp",
+          "sha256": "5005633b9d98971c88f37878cb6bc20bfcaa2260cff28424e462d2ac3f1df6cd"
+        }
+      ]
+    },
+    {
+      "key": "TM>TM",
+      "source": 86,
+      "images": [
+        {
+          "path": "/content/nls/slides/086-1.webp",
+          "sha256": "d6eed36dd1bf1577bd89005fb94d80eac122187957d9ca7769c1c76cc8fc8e7d"
+        }
+      ]
+    },
+    {
+      "key": "TM>LS",
+      "source": 87,
+      "images": [
+        {
+          "path": "/content/nls/slides/087-1.webp",
+          "sha256": "6f768fbd04473b18f0f546783d97728c5943e95d135c6bad37fee71e811bc633"
+        }
+      ]
+    },
+    {
+      "key": "DN>SK",
+      "source": 89,
+      "images": [
+        {
+          "path": "/content/nls/slides/089-1.webp",
+          "sha256": "16a582a8a238192d1d0048446a25c755c4c7d410816653fc66d2e4add149d336"
+        }
+      ]
+    },
+    {
+      "key": "DN>TY",
+      "source": 90,
+      "images": [
+        {
+          "path": "/content/nls/slides/090-1.webp",
+          "sha256": "3ea85c019b1287270e0b49a6b06b9d65dce952c77ad68fcb916bd027ce692805"
+        }
+      ]
+    },
+    {
+      "key": "DN>DN",
+      "source": 91,
+      "images": [
+        {
+          "path": "/content/nls/slides/091-1.webp",
+          "sha256": "4420f0159320a937385f8edf2940d644aa1e2de3c8bae006dfcece43c605a182"
+        }
+      ]
+    },
+    {
+      "key": "DN>PV",
+      "source": 92,
+      "images": [
+        {
+          "path": "/content/nls/slides/092-1.webp",
+          "sha256": "c6c88a0cf8af10170a51a89f8a1539e0e2422d9b604092cc4effd6958ad2a587"
+        }
+      ]
+    },
+    {
+      "key": "DN>HH",
+      "source": 93,
+      "images": [
+        {
+          "path": "/content/nls/slides/093-1.webp",
+          "sha256": "2125c7b6b572057a305f916a101f81175d73e7dc169775709c4af7c428f45aa4"
+        }
+      ]
+    },
+    {
+      "key": "DN>LS",
+      "source": 95,
+      "images": [
+        {
+          "path": "/content/nls/slides/095-1.webp",
+          "sha256": "d378da00225b1f75c4af5b8ed33217b902e0165e0303fe11ba3b7182a43fe239"
+        }
+      ]
+    },
+    {
+      "key": "DN>TM",
+      "source": 96,
+      "images": [
+        {
+          "path": "/content/nls/slides/096-1.webp",
+          "sha256": "e44fd73e6c8306d44ff44b65b6209c9aff22fce539fc3fa4bddd0fdad284230f"
+        },
+        {
+          "path": "/content/nls/slides/096-2.webp",
+          "sha256": "3f5ffb9591caab212453d6327c731a1d5d79d547924a1c2fbbc05bc2df7cc426"
+        }
+      ]
+    },
+    {
+      "key": "DN>NQ",
+      "source": 97,
+      "images": [
+        {
+          "path": "/content/nls/slides/097-1.webp",
+          "sha256": "db7d5850d842ddd8128791c7882f0f934f8523a3ee2cf8c84fb2c6226b268152"
+        }
+      ]
+    },
+    {
+      "key": "HH>TY",
+      "source": 99,
+      "images": [
+        {
+          "path": "/content/nls/slides/099-1.webp",
+          "sha256": "80aad945f5c4b8f1941236ae5c91d0cf87df93e638660d36d813a1c7da6bda40"
+        }
+      ]
+    },
+    {
+      "key": "HH>SK",
+      "source": 101,
+      "images": [
+        {
+          "path": "/content/nls/slides/101-1.webp",
+          "sha256": "2d0e5d8c2d7cc66458ddbae17885cdc689121969fb453600aa5ba4bf8036ac95"
+        }
+      ]
+    },
+    {
+      "key": "HH>DN",
+      "source": 103,
+      "images": [
+        {
+          "path": "/content/nls/slides/103-1.webp",
+          "sha256": "852b0560f2bf3f138798dae57a3e4afd22cc1adbe8bf9e2b09f3f98c47020d34"
+        }
+      ]
+    },
+    {
+      "key": "HH>PV",
+      "source": 106,
+      "images": [
+        {
+          "path": "/content/nls/slides/106-1.webp",
+          "sha256": "fd3b9cdce931be2e3bad529f219ae07cd52c04896d5445a9f3fc99d0036c3ea4"
+        }
+      ]
+    },
+    {
+      "key": "HH>HH",
+      "source": 109,
+      "images": [
+        {
+          "path": "/content/nls/slides/109-1.webp",
+          "sha256": "446d662490e397a57c3c1daa1c23ecf785694cd8dc23fefa4fa61c68b1e57edf"
+        }
+      ]
+    },
+    {
+      "key": "HH>LS",
+      "source": 111,
+      "images": [
+        {
+          "path": "/content/nls/slides/111-1.webp",
+          "sha256": "01162f98b2cefe39edaa248c141c5e62195e54be81c4f0b5673ea785350ed9f2"
+        }
+      ]
+    },
+    {
+      "key": "HH>TM",
+      "source": 113,
+      "images": [
+        {
+          "path": "/content/nls/slides/113-1.webp",
+          "sha256": "2635464bdd3408bc75d7c51f0ce4600dcea1aa4a64e851536178ed4d9948fca8"
+        }
+      ]
+    },
+    {
+      "key": "HH>NQ",
+      "source": 115,
+      "images": [
+        {
+          "path": "/content/nls/slides/115-1.webp",
+          "sha256": "89545cf7726929cafa3af06d206c3a9fb2218dd0fa156965b6052d3dac1947e6"
+        }
+      ]
+    },
+    {
+      "key": "SK>TY",
+      "source": 119,
+      "images": [
+        {
+          "path": "/content/nls/slides/119-1.webp",
+          "sha256": "147a8d6256204c8c22d9b64ff575268cb29360461382d0a4b817879ffd45f16c"
+        }
+      ]
+    },
+    {
+      "key": "SK>SK",
+      "source": 121,
+      "images": [
+        {
+          "path": "/content/nls/slides/121-1.webp",
+          "sha256": "f0594851af47d6aafd12611155414295c9155f28d279302086b5d28104e61035"
+        }
+      ]
+    },
+    {
+      "key": "SK>DN",
+      "source": 123,
+      "images": [
+        {
+          "path": "/content/nls/slides/123-1.webp",
+          "sha256": "28d00dea43b75b6b0af38598775cc7f6bbb0dc35fccc7f4382d7943633953563"
+        }
+      ]
+    },
+    {
+      "key": "SK>PV",
+      "source": 125,
+      "images": [
+        {
+          "path": "/content/nls/slides/125-1.webp",
+          "sha256": "d74afc52966767ffeb1b2524f6b7cc170e7fa87c336e76f8b7aad0462f740fa6"
+        }
+      ]
+    },
+    {
+      "key": "SK>HH",
+      "source": 127,
+      "images": [
+        {
+          "path": "/content/nls/slides/127-1.webp",
+          "sha256": "b62b0a233981842bf6f0f90f6ce4c00f6c350bd64e64028c9669b043f00a0fc6"
+        }
+      ]
+    },
+    {
+      "key": "SK>LS",
+      "source": 129,
+      "images": [
+        {
+          "path": "/content/nls/slides/129-1.webp",
+          "sha256": "80aba0a3524d81cbc50a19e0fa941dc170c055b85475a35acec0d3b64dedadae"
+        }
+      ]
+    },
+    {
+      "key": "SK>TM",
+      "source": 131,
+      "images": [
+        {
+          "path": "/content/nls/slides/131-1.webp",
+          "sha256": "6c83ee77ef88e4f9281c54eb92d849166fa9e144010cace64409030ce0672002"
+        }
+      ]
+    },
+    {
+      "key": "SK>NQ",
+      "source": 133,
+      "images": [
+        {
+          "path": "/content/nls/slides/133-1.webp",
+          "sha256": "d7d4941a1d425e35c14c6f257b967f70489f7fabeb045170c0ed083a779fd5be"
+        }
+      ]
+    }
+  ]
+}

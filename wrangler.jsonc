@@ -1,6 +1,7 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "chi-tieu",
+  "name": "tinh-hoa-nang-luong-so",
+  "account_id": "a7d6aefbbd69925bee5f75242fc5cd43",
   "main": "worker/index.ts",
   "compatibility_date": "2025-07-01",
   "compatibility_flags": ["nodejs_compat"],
@@ -20,6 +21,6 @@
     }
   ],
   "vars": {
-    "BETTER_AUTH_URL": "https://chi-tieu.hieutrantaskflow.workers.dev"
+    "BETTER_AUTH_URL": "https://tinh-hoa-nang-luong-so.hieutrantaskflow.workers.dev"
   }
 }

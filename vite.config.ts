@@ -8,5 +8,9 @@ export default defineConfig({
     alias: { '@': fileURLToPath(new URL('./src', import.meta.url)) },
     dedupe: ['react', 'react-dom'],
   },
-  server: { proxy: { '/api': 'http://localhost:8787' } },
+  server: {
+    port: 5176,
+    strictPort: true,
+    proxy: { '/api': 'http://127.0.0.1:8791' },
+  },
 })

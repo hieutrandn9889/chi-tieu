@@ -3,12 +3,12 @@ import { useCallback, useEffect, useState } from 'react'
 type Theme = 'light' | 'dark'
 
 function currentTheme(): Theme {
-  if (typeof document === 'undefined') return 'dark'
+  if (typeof document === 'undefined') return 'light'
   return document.documentElement.classList.contains('dark') ? 'dark' : 'light'
 }
 
 // The no-FOUC inline script in index.html sets the initial class before React
-// mounts (default: dark). This hook just reads/updates it afterwards.
+// mounts (default: light). This hook just reads/updates it afterwards.
 export function useTheme() {
   const [theme, setTheme] = useState<Theme>(currentTheme)
 

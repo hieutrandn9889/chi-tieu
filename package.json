@@ -1,11 +1,12 @@
 {
-  "name": "chi-tieu",
+  "name": "tinh-hoa-nang-luong-so",
   "private": true,
   "version": "0.1.0",
   "type": "module",
   "scripts": {
+    "test": "node --test tests/*.test.mjs",
     "dev": "vite",
-    "dev:worker": "wrangler dev",
+    "dev:worker": "wrangler dev --port 8791",
     "build": "tsc -b && vite build",
     "typecheck:worker": "tsc -p tsconfig.worker.json --noEmit",
     "db:migrate:local": "wrangler d1 migrations apply chi-tieu-db --local",
