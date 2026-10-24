@@ -134,6 +134,19 @@ export function SequenceLookup({ compact = false }: { compact?: boolean }) {
               setResult(null);
             }}
           />
+          {!compact && (
+            <button
+              className="sequence-reveal"
+              type="button"
+              aria-controls={inputId}
+              aria-pressed={!concealed}
+              aria-label={concealed ? "Hiện dãy nhập" : "Ẩn dãy nhập"}
+              title={concealed ? "Hiện dãy nhập" : "Ẩn dãy nhập"}
+              onClick={() => setConcealed(!concealed)}
+            >
+              {concealed ? <Eye size={18} /> : <EyeOff size={18} />}
+            </button>
+          )}
           <button className="nls-button" type="submit">
             {compact ? "Tra cứu" : "Luận giải"} <ArrowRight size={17} />
           </button>
@@ -145,14 +158,6 @@ export function SequenceLookup({ compact = false }: { compact?: boolean }) {
         )}
         {!compact && (
           <div className="sequence-controls">
-            <button
-              type="button"
-              aria-controls={inputId}
-              onClick={() => setConcealed(!concealed)}
-            >
-              {concealed ? <Eye size={15} /> : <EyeOff size={15} />}
-              {concealed ? "Hiện dãy nhập" : "Ẩn dãy nhập"}
-            </button>
             <button type="button" disabled={!input && !result} onClick={clear}>
               <Trash2 size={15} /> Xóa dãy và kết quả
             </button>
