@@ -12,6 +12,7 @@ import {
   findField,
   parseSequence,
   buildSequenceReport,
+  buildReportSummary,
   combinationSource,
   normalizeSearch,
   normalizeNumber,
@@ -418,4 +419,49 @@ test("number kinds normalize input without inventing rules or decoding identity 
   const report = buildSequenceReport(normalizeNumber("plate", "30A-143.68").digits);
   assert.equal(report.digitCount, 7);
   assert.equal(report.pairs[0].pair, "30");
+});
+
+test("the quick summary condenses report data without inventing readings", () => {
+  const summary = buildReportSummary(buildSequenceReport("143168"));
+  assert.equal(
+    summary.headline,
+    "Dãy có 6 chữ số, tạo 5 cặp thuộc 4/8 nhóm. Xuất hiện nhiều nhất: Thiên Y (2/5 cặp).",
+  );
+  assert.deepEqual(
+    summary.themes.map(({ field, count }) => [field.short, count]),
+    [["TY", 2], ["SK", 1], ["DN", 1], ["LS", 1]],
+  );
+  assert.deepEqual(summary.flow, [
+    { start: 1, end: 6, text: "Sinh Khí → Diên Niên → Thiên Y → Lục Sát → Thiên Y" },
+  ]);
+  assert.deepEqual(summary.cautions, []);
+  assert.deepEqual(
+    summary.questions.map(({ field, question }) => [field.short, question]),
+    [["TY", fieldReadings.TY.question]],
+  );
+
+  const repeated = buildReportSummary(buildSequenceReport("1113"));
+  assert.equal(repeated.flow[0].text, "Phục Vị ×2 → Thiên Y");
+  assert.deepEqual(repeated.cautions, [
+    "Phục Vị lặp 2 cặp liền nhau ở vị trí 1–3.",
+  ]);
+
+  const broken = buildReportSummary(buildSequenceReport("14014"));
+  assert.equal(broken.flow.length, 2);
+  assert.match(broken.cautions.join(" "), /2 cặp chứa 0\/5.*slide 26/);
+  assert.match(broken.cautions.join(" "), /ngắt thành 2 đoạn/);
+
+  const special = buildReportSummary(buildSequenceReport("005050"));
+  assert.match(special.headline, /chưa có chủ đề nào được phân loại/);
+  assert.deepEqual(special.themes, []);
+  assert.deepEqual(special.flow, []);
+  assert.deepEqual(special.questions, []);
+  assert.match(special.cautions[0], /slide 26, 28/);
+
+  const tie = buildReportSummary(buildSequenceReport("143"));
+  assert.match(
+    tie.headline,
+    /Ngang nhau nhiều nhất: Sinh Khí, Diên Niên \(mỗi nhóm 1\/2 cặp\)/,
+  );
+  assert.equal(tie.questions.length, 2);
 });

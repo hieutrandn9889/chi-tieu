@@ -414,6 +414,62 @@ export function buildSequenceReport(input: string) {
 
 export type SequenceReportData = ReturnType<typeof buildSequenceReport>;
 
+// Condenses only what the report already contains: counts, source keywords,
+// reading order and caveats. It adds no reading and no verdict about a person.
+export function buildReportSummary(report: SequenceReportData) {
+  const total = report.pairs.length;
+  const lead = report.leadingGroups;
+  const headline =
+    report.groups.length === 0
+      ? `Dãy có ${report.digitCount} chữ số, tạo ${total} cặp. Mọi cặp đều chứa 0 hoặc 5 nên chưa có chủ đề nào được phân loại.`
+      : `Dãy có ${report.digitCount} chữ số, tạo ${total} cặp thuộc ${report.groups.length}/8 nhóm. ` +
+        (lead.length === 1
+          ? `Xuất hiện nhiều nhất: ${lead[0].field.name} (${lead[0].count}/${total} cặp).`
+          : `Ngang nhau nhiều nhất: ${lead.map(({ field }) => field.name).join(", ")} (mỗi nhóm ${lead[0].count}/${total} cặp).`);
+  const flow = report.chains.map((chain) => {
+    const steps: { field: EnergyField; count: number }[] = [];
+    for (const field of chain.fields) {
+      const last = steps.at(-1);
+      if (last?.field.id === field.id) last.count++;
+      else steps.push({ field, count: 1 });
+    }
+    return {
+      start: chain.start,
+      end: chain.end,
+      text: steps
+        .map(({ field, count }) =>
+          count > 1 ? `${field.name} ×${count}` : field.name,
+        )
+        .join(" → "),
+    };
+  });
+  const cautions = report.repetitions.map(
+    (run) =>
+      `${run.field.name} lặp ${run.count} cặp liền nhau ở vị trí ${run.start}–${run.end}.`,
+  );
+  if (report.specialPairs.length > 0) {
+    const sources = [
+      ...new Set(report.specialPairs.map((pair) => pair.specialSource)),
+    ].sort((a, b) => a! - b!);
+    cautions.push(
+      `${report.specialPairs.length} cặp chứa 0/5 chưa được phân loại; đọc quy tắc riêng ở slide ${sources.join(", ")} trước khi diễn giải.`,
+    );
+  }
+  if (report.chains.length > 1)
+    cautions.push(
+      `Mạch đọc bị ngắt thành ${report.chains.length} đoạn bởi cặp 0/5; không nối các đoạn với nhau.`,
+    );
+  return {
+    headline,
+    themes: report.groups.map(({ field, count }) => ({ field, count })),
+    flow,
+    cautions,
+    questions: lead
+      .slice(0, 2)
+      .map(({ field, reading }) => ({ field, question: reading.question })),
+  };
+}
+
 export interface Lesson {
   id: string;
   title: string;

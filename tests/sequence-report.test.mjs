@@ -33,24 +33,24 @@ buildSync({
 });
 const { renderReport } = await import(pathToFileURL(output).href);
 
-test("the real report renders every automatic combination, not just the overview preview", () => {
+// The owner chose to remove the two-field combination readings from the report.
+test("the rendered report shows no two-field combination section or link", () => {
   const html = renderReport(buildSequenceReport("143168"));
-  assert.match(html, /id="report-order-title"/);
-  assert.match(html, /href="#report-order-title"/);
-  assert.equal(
-    (html.match(/class="combination-interpretation"/g) || []).length,
-    4,
-  );
-  for (const source of [123, 90, 58, 65])
-    assert.ok(html.includes(`/thu-vien?slide=${source}`));
-  assert.match(html, /Câu hỏi đối chiếu và cách thực hành/);
+  assert.doesNotMatch(html, /report-order-title/);
+  assert.doesNotMatch(html, /Luận kết hợp/);
+  assert.doesNotMatch(html, /class="combination-interpretation"/);
 });
 
-test("the rendered report keeps missing and special combinations unresolved", () => {
-  const missing = renderReport(buildSequenceReport("1113"));
-  assert.equal((missing.match(/class="report-missing"/g) || []).length, 2);
-  assert.doesNotMatch(missing, /thu-vien\?slide=55/);
+test("the rendered report opens with a quick summary before the detailed sections", () => {
+  const html = renderReport(buildSequenceReport("143168"));
+  const summary = html.indexOf('id="report-summary-title"');
+  assert.ok(summary > 0);
+  assert.ok(summary < html.indexOf('id="report-overview-title"'));
+  assert.match(html, /Xuất hiện nhiều nhất: Thiên Y \(2\/5 cặp\)/);
+  assert.match(html, /Sinh Khí → Diên Niên → Thiên Y → Lục Sát → Thiên Y/);
+  const summaryHtml = html.slice(summary, html.indexOf("<nav"));
+  assert.equal((summaryHtml.match(/<li class="tone-/g) || []).length, 4);
   const special = renderReport(buildSequenceReport("005050"));
-  assert.match(special, /class="report-empty"/);
-  assert.doesNotMatch(special, /class="combination-interpretation"/);
+  assert.match(special, /chưa có chủ đề nào được phân loại/);
+  assert.doesNotMatch(special, /Mạch đọc theo thứ tự/);
 });
