@@ -37,6 +37,7 @@ export function SequenceReport({
         {report.groups.length > 0 && (
           <a href="#report-themes-title">Luận từng nhóm</a>
         )}
+        <a href="#report-order-title">Luận kết hợp</a>
       </nav>
 
       <dl className="report-stats">
@@ -206,9 +207,7 @@ export function SequenceReport({
               .join("; ")}
             .
           </p>
-          <p>
-            Không bỏ hoặc thay chữ số để tạo cặp mới.
-          </p>
+          <p>Không bỏ hoặc thay chữ số để tạo cặp mới.</p>
           <div className="report-source-links">
             {[
               ...new Set(
@@ -320,6 +319,85 @@ export function SequenceReport({
           </div>
         </section>
       )}
+
+      <section className="report-section" aria-labelledby="report-order-title">
+        <span className="section-label">03 · THỨ TỰ KẾT HỢP</span>
+        <h3 id="report-order-title">Luận sâu từng chiều kết hợp</h3>
+        <p>
+          Hai cặp chồng lấn tạo một cửa sổ ba chữ số. Mỗi chiều A + B có nội
+          dung riêng. Các tổ hợp giống nhau được gộp bài luận, vẫn giữ đủ vị trí
+          xuất hiện.
+        </p>
+        {report.transitions.length > 0 ? (
+          <ol className="report-transitions deep-transitions">
+            {report.orderedCombinations.map((transition) => (
+              <li key={`${transition.first.short}>${transition.second.short}`}>
+                <div>
+                  <span className="pair-position">
+                    {transition.occurrences.length} MỐI NỐI ·{" "}
+                    {transition.occurrences
+                      .map(
+                        (item) =>
+                          `VỊ TRÍ ${item.index + 1}–${item.index + 3} (${item.window})`,
+                      )
+                      .join(" · ")}
+                  </span>
+                  <strong>
+                    {transition.first.name} + {transition.second.name}
+                  </strong>
+                </div>
+                {transition.reading && (
+                  <div className="combination-interpretation">
+                    <h4>{transition.reading.theme}</h4>
+                    <p>{transition.reading.interpretation}</p>
+                    <details>
+                      <summary>Câu hỏi đối chiếu và cách thực hành</summary>
+                      <dl>
+                        <div>
+                          <dt>Đối chiếu thực tế</dt>
+                          <dd>{transition.reading.question}</dd>
+                        </div>
+                        <div>
+                          <dt>Gợi ý thực hành</dt>
+                          <dd>{transition.reading.practice}</dd>
+                        </div>
+                      </dl>
+                    </details>
+                    <span className="report-quality">
+                      Phần tóm lược chủ đề đã đối chiếu ảnh slide{" "}
+                      {transition.reading.source}
+                    </span>
+                  </div>
+                )}
+                {transition.source ? (
+                  <Link
+                    className="text-link"
+                    to={`/thu-vien?slide=${transition.source}`}
+                  >
+                    Đọc slide {transition.source} <ArrowUpRight size={14} />
+                  </Link>
+                ) : (
+                  <span className="report-missing">
+                    Chưa có bài riêng cho chiều này
+                  </span>
+                )}
+              </li>
+            ))}
+          </ol>
+        ) : (
+          <p className="report-empty">
+            {report.pairs.length === 1
+              ? "Dãy mới có một cặp, chưa đủ hai nhóm liền nhau để tìm bài kết hợp."
+              : "Chưa có hai cặp đã phân loại nằm liền nhau. Không nối qua cặp chứa 0/5 để tạo kết hợp."}
+          </p>
+        )}
+        <p className="quiet-note">
+          Đã đối chiếu phần tóm lược dùng trong 48 chiều kết hợp. Toàn văn OCR
+          vẫn cần hiệu đính; phần luận không bao gồm dự báo bệnh tật, tai nạn
+          hoặc biến cố. Bài còn thiếu không được lấy chiều ngược để thay thế.
+          Nếu mô tả không khớp trải nghiệm, hãy ghi nhận sự không khớp.
+        </p>
+      </section>
 
       <footer className="report-privacy">
         <ShieldCheck size={18} />
