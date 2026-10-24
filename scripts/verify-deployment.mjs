@@ -7,6 +7,11 @@ import { fileURLToPath } from 'node:url'
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const origin = 'https://tinh-hoa-nang-luong-so.hieutrantaskflow.workers.dev'
 const hash = bytes => createHash('sha256').update(bytes).digest('hex')
+// A Windows checkout (core.autocrlf) builds text with CRLF while CI builds LF,
+// so text is compared with line endings normalized; images stay byte for byte.
+const isText = route => /\.(js|css|json|md|html|svg|txt)$/.test(route)
+const comparable = (route, bytes) =>
+  isText(route) ? Buffer.from(bytes.toString('utf8').replace(/\r\n/g, '\n')) : bytes
 const checks = []
 
 async function get(route) {
@@ -31,10 +36,16 @@ const css = localHtml.match(/href="(\/assets\/[^\"]+\.css)"/)?.[1]
 assert.ok(script && css, 'The build must contain fingerprinted JS and CSS assets')
 for (const route of [script, css, '/content/nls/slides.json', '/content/nls/TINH-HOA-NLS-6868.md', '/content/nls/slides/006-1.webp', '/content/nls/thumbnails/006-1.webp']) {
   const response = await get(route)
-  const bytes = Buffer.from(await response.arrayBuffer())
-  const local = await readFile(path.join(root, 'dist', route))
-  assert.equal(hash(bytes), hash(local), `${route} must match the validated build byte for byte`)
-  checks.push({ route, status: 200, sha256: hash(bytes) })
+  const bytes = comparable(route, Buffer.from(await response.arrayBuffer()))
+  const local = comparable(route, await readFile(path.join(root, 'dist', route)))
+  assert.equal(
+    hash(bytes),
+    hash(local),
+    isText(route)
+      ? `${route} must match the validated build after normalizing line endings`
+      : `${route} must match the validated build byte for byte`,
+  )
+  checks.push({ route, status: 200, sha256: hash(bytes), comparison: isText(route) ? 'text-lf' : 'bytes' })
 }
 
 const slides = await (await get('/content/nls/slides.json')).json()
