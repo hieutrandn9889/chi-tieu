@@ -11,6 +11,24 @@
     "7. Xác định được NLSM nội lực của thân chủ CCCD mạnh – yếu.",
     "Hiểu đúng – Thu thập đủ – Luận chính xác – Hỗ trợ đúng hướng – Chuyển hóa cuộc sống."
   ],
+  "4": [
+    "CẤU TRÚC CCCD",
+    "Dài 12 số",
+    "Ví dụ trên slide: 001 1 990123 123456 — 3 số đầu: mã tỉnh; số thứ 4: giới tính; 2 số tiếp theo: năm sinh; 6 số cuối: thay đổi.",
+    "#### 1. 3 số đầu – Mã tỉnh / thành phố",
+    "Mã định danh nơi đăng ký thường trú của công dân. Mỗi tỉnh / thành phố có một mã riêng.",
+    "#### 2. Số thứ 4 – Giới tính",
+    "8-9x: 1: Nữ; 0: Nam.",
+    "2k: 3: Nữ; 2: Nam.",
+    "#### 3. 2 số tiếp theo – Năm sinh",
+    "Thể hiện 2 số cuối của năm sinh công dân. Ví dụ: 990123 → 99 là năm 1999.",
+    "#### 4. 6 số cuối – Thay đổi",
+    "Là dãy số ngẫu nhiên được cấp riêng cho mỗi công dân, không cố định.",
+    "#### Ghi nhớ",
+    "- CCCD gồm 12 số.\n- Mỗi nhóm số mang một ý nghĩa riêng.\n- Hiểu cấu trúc giúp dễ dàng phân tích và luận giải trong NLS.",
+    "#### Ví dụ minh họa",
+    "001 (Mã tỉnh) – 1 (Giới tính, 1 = Nữ) – 990123 (Năm sinh, 1999) – 123456 (Dãy số ngẫu nhiên, thay đổi)."
+  ],
   "5": [
     "NGUYÊN TẮC KHI LUẬN NLS",
     "LUẬN ĐÚNG – HIỂU ĐÚNG – ỨNG DỤNG ĐÚNG",

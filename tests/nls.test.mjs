@@ -14,6 +14,8 @@ import {
   buildSequenceReport,
   combinationSource,
   normalizeSearch,
+  normalizeNumber,
+  numberKinds,
 } from "../src/lib/nls.ts";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -373,4 +375,47 @@ test("all 143 slides retain numbering, references, blank pages and native text",
       `Broken Markdown image ${match[1]}`,
     );
   }
+});
+
+test("number kinds normalize input without inventing rules or decoding identity data", () => {
+  assert.deepEqual(
+    numberKinds.map((kind) => kind.id),
+    ["cccd", "phone", "house", "plate", "other"],
+  );
+  for (const kind of numberKinds) {
+    assert.ok(kind.sources.length > 0);
+    for (const source of kind.sources)
+      assert.notEqual(slides[source.slide - 1].quality, "blank");
+    for (const example of kind.examples)
+      assert.ok(normalizeNumber(kind.id, example).digits.length >= 2);
+  }
+  assert.equal(slides[3].quality, "proofread");
+  assert.match(slides[3].text, /3 số đầu – Mã tỉnh/);
+
+  assert.deepEqual(normalizeNumber("cccd", "001 431 681 414"), {
+    digits: "001431681414",
+    notes: [],
+  });
+  for (const value of ["00143168141", "0014316814145", "00143168141A"])
+    assert.throws(() => normalizeNumber("cccd", value));
+
+  assert.equal(normalizeNumber("phone", "+84 123 456 789").digits, "0123456789");
+  assert.equal(normalizeNumber("phone", "0084123456789").digits, "0123456789");
+  assert.deepEqual(normalizeNumber("phone", "0123.456.789").notes, []);
+  assert.equal(normalizeNumber("phone", "012345678").notes.length, 1);
+  assert.throws(() => normalizeNumber("phone", "0123 abc"));
+
+  const plate = normalizeNumber("plate", "30A-143.68");
+  assert.equal(plate.digits, "3014368");
+  assert.match(plate.notes[0], /“A”, “-”, “\.”\./);
+  assert.equal(normalizeNumber("house", "143/16").digits, "14316");
+  assert.deepEqual(normalizeNumber("house", "143 16").notes, []);
+  assert.throws(() => normalizeNumber("house", "A1"));
+  assert.throws(() => normalizeNumber("plate", "1".repeat(33)));
+
+  assert.equal(normalizeNumber("other", "14-68").digits, "1468");
+  assert.throws(() => normalizeNumber("other", "14/68"));
+  const report = buildSequenceReport(normalizeNumber("plate", "30A-143.68").digits);
+  assert.equal(report.digitCount, 7);
+  assert.equal(report.pairs[0].pair, "30");
 });

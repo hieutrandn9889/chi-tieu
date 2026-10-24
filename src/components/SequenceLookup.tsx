@@ -5,12 +5,19 @@ import {
   BookOpen,
   Eye,
   EyeOff,
+  Info,
   Search,
   ShieldCheck,
   Trash2,
 } from "lucide-react";
 import { Link } from "react-router-dom";
-import { buildSequenceReport } from "@/lib/nls";
+import {
+  buildSequenceReport,
+  findNumberKind,
+  normalizeNumber,
+  numberKinds,
+} from "@/lib/nls";
+import type { NumberKind } from "@/lib/nls";
 import { SequenceReport } from "@/components/SequenceReport";
 
 export function SequenceLookup({ compact = false }: { compact?: boolean }) {
@@ -20,16 +27,22 @@ export function SequenceLookup({ compact = false }: { compact?: boolean }) {
   > | null>(null);
   const [error, setError] = useState("");
   const [concealed, setConcealed] = useState(!compact);
+  const [kind, setKind] = useState<NumberKind>("other");
+  const [notes, setNotes] = useState<string[]>([]);
+  const kindInfo = findNumberKind(kind);
   const inputRef = useRef<HTMLInputElement>(null);
   const formId = useId();
   const inputId = compact ? "home-sequence" : "lookup-sequence";
   function lookUp(value: string) {
     setInput(value);
     try {
-      setResult(buildSequenceReport(value));
+      const normalized = normalizeNumber(kind, value);
+      setResult(buildSequenceReport(normalized.digits));
+      setNotes(normalized.notes);
       setError("");
     } catch (err) {
       setResult(null);
+      setNotes([]);
       setError(
         err instanceof Error ? err.message : "Vui lòng kiểm tra lại dãy số.",
       );
@@ -42,6 +55,7 @@ export function SequenceLookup({ compact = false }: { compact?: boolean }) {
   function clear() {
     setInput("");
     setResult(null);
+    setNotes([]);
     setError("");
     setConcealed(!compact);
     inputRef.current?.focus();
@@ -101,7 +115,7 @@ export function SequenceLookup({ compact = false }: { compact?: boolean }) {
         <p>
           {compact
             ? "Nhập một cặp số hoặc dãy minh họa để tìm nhóm tương ứng trong tài liệu."
-            : "Nhập 2–32 chữ số để xem từng cặp và các chủ đề. Có thể dùng dãy 12 chữ số; công cụ không xác thực căn cước hay tra thông tin cá nhân."}
+            : "Chọn loại số rồi nhập 2–32 chữ số để xem từng cặp và các chủ đề. Công cụ không xác thực căn cước hay tra thông tin cá nhân."}
         </p>
         {!compact && (
           <p className="lookup-privacy">
@@ -111,6 +125,32 @@ export function SequenceLookup({ compact = false }: { compact?: boolean }) {
         )}
       </div>
       <form className="sequence-form" onSubmit={onSubmit} noValidate>
+        {!compact && (
+          <fieldset className="number-kinds">
+            <legend className="sr-only">Loại số cần luận</legend>
+            {numberKinds.map((item) => (
+              <label
+                key={item.id}
+                className={`number-kind${item.id === kind ? " active" : ""}`}
+              >
+                <input
+                  type="radio"
+                  className="sr-only"
+                  name={`${formId}-kind`}
+                  value={item.id}
+                  checked={item.id === kind}
+                  onChange={() => {
+                    setKind(item.id);
+                    setResult(null);
+                    setNotes([]);
+                    setError("");
+                  }}
+                />
+                {item.label}
+              </label>
+            ))}
+          </fieldset>
+        )}
         <label htmlFor={inputId} className="sr-only">
           Cặp số hoặc dãy số cần tra cứu
         </label>
@@ -120,11 +160,13 @@ export function SequenceLookup({ compact = false }: { compact?: boolean }) {
             id={inputId}
             ref={inputRef}
             type={concealed ? "password" : "text"}
-            inputMode="numeric"
+            inputMode={kind === "house" || kind === "plate" ? "text" : "numeric"}
             autoComplete="off"
             spellCheck={false}
             maxLength={80}
-            placeholder="Ví dụ: 14, 68 hoặc 143168"
+            placeholder={
+              compact ? "Ví dụ: 14, 68 hoặc 143168" : kindInfo.placeholder
+            }
             value={input}
             aria-invalid={!!error}
             aria-describedby={`${formId}-help${error ? ` ${formId}-error` : ""}`}
@@ -163,11 +205,31 @@ export function SequenceLookup({ compact = false }: { compact?: boolean }) {
             </button>
           </div>
         )}
+        {!compact && (
+          <div className="number-kind-note">
+            <Info size={16} aria-hidden="true" />
+            <div>
+              <p>{kindInfo.hint}</p>
+              <div className="number-kind-sources">
+                {kindInfo.sources.map((source) => (
+                  <Link
+                    key={source.slide}
+                    className="text-link"
+                    to={`/thu-vien?slide=${source.slide}`}
+                  >
+                    {source.label} · Slide {source.slide}{" "}
+                    <ArrowRight size={12} />
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
         <div className="lookup-helper" id={`${formId}-help`}>
           <span>Thử nhanh:</span>
           {(compact
             ? ["14", "68", "19", "143168"]
-            : ["143168", "001431681414", "105014"]
+            : kindInfo.examples
           ).map((example) => (
             <button key={example} type="button" onClick={() => lookUp(example)}>
               {example}
@@ -185,6 +247,13 @@ export function SequenceLookup({ compact = false }: { compact?: boolean }) {
             Đã phân tích {result.digitCount} chữ số, gồm {result.pairs.length}{" "}
             cặp và {result.groups.length} nhóm.
           </p>
+          {notes.length > 0 && (
+            <ul className="normalize-notes">
+              {notes.map((note) => (
+                <li key={note}>{note}</li>
+              ))}
+            </ul>
+          )}
           {compact ? (
             <>
               {pairResults}

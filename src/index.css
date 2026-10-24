@@ -761,6 +761,70 @@
 .sequence-controls button:hover {
   color: var(--green);
 }
+.number-kinds {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 14px;
+  padding: 0;
+  border: 0;
+}
+.number-kind {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 0 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 12px;
+  cursor: pointer;
+}
+.number-kind:hover {
+  border-color: var(--green);
+}
+.number-kind.active {
+  border-color: var(--green);
+  background: var(--green);
+  color: var(--paper);
+}
+.number-kind:focus-within {
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
+}
+.number-kind-note {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--muted-ink);
+  font-size: 11px;
+  line-height: 1.6;
+}
+.number-kind-note > svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--green);
+}
+.number-kind-sources {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  margin-top: 6px;
+}
+.normalize-notes {
+  margin: 0 0 16px;
+  padding: 10px 14px 10px 30px;
+  border-left: 3px solid var(--green);
+  background: var(--surface);
+  color: var(--muted-ink);
+  font-size: 11px;
+  list-style: disc;
+}
 .compact-report-link {
   margin-top: 16px;
 }
