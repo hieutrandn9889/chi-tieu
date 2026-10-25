@@ -1,4 +1,4 @@
-import { useId, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import type { FormEvent } from "react";
 import {
   ArrowRight,
@@ -6,12 +6,14 @@ import {
   Eye,
   EyeOff,
   Info,
+  ListChecks,
   Search,
   ShieldCheck,
   Trash2,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import {
+  buildReportSummary,
   buildSequenceReport,
   findNumberKind,
   normalizeNumber,
@@ -19,6 +21,10 @@ import {
 } from "@/lib/nls";
 import type { NumberKind } from "@/lib/nls";
 import { SequenceReport } from "@/components/SequenceReport";
+import {
+  handOffSequence,
+  takeHandedOffSequence,
+} from "@/lib/sequence-handoff";
 
 export function SequenceLookup({ compact = false }: { compact?: boolean }) {
   const [input, setInput] = useState("");
@@ -48,6 +54,12 @@ export function SequenceLookup({ compact = false }: { compact?: boolean }) {
       );
     }
   }
+  // The full report page picks up a sequence sent from the home page once.
+  useEffect(() => {
+    if (compact) return;
+    const handed = takeHandedOffSequence();
+    if (handed) lookUp(handed);
+  }, []);
   function onSubmit(event: FormEvent) {
     event.preventDefault();
     lookUp(input);
@@ -60,6 +72,7 @@ export function SequenceLookup({ compact = false }: { compact?: boolean }) {
     setConcealed(!compact);
     inputRef.current?.focus();
   }
+  const quickSummary = compact && result ? buildReportSummary(result) : null;
   const pairResults = result && (
     <>
       <div className="results-heading">
@@ -256,9 +269,29 @@ export function SequenceLookup({ compact = false }: { compact?: boolean }) {
           )}
           {compact ? (
             <>
+              {quickSummary && (
+                <div className="quick-summary">
+                  <span className="section-label">
+                    <ListChecks size={14} /> TÓM TẮT NHANH
+                  </span>
+                  <p className="summary-headline">{quickSummary.headline}</p>
+                  {quickSummary.flow.map((segment) => (
+                    <p key={segment.start}>
+                      <span className="pair-position">
+                        VỊ TRÍ {segment.start}–{segment.end}
+                      </span>
+                      {segment.text}
+                    </p>
+                  ))}
+                </div>
+              )}
               {pairResults}
-              <Link className="text-link compact-report-link" to="/tra-cuu">
-                Mở công cụ luận giải chi tiết <ArrowRight size={15} />
+              <Link
+                className="text-link compact-report-link"
+                to="/tra-cuu"
+                onClick={() => handOffSequence(input)}
+              >
+                Xem báo cáo chi tiết cho dãy này <ArrowRight size={15} />
               </Link>
             </>
           ) : (

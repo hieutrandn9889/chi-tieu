@@ -828,6 +828,25 @@
 .compact-report-link {
   margin-top: 16px;
 }
+.quick-summary {
+  margin-bottom: 18px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--green);
+  border-radius: 8px;
+  background: var(--surface);
+  font-size: 12px;
+  line-height: 1.6;
+}
+.quick-summary .summary-headline {
+  margin: 8px 0 6px;
+}
+.quick-summary .pair-position {
+  display: block;
+}
+.quick-summary p + p {
+  margin-top: 6px;
+}
 .sequence-report {
   min-width: 0;
 }
