@@ -35,7 +35,8 @@
 .nls-site h1,
 .nls-site h2,
 .nls-site h3 {
-  font-family: "Lora", Georgia, serif;
+  /* Fallback is Times New Roman, not Georgia, which lacks precomposed Vietnamese letters. */
+  font-family: "Lora", "Times New Roman", serif;
   font-weight: 400;
   letter-spacing: -0.035em;
 }
@@ -154,7 +155,7 @@
 .brand strong {
   font:
     500 25px/1.1 "Lora",
-    Georgia,
+    "Times New Roman",
     serif;
   letter-spacing: -0.05em;
   display: block;
@@ -311,7 +312,7 @@
 .hero-stats strong {
   font:
     400 30px/1.3 "Lora",
-    Georgia,
+    "Times New Roman",
     serif;
   letter-spacing: -0.035em;
 }
@@ -369,7 +370,7 @@
 .orbit-center > strong {
   font:
     500 19px "Lora",
-    Georgia,
+    "Times New Roman",
     serif;
 }
 .orbit-center > small {
@@ -694,7 +695,7 @@
 .pair-result strong {
   font:
     400 35px "Lora",
-    Georgia,
+    "Times New Roman",
     serif;
   color: var(--tone, var(--muted-ink));
 }
@@ -884,7 +885,7 @@
 .report-stats dd {
   font:
     400 34px/1.5 "Lora",
-    Georgia,
+    "Times New Roman",
     serif;
   color: var(--green);
 }
@@ -1396,7 +1397,7 @@ details.question-block[open] summary {
 .report-field-heading h4 {
   font:
     400 24px/1.4 "Lora",
-    Georgia,
+    "Times New Roman",
     serif;
 }
 .report-field-heading > div > span {
@@ -1563,7 +1564,7 @@ details.question-block[open] summary {
 .combination-interpretation h4 {
   font:
     400 20px/1.5 "Lora",
-    Georgia,
+    "Times New Roman",
     serif;
   margin-bottom: 8px;
 }
@@ -1774,7 +1775,7 @@ details.question-block[open] summary {
   place-items: center;
   border-radius: 5px;
   font-size: 15px;
-  font-family: "Lora", Georgia, serif;
+  font-family: "Lora", "Times New Roman", serif;
 }
 .field-source-preview {
   display: block;
@@ -1827,7 +1828,7 @@ details.question-block[open] summary {
 .lesson-number {
   font:
     italic 400 28px "Lora",
-    Georgia,
+    "Times New Roman",
     serif;
   color: #8f9f83;
   padding-top: 5px;
@@ -1915,7 +1916,7 @@ details.question-block[open] summary {
 .principle-inner p {
   font:
     400 29px/1.6 "Lora",
-    Georgia,
+    "Times New Roman",
     serif;
   margin-top: 17px;
 }
@@ -1940,7 +1941,7 @@ details.question-block[open] summary {
 .footer-brand {
   font:
     500 28px "Lora",
-    Georgia,
+    "Times New Roman",
     serif;
   letter-spacing: -0.05em;
 }
@@ -3354,4 +3355,244 @@ details.question-block[open] summary {
     max-width: 72rem;
     padding-inline: 1.25rem;
   }
+}
+
+/* Printable report (PrintableReport, mounted under <body>). Hidden on screen;
+   when printing, it is the only thing on the page. Colors are fixed light values
+   because paper is always light. */
+.report-export {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;
+  margin-top: 16px;
+}
+.print-root {
+  display: none;
+}
+@page {
+  size: A4;
+  margin: 16mm 14mm 18mm;
+  @bottom-right {
+    content: "Trang " counter(page) " / " counter(pages);
+    font: 8pt "Be Vietnam Pro", system-ui, sans-serif;
+    color: #898781;
+  }
+}
+@media print {
+  body:has(> .print-root) {
+    background: #ffffff;
+  }
+  body:has(> .print-root) > :not(.print-root) {
+    display: none !important;
+  }
+  .print-root {
+    display: block;
+  }
+}
+.pr-document {
+  color: #0b0b0b;
+  font: 10pt/1.55 "Be Vietnam Pro", system-ui, sans-serif;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+.pr-defs {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+.pr-cover {
+  margin-bottom: 8mm;
+  padding-bottom: 6mm;
+  border-bottom: 2px solid #285840;
+}
+.pr-eyebrow {
+  color: #285840;
+  font-size: 8pt;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+}
+.pr-cover h1,
+.pr-section h2 {
+  /* Georgia lacks precomposed Vietnamese letters (ố, ế, ắ) and splits the
+     marks; Times New Roman covers them if Lora has not loaded when printing. */
+  font-family: "Lora", "Times New Roman", serif;
+  font-weight: 400;
+}
+.pr-cover h1 {
+  margin: 3mm 0 5mm;
+  font-size: 24pt;
+  line-height: 1.2;
+}
+.pr-meta {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 4mm;
+  margin-bottom: 5mm;
+}
+.pr-meta dt {
+  color: #52514e;
+  font-size: 7.5pt;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.pr-meta dd {
+  font-weight: 600;
+}
+.pr-masked {
+  font-family: ui-monospace, "Cascadia Mono", Consolas, monospace;
+  letter-spacing: 0.08em;
+}
+.pr-disclaimer {
+  padding: 3mm 4mm;
+  border-left: 3px solid #285840;
+  background: #f0f3e9;
+  font-size: 9pt;
+}
+.pr-section {
+  margin-bottom: 7mm;
+}
+.pr-section h2 {
+  margin-bottom: 3mm;
+  padding-bottom: 2mm;
+  border-bottom: 1px solid #e1e0d9;
+  font-size: 15pt;
+  break-after: avoid;
+}
+.pr-section h2 span {
+  margin-right: 2mm;
+  color: #285840;
+  font-family: "Be Vietnam Pro", system-ui, sans-serif;
+  font-size: 10pt;
+  font-weight: 700;
+}
+.pr-section h3 {
+  margin: 4mm 0 2mm;
+  font-size: 10.5pt;
+  font-weight: 600;
+  break-after: avoid;
+}
+.pr-section p + p {
+  margin-top: 1.5mm;
+}
+.pr-lead {
+  font-size: 11.5pt;
+  font-weight: 500;
+}
+.pr-strong {
+  font-weight: 600;
+}
+.pr-muted {
+  color: #52514e;
+}
+.pr-steps,
+.pr-list {
+  padding-left: 5mm;
+}
+.pr-steps {
+  list-style: decimal;
+}
+.pr-list {
+  list-style: disc;
+}
+.pr-document li + li {
+  margin-top: 1mm;
+}
+.pr-tiles {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 3mm;
+  margin-bottom: 3mm;
+}
+.pr-tile {
+  display: grid;
+  gap: 1mm;
+  padding: 3mm;
+  border: 1px solid #e1e0d9;
+  border-radius: 2mm;
+  font-size: 9pt;
+}
+.pr-tile strong {
+  font-size: 16pt;
+  line-height: 1.2;
+}
+.pr-tile small {
+  color: #52514e;
+  font-size: 8pt;
+  font-weight: 400;
+}
+.pr-figure {
+  margin: 3mm 0 4mm;
+  break-inside: avoid;
+}
+.pr-figure figcaption {
+  margin-bottom: 2mm;
+  font-size: 9pt;
+  font-weight: 600;
+}
+.pr-chart {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.pr-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 9pt;
+}
+.pr-table th,
+.pr-table td {
+  padding: 1.2mm 2mm;
+  border-bottom: 1px solid #e1e0d9;
+  text-align: left;
+}
+.pr-table th {
+  color: #52514e;
+  font-weight: 600;
+}
+.pr-table tr {
+  break-inside: avoid;
+}
+.pr-card {
+  margin-bottom: 3mm;
+  padding: 3mm 4mm;
+  border: 1px solid #e1e0d9;
+  border-radius: 2mm;
+  break-inside: avoid;
+}
+.pr-card h3 {
+  margin-top: 0;
+}
+.pr-dimensions {
+  display: grid;
+  gap: 1.5mm;
+  margin: 2mm 0;
+}
+.pr-dimensions dt {
+  font-size: 9pt;
+  font-weight: 600;
+}
+.pr-supplement {
+  margin: 2mm 0;
+  padding: 2mm 3mm;
+  border: 1px dashed #c3c2b7;
+  border-radius: 2mm;
+  font-size: 9pt;
+}
+.pr-checks {
+  display: grid;
+  gap: 1.5mm;
+}
+.pr-checks li {
+  display: grid;
+  grid-template-columns: 5mm 1fr;
+  margin-top: 0;
+}
+.pr-footer {
+  margin-top: 8mm;
+  padding-top: 3mm;
+  border-top: 1px solid #e1e0d9;
+  color: #52514e;
+  font-size: 8pt;
 }

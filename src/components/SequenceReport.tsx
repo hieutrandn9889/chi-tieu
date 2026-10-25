@@ -1,10 +1,13 @@
+import { useEffect, useMemo, useState } from "react";
 import type { ReactNode } from "react";
+import { createPortal } from "react-dom";
 import {
   ArrowUpRight,
   BadgeCheck,
   BookOpen,
   CircleCheck,
   CircleX,
+  FileDown,
   ClipboardList,
   Layers3,
   Lightbulb,
@@ -37,6 +40,8 @@ import {
   verifyReport,
 } from "@/lib/report-verification";
 import type { ReportSection } from "@/lib/report-verification";
+import { buildExportData } from "@/lib/report-export";
+import { PrintableReport } from "@/components/PrintableReport";
 
 export function SequenceReport({
   report,
@@ -47,6 +52,25 @@ export function SequenceReport({
   numberKind?: NumberKind;
   children: ReactNode;
 }) {
+  // The print-only copy mounts after hydration, straight under <body>, so the
+  // print stylesheet can show it alone; server rendering never sees the portal.
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  const generatedAt = useMemo(() => new Date(), [report]);
+  const exportData = useMemo(
+    () => buildExportData(report, numberKind, generatedAt),
+    [report, numberKind, generatedAt],
+  );
+  function exportPdf() {
+    const previous = document.title;
+    document.title = exportData.fileName;
+    const restore = () => {
+      document.title = previous;
+      window.removeEventListener("afterprint", restore);
+    };
+    window.addEventListener("afterprint", restore);
+    window.print();
+  }
   const summary = buildReportSummary(report);
   const phoneCheck =
     numberKind === "phone"
@@ -146,6 +170,23 @@ export function SequenceReport({
   return (
     <article className="sequence-report" aria-label="Bản luận giải dãy số">
       {heading}
+
+      <div className="report-export">
+        <button className="nls-button" type="button" onClick={exportPdf}>
+          <FileDown size={16} /> Xuất báo cáo PDF
+        </button>
+        <p className="quiet-note">
+          Mở hộp thoại In, chọn “Lưu thành PDF”. Bản xuất có biểu đồ, che dãy số
+          và chỉ hiện 2 số cuối.
+        </p>
+      </div>
+      {mounted &&
+        createPortal(
+          <div className="print-root">
+            <PrintableReport data={exportData} />
+          </div>,
+          document.body,
+        )}
 
       <section className="report-plan" aria-labelledby="report-plan-title">
         <span className="section-label">
