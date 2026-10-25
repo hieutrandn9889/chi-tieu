@@ -16,9 +16,13 @@ buildSync({
       import { renderToStaticMarkup } from 'react-dom/server';
       import { StaticRouter } from 'react-router-dom/server.js';
       import { SequenceReport } from './src/components/SequenceReport.tsx';
+      import { PrintableReport } from './src/components/PrintableReport.tsx';
       export function renderReport(report, numberKind) {
         return renderToStaticMarkup(createElement(StaticRouter, { location: '/tra-cuu' },
           createElement(SequenceReport, { report, numberKind, children: null })));
+      }
+      export function renderPrintable(data) {
+        return renderToStaticMarkup(createElement(PrintableReport, { data }));
       }
     `,
     resolveDir: root,
@@ -31,7 +35,7 @@ buildSync({
   platform: "node",
   format: "esm",
 });
-const { renderReport } = await import(pathToFileURL(output).href);
+const { renderReport, renderPrintable } = await import(pathToFileURL(output).href);
 
 // The owner chose to remove the two-field combination readings from the report.
 test("the rendered report shows no two-field combination section or link", () => {
@@ -160,4 +164,48 @@ test("a failing section is hidden with its reason; a core failure hides the repo
   assert.ok(!broken.includes('id="report-summary-title"'));
   assert.ok(!broken.includes('id="report-themes-title"'));
   assert.ok(broken.includes('id="report-verify-title"'));
+  assert.ok(!broken.includes("Xuất báo cáo PDF"));
+});
+
+test("the report offers a PDF export; the print copy only mounts in the browser", () => {
+  const html = renderReport(buildSequenceReport("143168"));
+  assert.ok(html.includes("Xuất báo cáo PDF"));
+  // Server rendering has no document.body, so the portal is absent here.
+  assert.ok(!html.includes('class="print-root"'));
+});
+
+test("the printable report has a masked cover, numbered sections and both charts", async () => {
+  const { buildExportData } = await import("../src/lib/report-export.ts");
+  const digits = "0961742038";
+  const data = buildExportData(
+    buildSequenceReport(digits),
+    "phone",
+    new Date(2026, 9, 25, 9, 5),
+  );
+  const html = renderPrintable(data);
+  assert.ok(html.includes("••••••••38"));
+  assert.ok(html.includes("25/10/2026 09:05"));
+  for (const title of [
+    "Kế hoạch luận",
+    "Tóm tắt",
+    "Hình ảnh tổng quan",
+    "Phân tích chi tiết",
+    "Số 0 và số 5 theo tài liệu",
+    "Luận từng nhóm",
+    "Nhận biết số điện thoại (ghi chép bổ sung)",
+    "Câu hỏi để tự đối chiếu",
+    "Kiểm chứng kết quả",
+  ])
+    assert.ok(html.includes(title), title);
+  assert.ok(html.includes("<span>01</span> <!-- -->Kế hoạch luận") || html.includes("<span>01</span> Kế hoạch luận"));
+  // One shared hatch pattern; 9 distribution rows; one strip cell per pair.
+  assert.equal((html.match(/id="pr-hatch"/g) || []).length, 1);
+  assert.ok(html.includes('aria-label="Số cặp theo nhóm"'));
+  const strip = html.slice(html.indexOf('aria-label="Bản đồ vị trí'));
+  assert.equal(
+    (strip.slice(0, strip.indexOf("</svg>")).match(/<rect /g) || []).length,
+    digits.length - 1,
+  );
+  for (let i = 0; i + 4 <= digits.length; i++)
+    assert.ok(!html.includes(digits.slice(i, i + 4)), digits.slice(i, i + 4));
 });
