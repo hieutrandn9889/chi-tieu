@@ -17,7 +17,15 @@ import {
   normalizeSearch,
   normalizeNumber,
   numberKinds,
+  explainSpecialDigits,
 } from "../src/lib/nls.ts";
+import {
+  checkPhonePattern,
+  findPairNote,
+  groupNotes,
+  pairNotes,
+  supplementPairs,
+} from "../src/lib/nls-supplement.ts";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const slides = JSON.parse(
@@ -464,4 +472,84 @@ test("the quick summary condenses report data without inventing readings", () =>
     /Ngang nhau nhiều nhất: Sinh Khí, Diên Niên \(mỗi nhóm 1\/2 cặp\)/,
   );
   assert.equal(tie.questions.length, 2);
+});
+
+test("the supplementary workbook's pair table matches the slide table for all eight groups", () => {
+  for (const field of fields)
+    assert.deepEqual(
+      [...supplementPairs[field.short]].sort(),
+      [...field.pairs].sort(),
+      field.short,
+    );
+});
+
+test("supplementary notes cover every pair once and every group, without excluded topics", () => {
+  const covered = pairNotes.flatMap((note) => note.pairs);
+  assert.equal(covered.length, 64);
+  assert.equal(new Set(covered).size, 64);
+  for (const field of fields) {
+    for (const pair of field.pairs)
+      assert.ok(findPairNote(pair)?.pairs.every((p) => field.pairs.includes(p)), pair);
+    const note = groupNotes[field.short];
+    assert.ok(note.personality && note.work && note.study, field.short);
+  }
+  const text = JSON.stringify([groupNotes, pairNotes]);
+  // Owner-approved exclusions: health, death, infidelity, gender limits,
+  // spirits, real-person examples and licence-plate rules.
+  for (const banned of [
+    /ung thư/i, /tự sát/i, /quyên sinh/i, /đột tử/i, /bệnh/i, /tai nạn/i,
+    /mổ/i, /thai/i, /vô sinh/i, /ngoại tình/i, /người thứ/i, /sát phu/i,
+    // \b does not treat Vietnamese letters as word characters, so use \p{L}.
+    /khắc phu/i, /(?<!\p{L})(nữ|nam)(?!\p{L})/iu, /vong/i, /tâm linh/i, /biển số/i,
+    /quẻ/i, /\d{5,}/,
+  ])
+    assert.doesNotMatch(text, banned);
+});
+
+test("0/5 notes follow the slide 26–27 examples and leave health unread", () => {
+  const groupOf = (digits) =>
+    explainSpecialDigits(digits).filter((note) => note.window.length === 3);
+  for (const [digits, name] of [
+    ["190", "Diên Niên"], ["109", "Diên Niên"], ["708", "Diên Niên"],
+    ["160", "Lục Sát"], ["380", "Lục Sát"], ["407", "Lục Sát"],
+    ["130", "Thiên Y"], ["608", "Thiên Y"],
+    ["607", "Sinh Khí"], ["410", "Sinh Khí"], ["390", "Sinh Khí"],
+    ["180", "Ngũ Quỷ"], ["709", "Ngũ Quỷ"], ["240", "Ngũ Quỷ"],
+    ["460", "Họa Hại"], ["890", "Họa Hại"], ["710", "Họa Hại"],
+  ]) {
+    const [note] = groupOf(digits);
+    assert.ok(note.text.startsWith(`${name} đi cùng 0`), digits);
+    assert.equal(note.source, 26);
+  }
+  for (const digits of ["730", "960", "210", "804"]) {
+    const [note] = groupOf(digits);
+    assert.match(note.text, /^Tuyệt Mệnh đi cùng 0/);
+    assert.doesNotMatch(note.text, /có bệnh phát sinh/);
+  }
+  for (const [digits, tone] of [["856", "cát"], ["865", "cát"], ["195", "cát"], ["175", "hung"]]) {
+    const [note] = groupOf(digits);
+    assert.ok(note.text.includes(`(${tone} tinh) đi cùng 5`), digits);
+    assert.equal(note.source, 27);
+  }
+  assert.equal(groupOf("4115")[0].source, 28);
+  assert.match(explainSpecialDigits("1410").at(-1).text, /cuối dãy/);
+  assert.deepEqual(explainSpecialDigits("001431681414"), []);
+  assert.equal(buildSequenceReport("14010").specialNotes.length, 3);
+});
+
+test("phone checks apply only the notes' defined rules and skip the carrier 0", () => {
+  const check = (digits) => checkPhonePattern(digits, parseSequence(digits));
+  const busy = check("0961742138");
+  assert.equal(busy.warnings.length, 5);
+  assert.ok(busy.warnings.every((w) => w.startsWith("Hai hung tinh")));
+  assert.deepEqual(busy.strengths, [
+    "Chuyển từ hung sang cát: Tuyệt Mệnh → Thiên Y (vị trí 7–9).",
+  ]);
+  const calm = check("0914131");
+  assert.deepEqual(calm.warnings, []);
+  assert.ok(calm.strengths.some((s) => s.startsWith("Hai cát tinh")));
+  assert.match(check("0961742038").warnings.at(-1), /vị trí 8\.$/);
+  // Phục Vị is neither cát nor hung (slide 8), so it never triggers a rule.
+  assert.deepEqual(check("0611").warnings.length + check("0611").strengths.length, 0);
+  assert.equal(check("0911").notAutomated.length, 2);
 });

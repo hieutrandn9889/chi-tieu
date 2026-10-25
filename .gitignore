@@ -7,3 +7,6 @@ dist
 .DS_Store
 npm-debug.log*
 .cache/
+# Source files from the owner (PPTX, Excel notes, sample readings) contain real
+# CCCD numbers, names and phone numbers; keep them out of the public repo.
+data_docs/

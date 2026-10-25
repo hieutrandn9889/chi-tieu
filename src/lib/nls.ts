@@ -1,4 +1,5 @@
 import { combinationReadings, fieldReadings } from "./nls-interpretations.ts";
+import { supplementTone } from "./nls-supplement.ts";
 
 export interface EnergyField {
   id: string;
@@ -290,6 +291,90 @@ export function normalizeNumber(kind: NumberKind, input: string) {
   return { digits, notes };
 }
 
+// Slide 26 lists a 0 placed after a pair (190) or inside it (109) and names the
+// topic for each group. Tuyệt Mệnh's line is about health, which the tool does
+// not interpret, so its own box text on the same slide is used instead.
+const zeroTopics: Record<string, string> = {
+  DN: "trong sự nghiệp nhất định đỉnh trẻ [nguồn ghi “đỉnh trẻ”, có thể là “đình trệ”]",
+  LS: "trong tình cảm nhất định có vấn đề",
+  TY: "tiền tài hao mòn, bị moi mất tiền",
+  SK: "trong quý nhân thành tiểu nhân trở ngại",
+  NQ: "trong trí tuệ thì do dự",
+  HH: "trong hoạ hại thì thị phi không ngừng nghỉ",
+};
+
+export interface SpecialNote {
+  start: number;
+  window: string;
+  text: string;
+  source: number;
+}
+
+// Explains each 0/5 only where slides 26–28 give a rule: the digit follows a
+// classified pair (XY0, XY5) or sits inside one (X0Y, X5Y), or a 0 ends the
+// sequence. Other 0/5 positions get no reading.
+export function explainSpecialDigits(digits: string): SpecialNote[] {
+  const notes: SpecialNote[] = [];
+  const seen = new Set<string>();
+  [...digits].forEach((digit, i) => {
+    if (digit !== "0" && digit !== "5") return;
+    const candidates = [
+      i >= 2 ? { start: i - 2, pair: digits[i - 2] + digits[i - 1] } : null,
+      i >= 1 && i + 1 < digits.length
+        ? { start: i - 1, pair: digits[i - 1] + digits[i + 1] }
+        : null,
+    ];
+    for (const candidate of candidates) {
+      const field = candidate && findField(candidate.pair);
+      if (!candidate || !field) continue;
+      const window = digits.slice(candidate.start, candidate.start + 3);
+      const key = `${candidate.start}:${window}`;
+      if (seen.has(key)) continue;
+      seen.add(key);
+      const tone = supplementTone[field.short];
+      const note =
+        digit === "0"
+          ? field.short === "TM"
+            ? {
+                text: "Tuyệt Mệnh đi cùng 0: slide 26 ghi “mọi thứ đã ủ lâu rồi lên tới đỉnh điểm là đột nhiên bằng 0, không có kết quả”. Dòng sức khỏe của slide không được công cụ diễn giải.",
+                source: 26,
+              }
+            : field.short === "PV"
+              ? {
+                  text: "Phục Vị đi cùng 0: slide 26 không có dòng riêng; slide 28 ghi số 0 đi cùng cát hay hung đều có nguy cơ, ẩn tàng mọi thứ.",
+                  source: 28,
+                }
+              : {
+                  text: `${field.name} đi cùng 0: slide 26 ghi “0 – ${zeroTopics[field.short]}”.`,
+                  source: 26,
+                }
+          : tone === "neutral"
+            ? {
+                text: "Phục Vị & 5: slide 28 ghi đi cùng cát tinh thì tăng cát, đi cùng hung tinh thì tăng hung.",
+                source: 28,
+              }
+            : tone === "cat"
+              ? {
+                  text: `${field.name} (cát tinh) đi cùng 5: slide 27 ghi “bạo phát, thịnh vượng, tốt đẹp, đúng cuối thì kéo dài vượt thời gian”.`,
+                  source: 27,
+                }
+              : {
+                  text: `${field.name} (hung tinh) đi cùng 5: slide 27 ghi “5 hiển lộ xấu, hung cực mạnh mẽ”.`,
+                  source: 27,
+                };
+      notes.push({ start: candidate.start, window, ...note });
+    }
+  });
+  if (digits.endsWith("0"))
+    notes.push({
+      start: digits.length - 1,
+      window: "0",
+      text: "Số 0 ở cuối dãy: slide 26 ghi “trong cuối dãy số thì công dã tràng, mọi thứ = 0”.",
+      source: 26,
+    });
+  return notes.sort((a, b) => a.start - b.start);
+}
+
 // Each ordered row points only to an actual source section. No inferred reversals.
 const combinations: Record<string, Record<string, number>> = {
   TY: { TY: 50, SK: 52, DN: 54, PV: 55, HH: 56, LS: 58, TM: 59, NQ: 61 },
@@ -408,6 +493,9 @@ export function buildSequenceReport(input: string) {
     orderedCombinations,
     chains,
     repetitions: runs.filter((run) => run.count > 1),
+    specialNotes: explainSpecialDigits(
+      pairs[0].pair + pairs.slice(1).map((pair) => pair.pair[1]).join(""),
+    ),
     overview,
   };
 }

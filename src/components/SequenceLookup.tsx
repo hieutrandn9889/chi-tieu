@@ -262,7 +262,9 @@ export function SequenceLookup({ compact = false }: { compact?: boolean }) {
               </Link>
             </>
           ) : (
-            <SequenceReport report={result}>{pairResults}</SequenceReport>
+            <SequenceReport report={result} numberKind={kind}>
+              {pairResults}
+            </SequenceReport>
           )}
         </div>
       )}
