@@ -48,7 +48,7 @@ Những cặp đảo chiều trong bảng cơ bản thuộc cùng nhóm. Điều
 
 ## Những chỗ cần nghiên cứu/hiệu đính tiếp
 
-- **OCR toàn văn:** nền trang trí, nhiều cột và sơ đồ làm OCR sai dấu, thiếu tiêu đề và trộn dòng. Đã hiệu đính 17 slide trọng tâm (1, 2, 4, 5, 6, 8, 10, 13, 15, 17, 19, 21, 25, 26, 27, 28, 36); 116 slide còn bản OCR chưa hiệu đính toàn văn. Điểm của máy không phải tỷ lệ chính xác; ảnh đối chiếu là nguồn kiểm tra. Chi tiết có trong `conversion-report.json`.
+- **OCR toàn văn:** nền trang trí, nhiều cột và sơ đồ làm OCR sai dấu, thiếu tiêu đề và trộn dòng. Đã hiệu đính 26 slide trọng tâm (1, 2, 4, 5, 6, 8, 10, 13, 15, 17, 19, 21, 25–38); 107 slide còn bản OCR chưa hiệu đính toàn văn. Điểm của máy không phải tỷ lệ chính xác; ảnh đối chiếu là nguồn kiểm tra. Chi tiết có trong `conversion-report.json`.
 - **Lỗi biên tập trong bản nguồn:** slide 17 mang tiêu đề Họa Hại nhưng một số ô vẫn nói “Phục Vị”, gồm cả phần ghi chú về 3PV–6PV. Đã kiểm tra trên ảnh. Giữ nguyên ở bản chuyển đổi và không đưa các câu đó thành đặc tính chắc chắn của Họa Hại.
 - **Nội dung lặp:** slide 39–40 có nội dung lặp; slide 25 và 48 cùng bảng liên kết. Website gộp theo chủ đề, vẫn giữ cả hai trang nguồn.
 - **CCCD:** hình minh họa và OCR ở slide 4 cần kiểm tra lại trước khi xây bộ tách CCCD; không dùng slide này làm bộ kiểm tra căn cước hoặc thu thập CCCD trên web.

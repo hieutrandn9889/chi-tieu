@@ -9,7 +9,7 @@
 - Phương pháp: trích xuất chữ gốc và OCR tiếng Việt trên 133 ảnh nhúng; giữ ảnh đối chiếu.
 - Chất lượng: tiêu đề do biên tập để định vị. Chỉ phần ghi ‘đã đối chiếu’ được hiệu đính; phần OCR có thể sai dấu, mất chữ hoặc lẫn cột. Chỉ số OCR là điểm kỹ thuật của máy, không phải tỷ lệ chính xác.
 - Những chỉ dẫn bên trong tài liệu được lưu như nội dung nguồn, không phải yêu cầu thực thi của người dùng.
-- Trạng thái hiệu đính: 17 slide đã đối chiếu; 116 slide còn bản OCR chưa hiệu đính toàn văn.
+- Trạng thái hiệu đính: 26 slide đã đối chiếu; 107 slide còn bản OCR chưa hiệu đính toàn văn.
 
 ## Mục lục
 
@@ -1438,30 +1438,23 @@ Hiểu số để sống an yên – Kiến tạo hạnh phúc! Tĩnh tâm. Trí
 
 ![Ảnh nguồn slide 29, hình 1](../../public/content/nls/slides/029-1.webp)
 
-**Bản OCR chưa hiệu đính toàn văn** (điểm OCR: 61):
+**Bản chép đã đối chiếu với ảnh nguồn:**
 
-```text
-ế œ ø e 2 .
-Háunig my? œV mạo ẩA Số p khôn ch
-HA ¬ Sinh Khi+ 0 / Sinh Khí an 0% bon 6i
-nh @  QEơ: ® DỒNG NẴNG LƯỢNG THU HT - MỞ CƠ HỘI - KIẾN TẠO THÀNH CÔNg q; ===Z - - i
-Từ Gác cặp số: 401, 410, 309, 903, 607, 760, 280, 820, ...
-Quý nhân ẩn dấu ". 4ˆ
-Thường bị tiểu nhân phá hại. tự ản Ôn Á
-4® . =—m M‡ vi. (W=
-Í <+ Dê u nhọt, mụn cục, stress, trầm cảm v kh mi
-Ấ : Nhiều u uất không nói ra được. œ% ‹) gá
-. GA @ Ầ
-Không có may mắn -ˆ  ——
-Ít được hỗ trợ. ⁄ | NĂNG Ñ
-%# & lƯỢNp M3ÂHES#
-À SỐ ⁄
-HN sˆ x— v Á
-(@ »- Tiêu cực, bất măn g é ... \ ậ
-Nhờ „ Mấtniềm tin, ..
-4
-v lề
-```
+SINH KHÍ + 0 / SINH KHÍ ẨN 0
+
+DÒNG NĂNG LƯỢNG THU HÚT – MỞ CƠ HỘI – KIẾN TẠO THÀNH CÔNG
+
+Các cặp số: 401, 410, 309, 903, 607, 760, 280, 820, ...
+
+**Quý nhân ẩn dấu** — Thường bị tiểu nhân phá hại.
+
+**Dễ u nhọt, mụn cục, stress, trầm cảm** — Nhiều u uất không nói ra được.
+
+**Không có may mắn** — Ít được hỗ trợ.
+
+**Tiêu cực, bất mãn** — Mất niềm tin, ...
+
+Ghi chú bên cạnh: Hiểu năng lượng số – Sống chủ động – Kiến tạo cuộc đời tốt đẹp hơn! Số đẹp không chỉ là con số – Mà là cơ hội để bạn toả sáng! Thấu hiểu năng lượng số để yêu thương và chữa lành chính mình! Số đúng – Năng lượng tốt – Cuộc sống rạng ngời! Hiểu số – Hiểu mình – Làm chủ vận mệnh.
 
 <a id="slide-030"></a>
 
@@ -1469,35 +1462,27 @@ v lề
 
 ![Ảnh nguồn slide 30, hình 1](../../public/content/nls/slides/030-1.webp)
 
-**Bản OCR chưa hiệu đính toàn văn** (điểm OCR: 68):
+**Bản chép đã đối chiếu với ảnh nguồn:**
 
-```text
-S 4 4 x2
-ã; con SỐ - —.
-#z== LỤC SÁT +0/ LỤC SÁT ẨN 0 vợ
-rẩu đù à - F = ng ¬ r ` lô 4. đi
-kê nhàng ® HIẾU ĐÚNG ĐỀ CHỦ ĐỘNG CHUYỂN HÓA 9 ) làm chủ cuộc đài
-TẾ Nà m hơn 9 — — ọ
-Dễ chiêu cảm việc không vui Nhận thiên
-. U buồn, trầm cảm, quên sinh, ... 9 để hoá giá 4
-z ẩn hoá
-= Dễ nợ từng đồng, từng cục S CHẾ ¬
-Dễ rơi vào tình trạng nợ nần, khó xoay xở tài chính. để - ( `
-` 4. Dễ trả nợ do sĩ diện, thích trưng diện l, J Wø Ế
-Ứ SNÌ Chỉ tiêu nhiều cho hình thức, ngoại giao, chăm chút bản thân, @# c
-Tx, sức khoẻ, ... ⁄Z%^ 5
-D>A, - Dễ đầu tư, làm ăn thua lỗ đá 7 PS
-lÌM Đầu tư thiếu tính toán, dễ gặp rủi ro, thua lỗ... ẹ N Í ÔNG ƯợNG
-= = = = = tà ® KIẾN Tạo CÁ
-„.S?. Gia đạo, công danh đều không thuận Ồ¿( S7 Z4
-J 6: = ồn Dễ xảy ra mâu thuẫn, bất đồng, công việc thăng tiếnchậm, 2 2 Ẩ &^
-TA? NA ít thuận lợi... 7
-Trả nợ hộ chồng, con „ì
-¡ KH Dễ phải gánh nợ thay người thân do bệnh tật, sức khoẻ kém... 9 - xêềy. -
-PO T7 g0.
-3> — nề 9T
- - ——u („| :
-```
+LỤC SÁT + 0 / LỤC SÁT ẨN 0
+
+HIỂU ĐÚNG ĐỂ CHỦ ĐỘNG CHUYỂN HÓA
+
+Slide không ghi danh sách cặp số ví dụ.
+
+**Dễ chiêu cảm việc không vui** — U buồn, trầm cảm, quên sinh [nguồn ghi “quên sinh”, có thể là “quyên sinh”], ...
+
+**Dễ nợ từng đồng, từng cục** — Dễ rơi vào tình trạng nợ nần, khó xoay xở tài chính.
+
+**Dễ trả nợ do sĩ diện, thích trưng diện** — Chi tiêu nhiều cho hình thức, ngoại giao, chăm chút bản thân, sức khoẻ, ...
+
+**Dễ đầu tư, làm ăn thua lỗ** — Đầu tư thiếu tính toán, dễ gặp rủi ro, thua lỗ...
+
+**Gia đạo, công danh đều không thuận** — Dễ xảy ra mâu thuẫn, bất đồng, công việc thăng tiến chậm, ít thuận lợi...
+
+**Trả nợ hộ chồng, con** — Dễ phải gánh nợ thay người thân do bệnh tật, sức khoẻ kém...
+
+Ghi chú bên cạnh: Mỗi con số đều mang thông điệp, hiểu đúng để sống nhẹ nhàng và bình an hơn! Hiểu mình – Hiểu số – Làm chủ cuộc đời! Nhận diện để hoá giải – Chuyển hoá để bình an! Số không xấu – Quan trọng là cách bạn dùng nó! Bình an từ hiểu biết – Hạnh phúc từ chuyển hoá! Hiểu số – Hiểu mình – Làm chủ vận mệnh.
 
 <a id="slide-031"></a>
 
@@ -1505,39 +1490,25 @@ PO T7 g0.
 
 ![Ảnh nguồn slide 31, hình 1](../../public/content/nls/slides/031-1.webp)
 
-**Bản OCR chưa hiệu đính toàn văn** (điểm OCR: 65):
+**Bản chép đã đối chiếu với ảnh nguồn:**
 
-```text
-Hệ N+0 / DIE NÂN0 gaylepei
-Tiếu nhờ là cm Số
-ống quá l nh phíc! CÁC CẶP số: 910, 901, 190, 109, 870, 807, 780, 708, 430, 340, 403, 304, 260, 206, 620, 602 mà là hi 7
-Kón thô _— s để bạn boả sáng:
-ng mu EU Điết mình ặ
-Thùng rỗng kêu to, dễ bị coi thường, ( \ Ẹ 4 là sức mạnh! _-
-nói không ai nghe.. mối là sức m ˆ<
-# á ZZ”. Ù
-a - tjời - đúng chỗ SN. À \
-Không được phát huy, dễ bị chèn ép, bị vô ơn, - . số tủ sáng! Ø7 |
-bị đổ lỗi, bị gánh trách nhiệm thay. 4020 á í
-n . \
-/ CƯỜNG QUYỀN, LẠM DỤNG CHỨC VỤ Quyền le tật ` J
-| Dễ xử lý vấn đề cực đoan, gia trưởng, đi hp in |
-\ áp đặt, cố độc... không phải áp đâU s
-Z — R ở
-SỨC KHÓE DE BỊ ÁNH HƯỚNG ˆ XZA cm.
-Dễ xương khớp, stress, tim mạch, ‹ ; đãu trên trọng /Ã —”——<
-kiệt sức, thiếu lực, xung huyết, nhồi máu... Š và chăm sóc' . NẴNG LƯỢNg
-ợờ? T3 Nụ k1 2 ri ma - < P „SỐ
-HÔN NHÂN DỄ TẺ NHẠT,KHÓHÒAHỢP 27D, @Ðm Và tàng cháy hết KIẾN TẠO
-Dễ kiểm tiền vất vả, làm nhiều công sức cà nh ⁄ HẠNH PHÚc
-\ mà không được bao nhiêu. ÿ đögghekghil | ( ; V :
-lÍNH K U SA Quntjttàidinh và —m.
-Làm nhiều nhưng khó giữ, tiền đến rồi đi, C -N để kiến tạo .A SỐ ĐÚNG
-dễ hao tán. =_> cuộc sống ổn định! NGƯỜIĐÚNG `
-.È: = NT  n ñ 5 THỜI ĐIỂM ĐÚNG 7
-; Ni đấu luẩu số - đáng A/y lốp - Ấu đạo ÁenÁ phúc! v2). Á CUỘC SỐNG TỐT ĐẸP HƠN-
-k —I Vv
-```
+DIÊN NIÊN + 0 / DIÊN NIÊN ẨN 0
+
+Các cặp số: 910, 901, 190, 109, 870, 807, 780, 708, 430, 340, 403, 304, 260, 206, 620, 602
+
+1. **Không có năng lực thật** — Thùng rỗng kêu to, dễ bị coi thường, nói không ai nghe.. (Biết mình mới là sức mạnh!)
+
+2. **Năng lực có mà không được trọng dụng** — Không được phát huy, dễ bị chèn ép, bị vô ơn, bị đổ lỗi, bị gánh trách nhiệm thay. (Đúng thời – đúng chỗ bạn sẽ toả sáng!)
+
+3. **Cường quyền, lạm dụng chức vụ** — Dễ xử lý vấn đề cực đoan, gia trưởng, áp đặt, cố độc... (Quyền lực thật là phục vụ, không phải áp đặt!)
+
+4. **Sức khỏe dễ bị ảnh hưởng** — Dễ xương khớp, stress, tim mạch, kiệt sức, thiếu lực, xung huyết, nhồi máu... (Sức khoẻ là vốn quý. Hãy trân trọng và chăm sóc!)
+
+5. **Hôn nhân dễ tẻ nhạt, khó hòa hợp** — Dễ kiếm tiền vất vả, làm nhiều công sức mà không được bao nhiêu. (Yêu thương – thấu hiểu – chia sẻ để giữ hạnh phúc!)
+
+6. **Tài chính khó tích lũy** — Làm nhiều nhưng khó giữ, tiền đến rồi đi, dễ hao tán. (Quản trị tốt tài chính để kiến tạo cuộc sống ổn định!)
+
+Ghi chú bên cạnh: Hiểu số – Hiểu mình – Sống an yên – Kiến tạo hạnh phúc! Số đẹp không chỉ là con số, mà là cơ hội để bạn toả sáng! Sống hiểu số – Sống an yên – Kiến tạo hạnh phúc! Số đúng – Người đúng – Thời điểm đúng – Cuộc sống tốt đẹp hơn.
 
 <a id="slide-032"></a>
 
@@ -1545,33 +1516,25 @@ k —I Vv
 
 ![Ảnh nguồn slide 32, hình 1](../../public/content/nls/slides/032-1.webp)
 
-**Bản OCR chưa hiệu đính toàn văn** (điểm OCR: 58):
+**Bản chép đã đối chiếu với ảnh nguồn:**
 
-```text
-~ 2 ~ 2
-đi NGŨ OUÝ + 0 / NGŨ QUÝ AN0 nh
-- li phíc] {Ö CÁC CẬP Số: 180, 810, 108, 801, 970, 907, 790, 709, 360, 630, 603, 306, 240, 204, 420, 402 in
-⁄IA ể 2HI, ] L Ủ L Ẩ Z
-Hay nghỉ ngờ, ít người tin tưởng. Hi ph. đế - m AT
-z Ni lụt 7 VÀ
-P52 JYA, MÃ bi Ầ -
-_~>. Sinh hoạt ngược giờ tự nhiên. du áp. Í ø< \
-DỄ HUYẾT ÁP, TIM MẠCH % R”
-Dễ phẫu thuật, máu huyết, đột quy,...
-z z ~ S7 m
-DẼ MÁC NƠ, DE XUẤT GIA ›7ớ⁄(
-ề. Hoặc dễ ly thân, ly hôn. / /“TR P.
-" lỗ đ G —.—- ⁄ Í MĂNG LƯỢNg
-DỄ Ả0 TƯỞNG SỨC MẠNH ) ( í xô
-Ñ : Hay viễn vông, dễ bị cuốn theo. ) \ TĂNh TẠO
-...... .Ề.ỆJ ni m— Sg si 5 vi HÚC =
-m“ Øs ị . v x-_— mu
-Ầ @x Có cănsố, đễ theo con đường sai lạc, mê mị, cờ bạc.. ” \ MiỂU SỐ:
-lự › ĐA (Mất cu số fà mật đài đợc SH \  nf0MN.-
-3 Qiúp bạ: tưởng thành Áøn/ ý v ng Em. u A CHỦ VẬN MỆNH
-À 2 ( » un.
-<< ——. BÌNHAÑ "®
-```
+NGŨ QUỶ + 0 / NGŨ QUỶ ẨN 0
+
+Các cặp số: 180, 810, 108, 801, 970, 907, 790, 709, 360, 630, 603, 306, 240, 204, 420, 402
+
+**Đa nghi, ít người tin tưởng** — Hay nghi ngờ, ít người tin tưởng.
+
+**Hay thức khuya, mất ngủ** — Sinh hoạt ngược giờ tự nhiên.
+
+**Dễ huyết áp, tim mạch** — Dễ phẫu thuật, máu huyết, đột quỵ,...
+
+**Dễ mắc nợ, dễ xuất gia** — Hoặc dễ ly thân, ly hôn.
+
+**Dễ ảo tưởng sức mạnh** — Hay viễn vông, dễ bị cuốn theo.
+
+**Dễ âm vong, tứ phủ, nỗi đồng nỗi cô [nguồn ghi “nỗi”, có thể là “nổi”]** — Có cănsố [nguồn ghi liền “cănsố”], dễ theo con đường sai lạc, mê mị, cờ bạc..
+
+Ghi chú bên cạnh: Hiểu số – Hiểu mình – Sống an yên – Kiến tạo hạnh phúc! Mọi con số đều có ý nghĩa, hiểu đúng để dùng đúng nhé! Hiểu đúng năng lượng số, để chuyển hoá thử thách thành cơ hội! Mỗi con số là một bài học giúp bạn trưởng thành hơn! Tĩnh tâm – Trí tuệ – Bình an. Hiểu số – Hiểu mình – Làm chủ vận mệnh.
 
 <a id="slide-033"></a>
 
@@ -1579,42 +1542,23 @@ lự › ĐA (Mất cu số fà mật đài đợc SH \  nf0MN.-
 
 ![Ảnh nguồn slide 33, hình 1](../../public/content/nls/slides/033-1.webp)
 
-**Bản OCR chưa hiệu đính toàn văn** (điểm OCR: 64):
+**Bản chép đã đối chiếu với ảnh nguồn:**
 
-```text
-M x
-\ì P số Tư n .
-_ HỌA HẠI+0/HỌA HẠIẨN 0 SỐ «sc-s2
-Sống d nh ; chí có . ụ
-| thuy hỏi tứ ưa Các cặp số: 980, 809, 406, 604, 460, 640, 320, 302, 230, 203, 170, 710, 107, 701, 890, 908 chưa đông
-Thành cơ hỗ" ——————— —
-_ H3 ˆ ˆ lộc sống!
-ĩ DỄ GÂY BỆNH TẬT ® (/srko .
-Œ Bệnh tật ẩn dấu, bệnh liên quan vùng bụng, dạ dày, khám định kỳ
-s đại tràng, gan, mắt, tụy... có thể phát hiện ở giai đoạn muộn, là yêu thương ¡ S 7
-Nà hoặc phức tạp khó chữa... chính mình! :
-»Á⁄z_ ĐẼ CÃI VÃ, KIỆN TỤNG @ G96 bình an AP"” —`\
-4Q, Dễ xảy ra tranh chấp, kiện tụng, thị phi, đấu đá, tránh hơn $9 . M ~
-MA À dễ vướng vào những chuyện không đáng có... tranh hơn thual 9? q ` À ‹ “3
-= ˆ ? J
-:đ4S8AØ® HAY LÀM QUÁ VẤN ĐỀ \ Ễ ⁄ N
-4 on TP: % Jáng nghe nhiêu lơ, 2
-) Nâng cao quan điểm, khi nói ra dễ gây hiểu nhầm, in kml ⁄
-dễ bị người khác đánh giá, xa lánh... hiểu "9 (( (“S8
-. : /I MT
-HA0 MÒN, TRẢ Nợ HỘ S“g ninh benh, “Ả ( s6 |
-\ Dễ hao tài, phải trả nợ hộ, che đấy ôm nợ, Vl hi | ( KIÊN TẠO ,
-Ắ bố rô ràng tài $ ÌL HẠNH PHÚC ⁄
-NA. lấp liếm không trung thực... , —⁄¿ li <<
- - 5 > 5 ( > ø E
-ng hh VÃ 2z nh
-DỄ VAY MƯỢN, MẤT UY TÍN Chi tiêu có kể hoạc ii Thứ (Í
-N ị Dễ vay mượn, tiêu trước trả sau, vay lung tung, g - Bảo vệ ug tín T xm.-_— ể hôm nau
-Z vay khắp nơi gây mất uy tín... Kiến tạo tương lại 4 là bài học
-ba R- HE n ñ P CA R TRÍ TUỆ oi ng l ị
-&. la 4 lý sốn an nhiên hơn/ w Ấm J hơn ngày mailqg |
-có má. lv Hi dc dâng 0 nh : 4 ` Áu BÌNH AN Em
-```
+HỌA HẠI + 0 / HỌA HẠI ẨN 0
+
+Các cặp số: 980, 809, 406, 604, 460, 640, 320, 302, 230, 203, 170, 710, 107, 701, 890, 908
+
+**Dễ gây bệnh tật** — Bệnh tật ẩn dấu, bệnh liên quan vùng bụng, dạ dày, đại tràng, gan, mắt, tụy... có thể phát hiện ở giai đoạn muộn, hoặc phức tạp khó chữa... (Chú ý sức khoẻ, khám định kỳ là yêu thương chính mình!)
+
+**Dễ cãi vã, kiện tụng** — Dễ xảy ra tranh chấp, kiện tụng, thị phi, đấu đá, dễ vướng vào những chuyện không đáng có... (Giữ tâm bình an, tránh hơn tranh hơn thua!)
+
+**Hay làm quá vấn đề** — Nâng cao quan điểm, khi nói ra dễ gây hiểu nhầm, dễ bị người khác đánh giá, xa lánh... (Lắng nghe nhiều hơn, hiểu nhau hơn!)
+
+**Hao mòn, trả nợ hộ** — Dễ hao tài, phải trả nợ hộ, che đậy ôm nợ, lấp liếm không trung thực... (Sống minh bạch, rõ ràng tài chính!)
+
+**Dễ vay mượn, mất uy tín** — Dễ vay mượn, tiêu trước trả sau, vay lung tung, vay khắp nơi gây mất uy tín... (Chi tiêu có kế hoạch – Bảo vệ uy tín – Kiến tạo tương lai!)
+
+Ghi chú bên cạnh: Hiểu năng lượng số – Sống chủ động – Chuyển hoá thử thách thành cơ hội! Không có con số xấu, chỉ có cách sử dụng chưa đúng! Hiểu để làm chủ cuộc sống! Hiểu số để sống an nhiên hơn! Tĩnh tâm – Trí tuệ – Bình an. Thử thách hôm nay là bài học để bạn mạnh mẽ hơn ngày mai!
 
 <a id="slide-034"></a>
 
@@ -1622,39 +1566,23 @@ có má. lv Hi dc dâng 0 nh : 4 ` Áu BÌNH AN Em
 
 ![Ảnh nguồn slide 34, hình 1](../../public/content/nls/slides/034-1.webp)
 
-**Bản OCR chưa hiệu đính toàn văn** (điểm OCR: 70):
+**Bản chép đã đối chiếu với ảnh nguồn:**
 
-```text
-^ ^ˆ^ ^ˆ ^ˆ ^ .
-PT số ⁄ lọi 09h SỐ -
-kn TUYET MỆNH +0 /TUYET MENHAN0 40
-A gen “ta tính hức
-và uðy hơn Kl 1 CÁC CẶP SỐ: 120, 210, 201, 102, 960, 906, 690, 609, 370, 307, 730, 703, 840, 804, 480, 408 đi buá Ap!
-và tất hơn mỗi nộ đu
-4 Z -
-œ DỄ MẤT MÁT, ẨN TÀNG — -
-- Âm thầm, ẩn tàng, bạo phát có thể rất giàu, nhưng nếu mất không còn gì, Tiểu - :
-Lï = trắng tay và ê trề, mọi thứ luôn ấn. phá sản trong tích tắc, đỡ không nổi, năng lượn) w
-— đang trên đỉnh xuống một phát đến đáy, tuỳ hứng, hay hiếu chiến, hiếu thắng, để chuyển hoá. .“SŸÕÊg 4
-i mà để lại hậu quả không lường. và chì độn; ⁄
-HÔN NHÂN SÓNG GIÓ Lá 4U
-Hôn nhân sóng gió, có thể chia tay trong đêm, đang đẹp mà lật mặt ngay được.. :
-% P -
-DỄ GẶP NGUY HIỂM \ w cớ
-Mạo hiểm, cờ bạc, đầu cơ, ôm rủi ro cao, chủ quan, ngạo mạn, dễ bị lừa, _
-dễ bị đầu tư do tin người mà mất... Á 7/
-yø  KHÓ KHĂN VỀ CON CÁI | mm
-2 Con cái khó khăn, dễ khuyết tật, khó nuôi, hoặc sinh con 1 bề, | SỨ
-= hoặc hư sảy, hỏng nhiều, thu tinh, sinh con khó... . | HA -
-SỨC KHỎE YẾU NhuẾ SỐ).
-" 4 Sức khoẻ yếu, kém, dễ bệnh âm, vong ma, tứ phủ, hoặc ở nơi ẩm thấp, y ĐU TÌNH THỨC
-` gần đình chùa, đền miếu,... Ñ L loa vs )
-Ì á X - TIẾN
-Nhé lan TU ÔN ˆ to
-điều mìó L7 /đu trái nghiệm in We® .
-An X để ta trưởng đành : - 2> BÌNHAN
-Ể h . 7 du -G -
-```
+TUYỆT MỆNH + 0 / TUYỆT MỆNH ẨN 0
+
+Các cặp số: 120, 210, 201, 102, 960, 906, 690, 609, 370, 307, 730, 703, 840, 804, 480, 408
+
+**Dễ mất mát, ẩn tàng** — Âm thầm, ẩn tàng, bạo phát có thể rất giàu, nhưng nếu mất không còn gì, trắng tay và ê trề, mọi thứ luôn ẩn. phá sản trong tích tắc, đỡ không nổi, đang trên đỉnh xuống một phát đến đáy, tuỳ hứng, hay hiếu chiến, hiếu thắng, mà để lại hậu quả không lường.
+
+**Hôn nhân sóng gió** — Hôn nhân sóng gió, có thể chia tay trong đêm, đang đẹp mà lật mặt ngay được..
+
+**Dễ gặp nguy hiểm** — Mạo hiểm, cờ bạc, đầu cơ, ôm rủi ro cao, chủ quan, ngạo mạn, dễ bị lừa, dễ bị đầu tư do tin người mà mất...
+
+**Khó khăn về con cái** — Con cái khó khăn, dễ khuyết tật, khó nuôi, hoặc sinh con 1 bề, hoặc hư sảy, hỏng nhiều, thu tinh, sinh con khó...
+
+**Sức khỏe yếu** — Sức khoẻ yếu, kém, dễ bệnh âm, vong ma, tứ phủ, hoặc ở nơi ẩm thấp, gần đình chùa, đền miếu,...
+
+Ghi chú bên cạnh: Hiểu số để sống chủ động và an yên hơn! Mọi con số đều mang thông điệp để ta tỉnh thức và tốt hơn mỗi ngày! “Hiểu đúng” năng lượng số để chuyển hoá và chủ động kiến tạo cuộc sống tốt đẹp hơn! Mọi trải nghiệm đều là bài học để ta trưởng thành hơn! Hiểu số – Hiểu mình – Sống an yên. Tỉnh thức – Chủ động – Bình an.
 
 <a id="slide-035"></a>
 
@@ -1662,37 +1590,25 @@ An X để ta trưởng đành : - 2> BÌNHAN
 
 ![Ảnh nguồn slide 35, hình 1](../../public/content/nls/slides/035-1.webp)
 
-**Bản OCR chưa hiệu đính toàn văn** (điểm OCR: 65):
+**Bản chép đã đối chiếu với ảnh nguồn:**
 
-```text
-Hài 5z +0 / Sá không xấu
-SP Ôi, uan,
-The hạnh phúc. Các cặp số: 130, 310, 103, 301, 860, 680, 608, 806, 940, 904, 490, 409, 270, 720, 207, 702 năng) lượng của nổ"
-7A
-gu y ˆ 4
-ni Cho vay khó đòi, đầu tư dễ mất, đọng kẹt, ... đễ bị lừa. Hiôu đúng - “2
-_, ^.,
-c-S năng heo, 2 là
-EzÀA ø chuuô Z
-ng HN . Ạ Đồ 9 3 thanh
-È S# Công việc không thuận lợi, làm gì cũng mắc kẹt, khó khăn.. dù bóc: ï -
- s, ˆ ân dÃ ˆ œ hội
-@®) Hôn nhân dễ ly hôn 4 J
-Ð Dễ ly thân, lạnh nhạt, con cái hư hỏng, ngoại tình, lén lút.. ) s 7
-ˆ
-Sức khoẻ tim mạch, gút, máu mỡ /
-XS Dễ mắc bệnh nhà giàu, mất trí. ( HR<x—=
-⁄ 7 Em Mi NÀNG LƯỢNG số
-í 2/ØØ„\$ Mối quan hệ phức tạp . Ki Tin
-là qé®\ Dễ trở ngại công việc, thị phi, tiểu nhân... / ⁄ "ah
-.
-, U số
-Cà Năng lượng Thiên Y ẩn 0 cần được cân bằng, ng L :
-2 0 thấu hiểu và sử dụng đúng cách để hoá giải. HIẾU MÌNH
-A7 Dnha  Ñ —
-.>= Lh.l, ô / v7 Tuháubố ., CHỦ VẬN MỆNH
-Sế đúng - 1ành bì an gêu đơn: 0o kẻ LÀM CHỦ \
-```
+THIÊN Y + 0 / THIÊN Y ẨN 0
+
+Các cặp số: 130, 310, 103, 301, 860, 680, 608, 806, 940, 904, 490, 409, 270, 720, 207, 702
+
+1. **Mua nhà mắc nợ** — Cho vay khó đòi, đầu tư dễ mất, đọng kẹt, ... dễ bị lừa.
+
+2. **Tài năng bị ẩn dấu** — Công việc không thuận lợi, làm gì cũng mắc kẹt, khó khăn..
+
+3. **Hôn nhân dễ ly hôn** — Dễ ly thân, lạnh nhạt, con cái hư hỏng, ngoại tình, lén lút..
+
+4. **Sức khoẻ tim mạch, gút, máu mỡ** — Dễ mắc bệnh nhà giàu, mất trí..
+
+5. **Mối quan hệ phức tạp** — Dễ trở ngại công việc, thị phi, tiểu nhân...
+
+6. **Tổng quan** — Năng lượng Thiên Y ẩn 0 cần được cân bằng, thấu hiểu và sử dụng đúng cách để hoá giải.
+
+Ghi chú bên cạnh: Hiểu số – Hiểu mình – Sống an yên – Kiến tạo hạnh phúc! Số không xấu khi bạn hiểu đúng năng lượng của nó! Hiểu đúng năng lượng số để chuyển hoá thử thách thành cơ hội! Số đúng – Hành trình an yên hơn! Bình an từ hiểu biết – Hạnh phúc từ chuyển hoá. Hiểu số – Hiểu mình – Làm chủ vận mệnh.
 
 <a id="slide-036"></a>
 
@@ -1743,59 +1659,106 @@ Con số đúng – Hướng đi đúng – Cuộc sống tươi sáng hơn!
 
 ![Ảnh nguồn slide 37, hình 1](../../public/content/nls/slides/037-1.webp)
 
-**Bản OCR chưa hiệu đính toàn văn** (điểm OCR: 66):
+**Bản chép đã đối chiếu với ảnh nguồn:**
 
-```text
-- ^ˆ gì ?2 HN
-\ 4# câu Bối gểu CA
-| /đổ câu : ~¬ 7 %
-n gánh. gn //ốa xgườ Á pháo
-Ạ ốc phiên Bến ° —¬— n G đế áp hô?
-vở đun. .. Lắng nghe sâu - Đặt câu hỏi đúng - Khơi mở giải pháp - Kiến tạo phiên bản tốt hơn gi) Tu như
-gấp GP Ôi ¬ š HA
-@) 1 HÔN NHÂN - TÌNH CÂM 2 TÀI CHÍNH 3) CÔNG VIỆC - SỰ NGHIỆP CÀ 4. QUAN VẬN - MỐI QUAN HỆ XÃ HỘI
-Vợ chống Anh/chị kiến tiền có nhanh nhưng giữ tin khó không?.  Anh/chị đã từng thay đổi công việc nhiều làn chưa? ¡ có dễ bị hiểu lâm khôi
-'®  Anh/chị có cảm thấy hôn nhân nhiều biển động không?. ⁄ ph . ¬ sô 0246 Ép " kiến ng đ - mm sà n n vs + Anhíeh có dễ ị hệ lêm không? -
-® Hdivợchống có thưởng xuyên mâu thuẫn, chiến ranh gnh không? |. ® Có từng đều tự sai oặc mất tên vì quá tín người chưa? E no: Ỹ Có từng bị phản bội hoặc trở mặt bởi người mình tín
-:® Có lúc rất yêu nhưng cũng có lúc muốn buông bỏ tất cả không? 1® Gó từng vay mượn hoặc gánh nợ thay người khác không? $: Gố âm nhiều nghệ cing ức Không? tưởng không?
-1® Anh/cị có cảm thấy mình khó dượ thấu hiểu? ® Có thường xuyên thay đổi kế hoạch tài chính không?. si tin nghi đột nght hoặc bỏ ng NGg 1® Có hay gặp thị ph, nói xấu sau lưng không?
-œ Cố từng trải qua ch tay, lý thân hoặc đồ vỡ ảnh cảm chị? ® Có nhiều nguồn thu nhưng vẫn cảm thấy không? 1 Có từng bị đồ oan, gánh trách nhiệm thay người khác chưa?
-$ 39g giỚ 0e SnhoKclingg- 9019 ạn vo ng? tiên không tích lúy dược? 6 ất ấp trẻ ờ 1® Có thường xuyên thay đổi bạn bè hoặc cộng sự không?
-1® Cá khinào cảm thấy vừa yêu vừa đau khổ không? gtích lũy + Có thường bất mãn với cấp trên hoặc mồi tường g xuyên thay đổi bạn bè hoặc cộng sự không
-'®. Anh/chị có hay suy nghĩ quá nhiều vẻ chuyện tình cảm không? 1® Có từng bị lùa, mất tiền oan hoặc dính giấy tờ pháp lý chưa? làm việc không? ' Có cảm thấy ít người thực sự hiểu mình không?
-1® Có hay mua sắm theo cảm xúc không? l - cán - in hon gặp đứng thời. mi Có lúc rất nhiệt tình nhưng sau đồ muốn cất đứt |
-, qg ® Tiên bạc hiện tại đang ổn định hay lên xuống s me 5.0960) hog ii lớp lân ưng s9) 9906 mọi quan hệ không?
-Con cái thất hưởng? „ í .®
-1®. Anh/chịcó lo lắng nhiều cho con cái SỔ + Anhchithíchtlàmhaythíchim “đãẸ 1 @ Ñ ấu
-không? Ẽ theo người khác? , Ly x l số đúng -
-1® Con cái có làm anh/chị phải suy nghĩ nhiều không? | 2] Mô bình
-'® Mối quan hệ giữa anh/chị và con hiện tại như thể nào? ĩ MẠ “s 4 4Ø@à» lờ li trị
-1® Có cảm thấy con khó dạy hoặc khó đồng hành không? „ lh] ÿ ; S 2 CƯ] 2 Augf"
-5 HỌ0CTẬP 6 SỨC KHỎE v 7 ) TÂM LINH - GIÁC MƠ 8 RIÊNG NG+0 VÀ NG+05
-ÚC lÀ (ĐẶC BIỆT CHO (5£NG, HH+NG, TM+NG) Sứ mệnh - Áp lực
- Anh/chị có học rất nhanh nhưng để chán không?  Anh/chị có hay thức khuya không? | «A0 tếp nhi bờ những 06 ng KhđEP na
-: : ỗ in hs số gi an HH lơn người khác không?.
-ặ t - nhiều thứ = theo m - pm in xuyên mất ngủ hoặc ngủ không sâu giấc ® Có hay inh cảm trước một sự Việc nào đó không? ' Cố lúc cản thấy rất một mới những không biết sao
-ng học giới những bỏ ngăng giữề chủng không? s? hố . 1® Có thích tìm hiểu huyền học, tâm linh hoặc chữa lành không?
-® Anh/chị thích tự nghiên cứu hơn nghe người khác 0 hy 00 Lo không? 1s Có hay cảm thấy cuộc đời quá bất công với mình không?.
-hướng dẫn đúng không? Si mÃ 1$ Có từng mơ thấy người thân đã mất hoặc 1® Có thường xuyên oán trách hoặc cảm thấy cô đơn không?.
-Có từng thay đổi định hướng học tập nhiều lẫn không?. ® Có hay đau đầu, tiền đình, tìm mạch hoặc huyết áp những cảnh tượng đặc biệt không? 1 Có cảm giác mình sinh ra để làm điều gì đó lớn lao
-Có thích các lĩnh vực tâm linh, chữa lành, không? . Cố cảm thấy mình nhay cảm với năng lượng | hơn không?
-phát triển bản thân không? KVềU | œ_ Có từng gặp tai nạn bất ngờ hoặc tai bay vạ gió không? xung quanh không? | 1s Anh/chị có đang phụng sự người khác hay chỉ đang
-gi 's Có làm việc quên ăn quên ngủ không?. gồng gánh một mình?.
-để ki P Có cảm thấy cơ thể mệt nhưng đau ốn vẫn. #9 0ó lúc muốn buông bỏ tất cả để sống bình yên không?
-là - diến 9? J không ngừng suy nghĩ không? d - &% 5 '_ Có từng trải qua biến cổ lớn khiển mình thay đổi
--ˆ An Ñ : NN hoàn toàn không? ch |
-- ai té? c< Z_R ). sp Bé Ê, VY N ư Tà ‹ W đu ti
-ì => — làn tô vn vi Ạ 6à Z2) (6ư6ng kng táee.-lÍ ÁPIẤM ì để cự. số nội
-S r : ! Pa Ễ x._mi mì _ lá
-\ ~— N—= ve Hành << Đi ĐÔ gi
-ÕỡỒỡỡ37Ĩƒm7'K— Xã Nà, s44 "co ạ
-CÂU HỎI CHỐT CUỐI CÙNG A
-N “Nấ cv? 5 ất ˆ : hiâ h lột Á
-` # Nếu được thay đổi một điều lớn nhất trong cuộc đời hiện tại, @ in 4 J
-Ẩ anh/chị muốn thay đổi điều gì trước tiên: Hôn nhân - Sức khỏe ~ Tài chính - Sự nghiệp hay Nội tâm?” cả cuộc đài ? |
-```
+BỘ CÂU HỎI CHUNG KHI COACH
+
+Lắng nghe sâu – Đặt câu hỏi đúng – Khơi mở giải pháp – Kiến tạo phiên bản tốt hơn
+
+#### 1. Hôn nhân – Tình cảm: Vợ chồng
+
+- Anh/chị có cảm thấy hôn nhân nhiều biến động không?
+- Hai vợ chồng có thường xuyên mâu thuẫn, chiến tranh lạnh không?
+- Có lúc rất yêu nhưng cũng có lúc muốn buông bỏ tất cả không?
+- Anh/chị có cảm thấy mình khó được thấu hiểu?
+- Có từng trải qua chia tay, ly thân hoặc đổ vỡ tình cảm chưa?
+- Có từng yêu người đã có gia đình hoặc bị người thứ ba xen vào không?
+- Có khi nào cảm thấy vừa yêu vừa đau khổ không?
+- Anh/chị có hay suy nghĩ quá nhiều về chuyện tình cảm không?
+
+#### 1. Hôn nhân – Tình cảm: Con cái
+
+- Anh/chị có lo lắng nhiều cho con cái không?
+- Con cái có làm anh/chị phải suy nghĩ nhiều không?
+- Mối quan hệ giữa anh/chị và con hiện tại như thế nào?
+- Có cảm thấy con khó dạy hoặc khó đồng hành không?
+
+#### 2. Tài chính
+
+- Anh/chị kiếm tiền có nhanh nhưng giữ tiền khó không?
+- Có từng đầu tư sai hoặc mất tiền vì quá tin người chưa?
+- Có từng vay mượn hoặc gánh nợ thay người khác không?
+- Có thường xuyên thay đổi kế hoạch tài chính không?
+- Có nhiều nguồn thu nhưng vẫn cảm thấy tiền không tích lũy được?
+- Có từng bị lừa, mất tiền oan hoặc dính giấy tờ pháp lý chưa?
+- Có hay mua sắm theo cảm xúc không?
+- Tiền bạc hiện tại đang ổn định hay lên xuống thất thường?
+
+#### 3. Công việc – Sự nghiệp
+
+- Anh/chị đã từng thay đổi công việc nhiều lần chưa?
+- Có thường xuyên cảm thấy chán việc dù trước đó rất thích không?
+- Có làm nhiều nghề cùng lúc không?
+- Có từng nghỉ việc đột ngột hoặc bỏ ngang giữa chừng không?
+- Có thường bất mãn với cấp trên hoặc môi trường làm việc không?
+- Có cảm giác mình giỏi nhưng chưa gặp đúng thời chưa?
+- Có từng xây dựng kế hoạch rất lớn nhưng sau đó bỏ dở không?
+- Anh/chị thích tự làm hay thích làm theo người khác?
+
+#### 4. Quan vận – Mối quan hệ xã hội
+
+- Anh/chị có dễ bị hiểu lầm không?
+- Có từng bị phản bội hoặc trở mặt bởi người mình tin tưởng không?
+- Có hay gặp thị phi, nói xấu sau lưng không?
+- Có từng bị đổ oan, gánh trách nhiệm thay người khác chưa?
+- Có thường xuyên thay đổi bạn bè hoặc cộng sự không?
+- Có cảm thấy ít người thực sự hiểu mình không?
+- Có lúc rất nhiệt tình nhưng sau đó muốn cắt đứt mọi quan hệ không?
+
+#### 5. Học tập
+
+- Anh/chị có học rất nhanh nhưng dễ chán không?
+- Có học nhiều thứ nhưng chưa theo đến cùng không?
+- Có từng học giỏi nhưng bỏ ngang giữa chừng không?
+- Anh/chị thích tự nghiên cứu hơn nghe người khác hướng dẫn đúng không?
+- Có từng thay đổi định hướng học tập nhiều lần không?
+- Có thích các lĩnh vực tâm linh, chữa lành, phát triển bản thân không?
+
+#### 6. Sức khỏe
+
+- Anh/chị có hay thức khuya không?
+- Có thường xuyên mất ngủ hoặc ngủ không sâu giấc không?
+- Có hay suy nghĩ nhiều đến mức mệt mỏi không?
+- Có từng stress kéo dài chưa?
+- Có hay đau đầu, tiền đình, tim mạch hoặc huyết áp không?
+- Có từng gặp tai nạn bất ngờ hoặc tai bay vạ gió không?
+- Có làm việc quên ăn quên ngủ không?
+- Có cảm thấy cơ thể mệt nhưng đầu óc vẫn không ngừng suy nghĩ không?
+
+#### 7. Tâm linh – Giấc mơ (đặc biệt cho LS+NQ, HH+NQ, TM+NQ)
+
+- Anh/chị có hay nằm mơ những giấc mơ lạ không?
+- Có hay linh cảm trước một sự việc nào đó không?
+- Có thích tìm hiểu huyền học, tâm linh hoặc chữa lành không?
+- Có từng mơ thấy người thân đã mất hoặc những cảnh tượng đặc biệt không?
+- Có cảm thấy mình nhạy cảm với năng lượng xung quanh không?
+
+#### 8. Riêng NQ+0 và NQ+05: Sứ mệnh – Áp lực
+
+- Anh/chị có cảm thấy mình gánh trách nhiệm lớn hơn người khác không?
+- Có lúc cảm thấy rất mệt mỏi nhưng không biết vì sao không?
+- Có hay cảm thấy cuộc đời quá bất công với mình không?
+- Có thường xuyên oán trách hoặc cảm thấy cô đơn không?
+- Có cảm giác mình sinh ra để làm điều gì đó lớn lao hơn không?
+- Anh/chị có đang phụng sự người khác hay chỉ đang gồng gánh một mình?
+- Có lúc muốn buông bỏ tất cả để sống bình yên không?
+- Có từng trải qua biến cố lớn khiến mình thay đổi hoàn toàn không?
+
+#### Câu hỏi chốt cuối cùng
+
+“Nếu được thay đổi một điều lớn nhất trong cuộc đời hiện tại, anh/chị muốn thay đổi điều gì trước tiên: Hôn nhân – Sức khỏe – Tài chính – Sự nghiệp hay Nội tâm?”
+
+Ghi chú bên cạnh: Mỗi câu hỏi là một cánh cửa mở đến phiên bản tốt đẹp hơn! Hiểu mình – Hiểu người – Kiến tạo hạnh phúc cùng nhau! Kết nối đúng – Người đồng hành đúng giá trị! Học để hiểu mình – Học để kiến tạo cuộc đời tốt đẹp hơn! Sức khỏe là nền tảng của mọi thành công! Kết nối năng lượng tích cực – Sống an lành – Hạnh phúc hơn! Bạn sinh ra để tỏa sáng! Đừng quên sứ mệnh của mình! Một câu hỏi đúng có thể thay đổi cả cuộc đời!
 
 <a id="slide-038"></a>
 
@@ -1803,57 +1766,117 @@ N “Nấ cv? 5 ất ˆ : hiâ h lột Á
 
 ![Ảnh nguồn slide 38, hình 1](../../public/content/nls/slides/038-1.webp)
 
-**Bản OCR chưa hiệu đính toàn văn** (điểm OCR: 63):
+**Bản chép đã đối chiếu với ảnh nguồn:**
 
-```text
-_— ˆ _ 2" , ˆ^ mm
-điếi đê? Ga - suậc tò cgên
-„+ đáng 0B TU, h An
-2u ẨNn 5 ni hp | mm
-Tin d9 đố ° xo GoosoosBuyuh ° . . Xe
-r ® THẤU HIỂU SÂU HƠN - ĐỒNGHÀNH TỐTHƠN. ”
-iu du. dư AE Ca dd LU  ld  vn ủ
-⁄ xe
-- z Ệ ;.ÐẤN Ã m 2 R ỹ À ñ - ;
-@m NHÂN - TÌNH CÂM Ÿ (2) CON CÁI (3) sỨCKHỎE Q8. TÀICHÍNH ZÈÿ
-mm. Ñ (CO. p - Œ
-TM+NQ «“” PA. Z | ® Anh/chị sinh con có thuận lợi không? TM+NQ X TY+NQ
-cà. Á tì ất ái B ¬ Á
-'® Gia đình có từng vây ra bạo lực lồi nổi hoặc Có từng hiểm muộn, khó sinh hoặc ® Có từng lo lắng về khối u,u nang hoặc h _~"
-tt Sinh nờ vất vả không? bệnh lý khó điều trị không? ® Có từng vay mượn để đầu tư rồi áp lực
-® Gốtìngnghingờngườithứbaxenvàohônnhânkhông? | | ® Con đi có sức khỏe yểu hoặc khó nuôi không? | | '® Cóngườithân mắc bệnhnặng hoặc bệnh hiểm nghèo không? trả nợ không?
-1® Có giai đoạn muốn lyhôn nhưng vẫn có chịu dựng không? | | ® Có phải lo lắng cho con nhiều hơn TH AC ntrECGsEPsEsiceooecoroececcc '®_ 0ó từng mở rộng kinh doanh quá nhanh không?
-: người khác không? LS+NQ 99020 đ GG
-77777777: 11 & Cơn có hay đau ốm, chậm nói hoặc nhạy cảm Có hay hồi hộp, tìm đập nhanh, lo âu hoặc
-LS+NQ đặc biệt không? hoảng sợ không? TM+NQ
-° Tình cảm của anh/ch ó thất thường, lúc yêu lúc ghét không? ° Mối quan hệ giữa cha mẹ và con cái ® Có từng ngất, tụt huyết áp hoặc kiệt sức không? '® Có từng mất khoản tiền lớn bất ngờ không?
-® Có dễ bị phụ thuộc cảm xúc vào đổi phương không? M7" vn ng  s uụ đó từng dính tranh chấp tiền bạc hoặc giấy tờ không?
-DN+NG II TM bể NQ '® Có tiền đỉnh, chóng mặt hoặc đau đầu kéo dài không? oi am
-.. Ã '® Có từng phải chạy chữa cho con nhiều lần không? '® Có người thân bị đột quy hoặc tìm mạch không? LS+NQ
-° AE Kho na Bo no bẻ 1® Có sinh con khó, nuôi con vất vả chưa? NGỰNG ——— '® Có hay mua sắm theo cảm xúc không?
-® Người từng ? B ư Ta |  nn
-(gười thân có từng nói anh/chị quá bảo thủ không: '® 0ó lo lắng nhiều về tương lại của con không? hiện 1® Có từng ôm hàng hoặc đầu tư vì cả nễ không?
-1® Có căng lớn tuổi cảng áp lực không?
-#8 SỰ NGHIỆP ) nọcTậP Z|9. 90A VẬN- MP LÝ TẠM LINH - GIÁ TIÊN E Ạ
-(5) N 2v Š 9 : cư. | >8 ở (HH+NQ,LS+NQ,TM+N0) ) LỆ
-si g Hỏi nhẹ nhàng, không khẳng định.
-DN+NQ ⁄4ã ® | Ng+NQ -@- TM+NG, HH+NQ sen. hụn: xo. n :
-: : ° ,
-® G6nyxungditvicpuonion? (9S x4 '® Có một hiểu mười nhưng lại ® Có từng tranh chấp tài sản, đất đai thờ cúng hoặc chữa lành không?
-°® Gá từng mất chức, mất quyền hoặcbị hiểu lằm. Ni g thiểu kỷ luật không? 2 hoặc tiền bạc không? '_ Anh/chị có hay nằm mơ những giấc mơ.
-trong công việc không? : £  — = .Ỉ”—”méé Ể ỷề đặc biệt không?
-ẫHẾN Í TY+NQ DN+NQ 1® Có inh cảm trước một số sự việc không?
-® Có từng làm việc rất tốt hưng s Gốnhằujưởnnhng  Â ® Cốtìngvinóngtnhmàmấtcơhộilónkhông? | ° xi ion
-không được ghi nhận không? khó theo đến cùng không? (»~ - JÃ . - Aoh V ® Trong họ hàng có người tu hành, làm thầy
-đa. CN lai Ha XE HG SỐ . ; Í sá 2ô hoặc rất có căn tu không?
-NQ+NQ PU v cíẢÁó= gái ất TẾ
-mu Ai n / k 2 / x 1® Có từng trải qua biến cố lớn khiển mình
-Có ắc thành công rất nhanh nhưng. #. ,. 2S = đ đây đà cu
-sau đó lại tụt rất nhanh không?. liốt — \ giá” .. thay đổi niềm tìn sống không?
-sư G  NG =————— HH
-xi PP. in Ấn in
-Sa .ỖỖ  Y` XU 74
-```
+BỘ CÂU HỎI RIÊNG BIỆT
+
+THẤU HIỂU SÂU HƠN – ĐỒNG HÀNH TỐT HƠN
+
+#### 1. Hôn nhân – Tình cảm: TM + NQ
+
+- Gia đình có từng xảy ra bạo lực lời nói hoặc bạo lực tinh thần không?
+- Có từng nghi ngờ người thứ ba xen vào hôn nhân không?
+- Có giai đoạn muốn ly hôn nhưng vẫn cố chịu đựng không?
+
+#### 1. Hôn nhân – Tình cảm: LS + NQ
+
+- Tình cảm của anh/chị có thất thường, lúc yêu lúc ghét không?
+- Có dễ bị phụ thuộc cảm xúc vào đối phương không?
+
+#### 1. Hôn nhân – Tình cảm: DN + NQ
+
+- Có hay áp đặt, cứng nhắc hoặc không chịu nhường nhịn không?
+- Người thân có từng nói anh/chị quá bảo thủ không?
+
+#### 2. Con cái
+
+- Anh/chị sinh con có thuận lợi không?
+- Có từng hiếm muộn, khó sinh hoặc sinh nở vất vả không?
+- Con cái có sức khỏe yếu hoặc khó nuôi không?
+- Có phải lo lắng cho con nhiều hơn người khác không?
+- Con có hay đau ốm, chậm nói hoặc nhạy cảm đặc biệt không?
+- Mối quan hệ giữa cha mẹ và con cái có khoảng cách không?
+
+#### 2. Con cái: TM + NQ
+
+- Có từng phải chạy chữa cho con nhiều lần không?
+- Có sinh con khó, nuôi con vất vả chưa?
+- Có lo lắng nhiều về tương lai của con không?
+
+#### 3. Sức khỏe: TM + NQ
+
+- Có từng lo lắng về khối u, u nang hoặc bệnh lý khó điều trị không?
+- Có người thân mắc bệnh nặng hoặc bệnh hiểm nghèo không?
+
+#### 3. Sức khỏe: LS + NQ
+
+- Có hay hồi hộp, tim đập nhanh, lo âu hoặc hoảng sợ không?
+- Có từng ngất, tụt huyết áp hoặc kiệt sức không?
+
+#### 3. Sức khỏe: TY + NQ
+
+- Có tiền đình, chóng mặt hoặc đau đầu kéo dài không?
+- Có người thân bị đột quỵ hoặc tim mạch không?
+
+#### 3. Sức khỏe: NQ + NQ
+
+- Có cảm thấy đầu óc không bao giờ được nghỉ ngơi không?
+- Có căng lớn tuổi càng áp lực không? [nguồn ghi “căng”, có thể là “càng”]
+
+#### 4. Tài chính: TY + NQ
+
+- Có từng vay mượn để đầu tư rồi áp lực trả nợ không?
+- Có từng mở rộng kinh doanh quá nhanh không?
+
+#### 4. Tài chính: TM + NQ
+
+- Có từng mất khoản tiền lớn bất ngờ không?
+- Có từng dính tranh chấp tiền bạc hoặc giấy tờ không?
+
+#### 4. Tài chính: LS + NQ
+
+- Có hay mua sắm theo cảm xúc không?
+- Có từng ôm hàng hoặc đầu tư vì cả nể không?
+
+#### 5. Sự nghiệp: DN + NQ
+
+- Có hay xung đột với cấp trên không?
+- Có từng mất chức, mất quyền hoặc bị hiểu lầm trong công việc không?
+
+#### 5. Sự nghiệp: HH + NQ
+
+- Có từng làm việc rất tốt nhưng không được ghi nhận không?
+
+#### 5. Sự nghiệp: NQ + NQ
+
+- Có lúc thành công rất nhanh nhưng sau đó lại tụt rất nhanh không?
+
+#### 7. Học tập: NQ + NQ
+
+- Có một hiểu mười nhưng lại thiếu kỷ luật không?
+
+#### 7. Học tập: TY + NQ
+
+- Có nhiều ý tưởng nhưng khó theo đến cùng không?
+
+#### 6. Quan vận – Pháp lý: TM + NQ, HH + NQ
+
+- Có từng tranh chấp tài sản, đất đai hoặc tiền bạc không?
+
+#### 6. Quan vận – Pháp lý: DN + NQ
+
+- Có từng vì nóng tính mà mất cơ hội lớn không?
+
+#### 8. Tâm linh – Gia tiên (HH+NQ, LS+NQ, TM+NQ): Hỏi nhẹ nhàng, không khẳng định.
+
+- Gia đình mình có ai làm nghề tâm linh, thờ cúng hoặc chữa lành không?
+- Anh/chị có hay nằm mơ những giấc mơ đặc biệt không?
+- Có linh cảm trước một số sự việc không?
+- Có thích tìm hiểu huyền học, thiền định hoặc nhân quả không?
+- Trong họ hàng có người tu hành, làm thầy hoặc rất có căn tu không?
+- Có từng trải qua biến cố lớn khiến mình thay đổi niềm tin sống không?
+
+Ghi chú: Số thứ tự các ô trong slide là 1, 2, 3, 4, 5, 7, 6, 8 theo đúng nguồn. Hiểu đúng – Đặt đúng câu hỏi – Tìm đúng giải pháp. Mỗi cuộc trò chuyện là một cơ hội giúp ai đó sống tốt hơn! Học để mở lối – Kiến tạo tương lai. Minh bạch – Giữ chữ tín – Bình an đồng hành. Câu hỏi đúng – Kết nối đúng – Giải pháp đúng – Cuộc sống tốt đẹp hơn!
 
 <a id="slide-039"></a>
 

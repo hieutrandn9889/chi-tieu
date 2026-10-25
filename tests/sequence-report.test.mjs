@@ -74,3 +74,31 @@ test("field cards keep supplementary notes apart and 0/5 notes cite their slide"
   assert.match(html, /cuối dãy/);
   assert.ok(html.includes("/thu-vien?slide=26"));
 });
+
+test("group-with-0 details and slide 37–38 questions follow the sequence", () => {
+  // 61 Lục Sát → 18 Ngũ Quỷ → 81 Ngũ Quỷ, then 0 right after 81.
+  const html = renderReport(buildSequenceReport("61810"));
+  assert.ok(html.includes("Ngũ Quỷ + 0 · Slide 32"));
+  assert.ok(html.includes("Slide còn 4 ý"));
+  assert.ok(html.includes("Câu hỏi riêng theo dãy · Slide 38"));
+  assert.ok(html.includes("Lục Sát + Ngũ Quỷ"));
+  assert.ok(html.includes("Ngũ Quỷ + Ngũ Quỷ"));
+  assert.ok(html.includes("Có dễ bị phụ thuộc cảm xúc vào đối phương không?"));
+  assert.ok(html.includes("Riêng Ngũ Quỷ đi cùng 0"));
+  assert.ok(html.includes('href="#report-questions-title"'));
+  // The hidden-count notes name the topics; the excluded questions must not appear.
+  for (const hidden of [
+    "trầm cảm",
+    "Có từng nghi ngờ người thứ ba",
+    "Có từng yêu người đã có gia đình",
+    "tứ phủ",
+    "huyết áp",
+  ])
+    assert.ok(!html.includes(hidden), hidden);
+
+  const plain = renderReport(buildSequenceReport("143168"));
+  assert.ok(plain.includes("Bộ câu hỏi chung · Slide 37"));
+  assert.ok(!plain.includes("Câu hỏi riêng theo dãy"));
+  assert.ok(!plain.includes("Riêng Ngũ Quỷ đi cùng 0"));
+  assert.ok(plain.includes("dãy này không có cặp như vậy"));
+});
