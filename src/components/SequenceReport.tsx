@@ -1,7 +1,11 @@
 import type { ReactNode } from "react";
 import {
   ArrowUpRight,
+  BadgeCheck,
   BookOpen,
+  CircleCheck,
+  CircleX,
+  ClipboardList,
   Layers3,
   Lightbulb,
   ListChecks,
@@ -9,6 +13,7 @@ import {
   NotebookPen,
   ShieldCheck,
   Smartphone,
+  TriangleAlert,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { buildReportSummary } from "@/lib/nls";
@@ -22,9 +27,14 @@ import {
 import {
   generalQuestions,
   ngQuyZeroQuestions,
-  nqPairQuestions,
   zeroGroupSlides,
 } from "@/lib/nls-slide-notes";
+import {
+  buildReportPlan,
+  selectReportExtras,
+  verifyReport,
+} from "@/lib/report-verification";
+import type { ReportSection } from "@/lib/report-verification";
 
 export function SequenceReport({
   report,
@@ -40,105 +50,189 @@ export function SequenceReport({
     numberKind === "phone"
       ? checkPhonePattern(
           report.pairs[0].pair +
-            report.pairs.map((pair) => pair.pair[1]).slice(1).join(""),
+            report.pairs
+              .map((pair) => pair.pair[1])
+              .slice(1)
+              .join(""),
           report.pairs,
         )
       : null;
-  const zeroGroups = [
-    ...new Set(
-      report.specialNotes
-        .filter((note) => note.digit === "0" && note.group)
-        .map((note) => note.group!),
-    ),
-  ].filter((group) => zeroGroupSlides[group]);
+  const { zeroGroups, nqQuestions } = selectReportExtras(report);
   const groupName = (short: string) =>
     report.pairs.find((pair) => pair.field?.short === short)?.field?.name ??
     short;
-  // Slide 38 questions apply to a group followed by Ngũ Quỷ (A + NQ).
-  const nqQuestions = report.orderedCombinations
-    .filter((item) => item.second.short === "NQ")
-    .flatMap((item) =>
-      nqPairQuestions
-        .filter((entry) => entry.first === item.first.short)
-        .map((entry) => ({ ...entry, combination: item })),
+  const plan = buildReportPlan(report, numberKind);
+  const verification = verifyReport(report, numberKind);
+  const passed = verification.checks.filter((check) => check.ok).length;
+  const shown = (section: ReportSection) => !verification.failed.has(section);
+  // A section that fails its check is replaced by a note, never shown wrong.
+  const hiddenNote = (
+    section: ReportSection,
+    title: string,
+    anchor?: string,
+  ) => (
+    <p className="verify-hidden" role="note" id={anchor}>
+      <TriangleAlert size={16} /> Mục “{title}” bị ẩn vì không qua kiểm tra:{" "}
+      {
+        verification.checks.find(
+          (check) => check.section === section && !check.ok,
+        )?.detail
+      }
+    </p>
+  );
+  const heading = (
+    <header className="report-heading">
+      <span className="section-label">
+        <BookOpen size={15} /> THEO TÀI LIỆU NĂNG LƯỢNG SỐ
+      </span>
+      <h2>Bản luận giải dãy số</h2>
+      <p>
+        Tổng hợp chủ đề để tự đối chiếu. Nội dung huyền học mang tính tham khảo,
+        không xác định tính cách hay cuộc đời một người từ số CCCD.
+      </p>
+    </header>
+  );
+  const verificationBlock = (
+    <section className="report-verify" aria-labelledby="report-verify-title">
+      <span className="section-label">
+        <BadgeCheck size={15} /> KIỂM CHỨNG KẾT QUẢ
+      </span>
+      <h3 id="report-verify-title">
+        {passed}/{verification.checks.length} kiểm tra đạt
+      </h3>
+      <p>
+        Công cụ tra lại toàn bộ kết quả trên chính dãy vừa nhập trước khi hiển
+        thị. Mục nào không đạt sẽ bị ẩn thay vì hiện sai.
+      </p>
+      <ul className="verify-list">
+        {verification.checks.map((check) => (
+          <li className={check.ok ? "ok" : "failed"} key={check.id}>
+            {check.ok ? <CircleCheck size={17} /> : <CircleX size={17} />}
+            <div>
+              <strong>{check.label}</strong>
+              <span>{check.detail}</span>
+            </div>
+          </li>
+        ))}
+      </ul>
+      <h4>Chưa kiểm chứng được</h4>
+      <ul className="summary-list">
+        {verification.unverified.map((item) => (
+          <li key={item}>{item}</li>
+        ))}
+      </ul>
+    </section>
+  );
+  if (verification.coreFailed)
+    return (
+      <article className="sequence-report" aria-label="Bản luận giải dãy số">
+        {heading}
+        <section className="verify-failed" role="alert">
+          <h3>
+            <TriangleAlert size={18} /> Không hiển thị bản luận
+          </h3>
+          <p>
+            Kết quả phân tích không qua bước kiểm chứng, nên công cụ dừng lại
+            thay vì đưa ra một bản luận có thể sai. Hãy kiểm tra lại dãy số hoặc
+            báo lỗi này.
+          </p>
+        </section>
+        {verificationBlock}
+      </article>
     );
   return (
     <article className="sequence-report" aria-label="Bản luận giải dãy số">
-      <header className="report-heading">
-        <span className="section-label">
-          <BookOpen size={15} /> THEO TÀI LIỆU NĂNG LƯỢNG SỐ
-        </span>
-        <h2>Bản luận giải dãy số</h2>
-        <p>
-          Tổng hợp chủ đề để tự đối chiếu. Nội dung huyền học mang tính tham
-          khảo, không xác định tính cách hay cuộc đời một người từ số CCCD.
-        </p>
-      </header>
+      {heading}
 
-      <section className="report-summary" aria-labelledby="report-summary-title">
+      <section className="report-plan" aria-labelledby="report-plan-title">
         <span className="section-label">
-          <ListChecks size={15} /> TÓM TẮT NHANH
+          <ClipboardList size={15} /> KẾ HOẠCH LUẬN
         </span>
-        <h3 id="report-summary-title">Những điểm chính</h3>
-        <p className="summary-headline">{summary.headline}</p>
-        <div className="summary-grid">
-          {summary.themes.length > 0 && (
-            <div className="summary-block">
-              <h4>Chủ đề theo tài liệu</h4>
-              <ul className="summary-themes">
-                {summary.themes.map(({ field, count }) => (
-                  <li className={`tone-${field.theme}`} key={field.id}>
-                    <strong>{field.name}</strong>
-                    <span className="summary-count">
-                      {count}/{report.pairs.length} cặp
-                    </span>
-                    <span className="summary-keywords">
-                      {field.keywords.join(" · ")}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-          {summary.flow.length > 0 && (
-            <div className="summary-block">
-              <h4>Mạch đọc theo thứ tự</h4>
-              {summary.flow.map((segment) => (
-                <p key={segment.start}>
-                  <span className="pair-position">
-                    VỊ TRÍ {segment.start}–{segment.end}
-                  </span>
-                  {segment.text}
-                </p>
-              ))}
-            </div>
-          )}
-          {summary.cautions.length > 0 && (
-            <div className="summary-block">
-              <h4>Cần lưu ý</h4>
-              <ul className="summary-list">
-                {summary.cautions.map((caution) => (
-                  <li key={caution}>{caution}</li>
-                ))}
-              </ul>
-            </div>
-          )}
-          {summary.questions.length > 0 && (
-            <div className="summary-block">
-              <h4>Câu hỏi để tự đối chiếu</h4>
-              {summary.questions.map(({ field, question }) => (
-                <p key={field.id}>
-                  <strong>{field.name}:</strong> {question}
-                </p>
-              ))}
-            </div>
-          )}
-        </div>
+        <h3 id="report-plan-title">Báo cáo này dựa trên gì</h3>
+        <p className="plan-input">{plan.input}</p>
+        <ol className="plan-steps">
+          {plan.steps.map((step) => (
+            <li key={step.label}>
+              <span>{step.label}</span>
+              <span className="plan-source">{step.source}</span>
+            </li>
+          ))}
+        </ol>
         <p className="quiet-note">
-          Tóm tắt rút gọn từ các phần chi tiết bên dưới. Số lần xuất hiện không
-          phải điểm tốt/xấu hay kết luận về một người.
+          Không áp dụng: {plan.notApplied.join("; ")}.
         </p>
       </section>
+
+      {!shown("summary") && hiddenNote("summary", "Tóm tắt nhanh")}
+      {shown("summary") && (
+        <section
+          className="report-summary"
+          aria-labelledby="report-summary-title"
+        >
+          <span className="section-label">
+            <ListChecks size={15} /> TÓM TẮT NHANH
+          </span>
+          <h3 id="report-summary-title">Những điểm chính</h3>
+          <p className="summary-headline">{summary.headline}</p>
+          <div className="summary-grid">
+            {summary.themes.length > 0 && (
+              <div className="summary-block">
+                <h4>Chủ đề theo tài liệu</h4>
+                <ul className="summary-themes">
+                  {summary.themes.map(({ field, count }) => (
+                    <li className={`tone-${field.theme}`} key={field.id}>
+                      <strong>{field.name}</strong>
+                      <span className="summary-count">
+                        {count}/{report.pairs.length} cặp
+                      </span>
+                      <span className="summary-keywords">
+                        {field.keywords.join(" · ")}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            {summary.flow.length > 0 && (
+              <div className="summary-block">
+                <h4>Mạch đọc theo thứ tự</h4>
+                {summary.flow.map((segment) => (
+                  <p key={segment.start}>
+                    <span className="pair-position">
+                      VỊ TRÍ {segment.start}–{segment.end}
+                    </span>
+                    {segment.text}
+                  </p>
+                ))}
+              </div>
+            )}
+            {summary.cautions.length > 0 && (
+              <div className="summary-block">
+                <h4>Cần lưu ý</h4>
+                <ul className="summary-list">
+                  {summary.cautions.map((caution) => (
+                    <li key={caution}>{caution}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            {summary.questions.length > 0 && (
+              <div className="summary-block">
+                <h4>Câu hỏi để tự đối chiếu</h4>
+                {summary.questions.map(({ field, question }) => (
+                  <p key={field.id}>
+                    <strong>{field.name}:</strong> {question}
+                  </p>
+                ))}
+              </div>
+            )}
+          </div>
+          <p className="quiet-note">
+            Tóm tắt rút gọn từ các phần chi tiết bên dưới. Số lần xuất hiện
+            không phải điểm tốt/xấu hay kết luận về một người.
+          </p>
+        </section>
+      )}
 
       <nav className="reading-navigation" aria-label="Mục lục bản luận">
         <a href="#report-overview-title">Tổng hợp</a>
@@ -149,6 +243,7 @@ export function SequenceReport({
           <a href="#report-themes-title">Luận từng nhóm</a>
         )}
         <a href="#report-questions-title">Câu hỏi đối chiếu</a>
+        <a href="#report-verify-title">Kiểm chứng</a>
       </nav>
 
       <dl className="report-stats">
@@ -302,7 +397,10 @@ export function SequenceReport({
         <div className="report-details-body">{children}</div>
       </details>
 
-      {report.specialPairs.length > 0 && (
+      {report.specialPairs.length > 0 &&
+        !shown("special") &&
+        hiddenNote("special", "Giữ nguyên số 0 và số 5")}
+      {report.specialPairs.length > 0 && shown("special") && (
         <section
           className="report-special"
           aria-labelledby="report-special-title"
@@ -373,9 +471,8 @@ export function SequenceReport({
           )}
           {report.specialNotes.length === 0 && (
             <p className="quiet-note">
-              Các số 0/5 trong dãy không đứng sau hoặc chen giữa một cặp đã
-              phân loại, nên slide 26–28 chưa có câu giải thích riêng cho vị trí
-              này.
+              Các số 0/5 trong dãy không đứng sau hoặc chen giữa một cặp đã phân
+              loại, nên slide 26–28 chưa có câu giải thích riêng cho vị trí này.
             </p>
           )}
           <p className="quiet-note">
@@ -408,7 +505,10 @@ export function SequenceReport({
         </section>
       )}
 
-      {phoneCheck && (
+      {phoneCheck &&
+        !shown("phone") &&
+        hiddenNote("phone", "Nhận biết số điện thoại theo ghi chép")}
+      {phoneCheck && shown("phone") && (
         <section
           className="report-section supplement-section"
           aria-labelledby="report-phone-title"
@@ -432,7 +532,9 @@ export function SequenceReport({
                   ))}
                 </ul>
               ) : (
-                <p>Không thấy hai hung tinh đứng cạnh nhau hay số 0 ngoài đầu số.</p>
+                <p>
+                  Không thấy hai hung tinh đứng cạnh nhau hay số 0 ngoài đầu số.
+                </p>
               )}
             </div>
             <div className="summary-block">
@@ -444,7 +546,10 @@ export function SequenceReport({
                   ))}
                 </ul>
               ) : (
-                <p>Không thấy hai cát tinh đứng cạnh nhau hay đoạn chuyển từ hung sang cát.</p>
+                <p>
+                  Không thấy hai cát tinh đứng cạnh nhau hay đoạn chuyển từ hung
+                  sang cát.
+                </p>
               )}
             </div>
           </div>
@@ -456,7 +561,10 @@ export function SequenceReport({
         </section>
       )}
 
-      {report.groups.length > 0 && (
+      {report.groups.length > 0 &&
+        !shown("themes") &&
+        hiddenNote("themes", "Đọc sâu từng chủ đề", "report-themes-title")}
+      {report.groups.length > 0 && shown("themes") && (
         <section
           className="report-section"
           aria-labelledby="report-themes-title"
@@ -579,82 +687,96 @@ export function SequenceReport({
         </section>
       )}
 
-      <section
-        className="report-section"
-        aria-labelledby="report-questions-title"
-      >
-        <span className="section-label">
-          <MessageCircleQuestion size={15} /> 03 · CÂU HỎI KHAI THÁC VÀ ĐỐI
-          CHIẾU
-        </span>
-        <h3 id="report-questions-title">Câu hỏi để trò chuyện và tự đối chiếu</h3>
-        <p>
-          Tài liệu dùng câu hỏi để hiểu bối cảnh trước khi nhận định (slide 5,
-          36–38). Câu hỏi không phải lời khẳng định: trả lời “không” cũng là một
-          kết quả đối chiếu.
-        </p>
-        {nqQuestions.length > 0 && (
-          <div className="question-block">
-            <h4>Câu hỏi riêng theo dãy · Slide 38</h4>
-            {nqQuestions.map((entry) => (
-              <div key={`${entry.first}:${entry.topic}`}>
-                <span className="pair-position">
-                  {entry.combination.first.name} + {entry.combination.second.name}{" "}
-                  ·{" "}
-                  {entry.combination.occurrences
-                    .map(
-                      (item) =>
-                        `vị trí ${item.index + 1}–${item.index + 3} (${item.window})`,
-                    )
-                    .join(", ")}{" "}
-                  · {entry.topic}
-                </span>
+      {!shown("questions") &&
+        hiddenNote(
+          "questions",
+          "Câu hỏi để trò chuyện và tự đối chiếu",
+          "report-questions-title",
+        )}
+      {shown("questions") && (
+        <section
+          className="report-section"
+          aria-labelledby="report-questions-title"
+        >
+          <span className="section-label">
+            <MessageCircleQuestion size={15} /> 03 · CÂU HỎI KHAI THÁC VÀ ĐỐI
+            CHIẾU
+          </span>
+          <h3 id="report-questions-title">
+            Câu hỏi để trò chuyện và tự đối chiếu
+          </h3>
+          <p>
+            Tài liệu dùng câu hỏi để hiểu bối cảnh trước khi nhận định (slide 5,
+            36–38). Câu hỏi không phải lời khẳng định: trả lời “không” cũng là
+            một kết quả đối chiếu.
+          </p>
+          {nqQuestions.length > 0 && (
+            <div className="question-block">
+              <h4>Câu hỏi riêng theo dãy · Slide 38</h4>
+              {nqQuestions.map((entry) => (
+                <div key={`${entry.first}:${entry.topic}`}>
+                  <span className="pair-position">
+                    {entry.combination.first.name} +{" "}
+                    {entry.combination.second.name} ·{" "}
+                    {entry.combination.occurrences
+                      .map(
+                        (item) =>
+                          `vị trí ${item.index + 1}–${item.index + 3} (${item.window})`,
+                      )
+                      .join(", ")}{" "}
+                    · {entry.topic}
+                  </span>
+                  <ul className="summary-list">
+                    {entry.questions.map((question) => (
+                      <li key={question}>{question}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          )}
+          {zeroGroups.includes("NQ") && (
+            <div className="question-block">
+              <h4>{ngQuyZeroQuestions.topic} · Slide 37</h4>
+              <ul className="summary-list">
+                {ngQuyZeroQuestions.questions.map((question) => (
+                  <li key={question}>{question}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+          <details className="question-block">
+            <summary>
+              Bộ câu hỏi chung · Slide {generalQuestions.source}
+            </summary>
+            {generalQuestions.groups.map((group) => (
+              <div key={group.topic}>
+                <h4>{group.topic}</h4>
                 <ul className="summary-list">
-                  {entry.questions.map((question) => (
+                  {group.questions.map((question) => (
                     <li key={question}>{question}</li>
                   ))}
                 </ul>
               </div>
             ))}
-          </div>
-        )}
-        {zeroGroups.includes("NQ") && (
-          <div className="question-block">
-            <h4>{ngQuyZeroQuestions.topic} · Slide 37</h4>
-            <ul className="summary-list">
-              {ngQuyZeroQuestions.questions.map((question) => (
-                <li key={question}>{question}</li>
-              ))}
-            </ul>
-          </div>
-        )}
-        <details className="question-block">
-          <summary>Bộ câu hỏi chung · Slide {generalQuestions.source}</summary>
-          {generalQuestions.groups.map((group) => (
-            <div key={group.topic}>
-              <h4>{group.topic}</h4>
-              <ul className="summary-list">
-                {group.questions.map((question) => (
-                  <li key={question}>{question}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
-          <p className="quiet-note">
-            Bộ câu hỏi chung còn {generalQuestions.hidden} câu về sức khỏe, tâm
-            linh và người thứ ba không hiển thị.
+            <p className="quiet-note">
+              Bộ câu hỏi chung còn {generalQuestions.hidden} câu về sức khỏe,
+              tâm linh và người thứ ba không hiển thị.
+            </p>
+          </details>
+          <p className="question-closing">
+            <strong>Câu hỏi chốt (slide 37):</strong> {generalQuestions.closing}
           </p>
-        </details>
-        <p className="question-closing">
-          <strong>Câu hỏi chốt (slide 37):</strong> {generalQuestions.closing}
-        </p>
-        {!nqQuestions.length && (
-          <p className="quiet-note">
-            Câu hỏi riêng ở slide 38 dành cho nhóm đứng ngay trước Ngũ Quỷ; dãy
-            này không có cặp như vậy.
-          </p>
-        )}
-      </section>
+          {!nqQuestions.length && (
+            <p className="quiet-note">
+              Câu hỏi riêng ở slide 38 dành cho nhóm đứng ngay trước Ngũ Quỷ;
+              dãy này không có cặp như vậy.
+            </p>
+          )}
+        </section>
+      )}
+
+      {verificationBlock}
 
       <footer className="report-privacy">
         <ShieldCheck size={18} />
