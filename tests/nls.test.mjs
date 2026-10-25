@@ -18,6 +18,7 @@ import {
   normalizeNumber,
   numberKinds,
   explainSpecialDigits,
+  describeSplitGroups,
 } from "../src/lib/nls.ts";
 import {
   checkPhonePattern,
@@ -552,4 +553,63 @@ test("phone checks apply only the notes' defined rules and skip the carrier 0", 
   // Phục Vị is neither cát nor hung (slide 8), so it never triggers a rule.
   assert.deepEqual(check("0611").warnings.length + check("0611").strengths.length, 0);
   assert.equal(check("0911").notAutomated.length, 2);
+});
+
+test("groups split by a single 0/5 (X0Y, X5Y) are listed apart, never counted as pairs", () => {
+  const label = (report) =>
+    report.splitGroups.map(
+      ({ field, effect, start, end, source }) =>
+        `${field.short} ${effect} ${start}–${end} s${source}`,
+    );
+  assert.deepEqual(label(buildSequenceReport("154")), ["SK số 5 kích 1–3 s27"]);
+  assert.deepEqual(label(buildSequenceReport("109")), [
+    "DN bị số 0 che 1–3 s26",
+  ]);
+  assert.deepEqual(label(buildSequenceReport("101")), [
+    "PV bị số 0 che 1–3 s28",
+  ]);
+  // A 0 after a classified pair (XY0) is already counted; runs of 0/5 such as
+  // X00Y or X55Y have no rule in slides 26–28 and are not bridged.
+  for (const digits of ["140", "9004", "4551", "1005"])
+    assert.deepEqual(label(buildSequenceReport(digits)), [], digits);
+
+  for (let n = 0; n < 1000; n++) {
+    const digits = String(n).padStart(3, "0");
+    const report = buildSequenceReport(digits);
+    const grouped = report.groups.reduce((sum, group) => sum + group.count, 0);
+    assert.equal(grouped + report.specialPairs.length, report.pairs.length);
+    for (const item of report.splitGroups) {
+      const window = digits.slice(item.start - 1, item.end);
+      assert.equal(window[1], item.digit, digits);
+      assert.equal(findField(window[0] + window[2]).short, item.field.short);
+    }
+  }
+});
+
+test("summary and overview name each split group with its 0 or 5", () => {
+  const report = buildSequenceReport("0961742038");
+  const summary = buildReportSummary(report);
+  assert.match(
+    summary.headline,
+    /Trong các cặp chứa 0\/5 vẫn đọc được: Họa Hại \(bị số 0 che\)\.$/,
+  );
+  assert.deepEqual(
+    summary.split.map(({ field, start, end }) => [field.name, start, end]),
+    [["Họa Hại", 7, 9]],
+  );
+  assert.match(
+    report.overview,
+    /còn đọc được Họa Hại \(bị số 0 che\) theo dạng X0Y\/X5Y \(slide 26\); các nhóm này không tính vào số cặp\.$/,
+  );
+  // The same group twice is counted once with ×2, each place kept in the list.
+  const twice = buildSequenceReport("1091091");
+  assert.equal(
+    describeSplitGroups(twice.splitGroups),
+    "Diên Niên (bị số 0 che) ×2",
+  );
+  assert.equal(twice.splitGroups.length, 2);
+  // No split group, no extra sentence.
+  const plain = buildSequenceReport("143168");
+  assert.doesNotMatch(buildReportSummary(plain).headline, /0\/5/);
+  assert.doesNotMatch(plain.overview, /0\/5/);
 });

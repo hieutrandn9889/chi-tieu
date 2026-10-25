@@ -20,7 +20,12 @@ import {
   TriangleAlert,
 } from "lucide-react";
 import { Link } from "react-router-dom";
-import { buildReportSummary, fieldName } from "@/lib/nls";
+import {
+  buildReportSummary,
+  describeSplitGroups,
+  fieldName,
+  splitSources,
+} from "@/lib/nls";
 import type { NumberKind, SequenceReportData } from "@/lib/nls";
 import {
   checkPhonePattern,
@@ -379,6 +384,19 @@ export function SequenceReport({
                 ))}
               </div>
             )}
+            {summary.split.length > 0 && (
+              <div className="summary-block">
+                <h4>Nhóm trong cặp bị 0/5 chen giữa</h4>
+                {summary.split.map((item) => (
+                  <p key={item.start}>
+                    <span className="pair-position">
+                      VỊ TRÍ {item.start}–{item.end}
+                    </span>
+                    {item.field.name} · {item.effect} · Slide {item.source}
+                  </p>
+                ))}
+              </div>
+            )}
             {summary.cautions.length > 0 && (
               <div className="summary-block">
                 <h4>Cần lưu ý</h4>
@@ -558,6 +576,13 @@ export function SequenceReport({
               </li>
             )}
           </ul>
+          {report.splitGroups.length > 0 && (
+            <p className="quiet-note">
+              Không tính vào các thanh trên: trong cặp chứa 0/5 vẫn đọc được{" "}
+              {describeSplitGroups(report.splitGroups)}, theo slide{" "}
+              {splitSources(report.splitGroups)}.
+            </p>
+          )}
         </section>
       )}
 
