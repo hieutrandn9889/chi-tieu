@@ -659,6 +659,11 @@
   padding-top: 25px;
   margin-top: 10px;
   border-top: 1px solid var(--line);
+  scroll-margin-top: 110px;
+}
+/* Focus is moved here by script after a lookup; it is not a control. */
+.lookup-results:focus {
+  outline: none;
 }
 .results-heading {
   display: flex;
@@ -2732,6 +2737,9 @@ details.question-block[open] summary {
   }
   .site-header {
     height: 73px;
+  }
+  .lookup-results {
+    scroll-margin-top: 90px;
   }
   .brand strong {
     font-size: 23px;

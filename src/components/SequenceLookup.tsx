@@ -25,6 +25,7 @@ import {
   handOffSequence,
   takeHandedOffSequence,
 } from "@/lib/sequence-handoff";
+import { revealResults } from "@/lib/reveal-results";
 
 export function SequenceLookup({ compact = false }: { compact?: boolean }) {
   const [input, setInput] = useState("");
@@ -37,6 +38,10 @@ export function SequenceLookup({ compact = false }: { compact?: boolean }) {
   const [notes, setNotes] = useState<string[]>([]);
   const kindInfo = findNumberKind(kind);
   const inputRef = useRef<HTMLInputElement>(null);
+  const resultsRef = useRef<HTMLDivElement>(null);
+  // Set by each lookup the reader starts; the effect below brings that result
+  // into view once it has rendered.
+  const pendingReveal = useRef(false);
   const formId = useId();
   const inputId = compact ? "home-sequence" : "lookup-sequence";
   function lookUp(value: string) {
@@ -46,6 +51,7 @@ export function SequenceLookup({ compact = false }: { compact?: boolean }) {
       setResult(buildSequenceReport(normalized.digits));
       setNotes(normalized.notes);
       setError("");
+      pendingReveal.current = true;
     } catch (err) {
       setResult(null);
       setNotes([]);
@@ -60,6 +66,11 @@ export function SequenceLookup({ compact = false }: { compact?: boolean }) {
     const handed = takeHandedOffSequence();
     if (handed) lookUp(handed);
   }, []);
+  useEffect(() => {
+    if (!result || !resultsRef.current || !pendingReveal.current) return;
+    pendingReveal.current = false;
+    revealResults(resultsRef.current, inputRef.current);
+  }, [result]);
   function onSubmit(event: FormEvent) {
     event.preventDefault();
     lookUp(input);
@@ -255,7 +266,13 @@ export function SequenceLookup({ compact = false }: { compact?: boolean }) {
         </div>
       </form>
       {result && (
-        <div className="lookup-results">
+        <div
+          className="lookup-results"
+          ref={resultsRef}
+          tabIndex={-1}
+          role="region"
+          aria-label={compact ? "Kết quả tra cứu" : "Kết quả luận giải"}
+        >
           <p role="status" className="sr-only">
             Đã phân tích {result.digitCount} chữ số, gồm {result.pairs.length}{" "}
             cặp và {result.groups.length} nhóm.
