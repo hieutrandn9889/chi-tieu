@@ -20,7 +20,7 @@ import {
   TriangleAlert,
 } from "lucide-react";
 import { Link } from "react-router-dom";
-import { buildReportSummary } from "@/lib/nls";
+import { buildReportSummary, fieldName } from "@/lib/nls";
 import type { NumberKind, SequenceReportData } from "@/lib/nls";
 import {
   checkPhonePattern,
@@ -88,9 +88,6 @@ export function SequenceReport({
         )
       : null;
   const { zeroGroups, nqQuestions } = selectReportExtras(report);
-  const groupName = (short: string) =>
-    report.pairs.find((pair) => pair.field?.short === short)?.field?.name ??
-    short;
   const plan = buildReportPlan(report, numberKind);
   const verification = verifyReport(report, numberKind);
   const trace = buildAnalysisTrace(report, numberKind);
@@ -621,7 +618,7 @@ export function SequenceReport({
                 return (
                   <div key={group}>
                     <h4>
-                      {groupName(group)} + 0 · Slide {slide.source}
+                      {fieldName(group)} + 0 · Slide {slide.source}
                     </h4>
                     <ul className="summary-list">
                       {slide.items.map((item) => (

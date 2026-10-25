@@ -209,3 +209,20 @@ test("the printable report has a masked cover, numbered sections and both charts
   for (let i = 0; i + 4 <= digits.length; i++)
     assert.ok(!html.includes(digits.slice(i, i + 4)), digits.slice(i, i + 4));
 });
+
+test("web and print copies name a group that only appears split by 0/5", async () => {
+  const { buildExportData } = await import("../src/lib/report-export.ts");
+  const report = buildSequenceReport("109");
+  const text = (html) => html.replace(/<!-- -->/g, "");
+  const web = text(renderReport(report, "other"));
+  assert.ok(web.includes("Diên Niên + 0 · Slide 31"));
+  assert.ok(web.includes("Chen giữa cặp 19 (Diên Niên) · dạng X0Y"));
+  const print = text(
+    renderPrintable(
+      buildExportData(report, "other", new Date(2026, 9, 25, 9, 5)),
+    ),
+  );
+  assert.ok(print.includes("Diên Niên + 0"));
+  assert.ok(print.includes("Chen giữa một cặp Diên Niên · dạng X0Y"));
+  assert.ok(!print.includes("một cặp  ·"));
+});

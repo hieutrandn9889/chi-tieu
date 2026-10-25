@@ -158,6 +158,12 @@ export function findField(pair: string) {
   return pairIndex.get(pair);
 }
 
+// A group can appear only inside a pair split by 0/5 (X0Y, X5Y), so name it
+// from the table, not from the classified pairs of the sequence.
+export function fieldName(short?: string) {
+  return fields.find((field) => field.short === short)?.name ?? short ?? "";
+}
+
 export function parseSequence(input: string) {
   if (!/^[\d\s()+.\-]+$/.test(input))
     throw new Error(

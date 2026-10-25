@@ -151,3 +151,25 @@ test("the plan names the input, the rule sets and what is not applied", () => {
     ),
   );
 });
+
+test("the analysis trace names a group that only appears split by 0/5", () => {
+  const names = new Set(fields.map((field) => field.name));
+  for (let n = 0; n < 1000; n++) {
+    const digits = String(n).padStart(3, "0");
+    const trace = buildAnalysisTrace(buildSequenceReport(digits), "other");
+    for (const { rules } of trace.specialDigits)
+      for (const { rule } of rules) {
+        const named = rule.match(/cặp \d\d \((.*)\) · dạng/);
+        if (named) assert.ok(names.has(named[1]), `${digits}: ${rule}`);
+        else assert.equal(rule, "Số 0 ở cuối dãy");
+      }
+  }
+  const [five] = buildAnalysisTrace(
+    buildSequenceReport("154"),
+    "other",
+  ).specialDigits;
+  assert.deepEqual(
+    five.rules.map(({ rule }) => rule),
+    ["Chen giữa cặp 14 (Sinh Khí) · dạng X5Y"],
+  );
+});
