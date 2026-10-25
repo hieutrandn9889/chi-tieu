@@ -88,3 +88,11 @@ test("pdfmake renders the definition to a real multi-page PDF", async () => {
   assert.ok(pages >= 4 && pages <= 12, `${pages} pages`);
   assert.ok(buffer.length < 400_000, `${buffer.length} bytes`);
 });
+
+test("the PDF names a group that only appears split by 0/5", () => {
+  const { definition } = definitionFor("109", "other");
+  const text = JSON.stringify(definition.content);
+  assert.ok(text.includes("Diên Niên + 0"));
+  assert.ok(text.includes("Chen giữa một cặp Diên Niên · dạng X0Y"));
+  assert.ok(!text.includes("một cặp  ·"));
+});

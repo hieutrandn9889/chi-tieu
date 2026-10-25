@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { buildSequenceReport } from "../src/lib/nls.ts";
+import { buildSequenceReport, fields } from "../src/lib/nls.ts";
 import {
   EXPORT_COLORS,
   buildExportData,
@@ -98,4 +98,31 @@ test("0/5 rules are told by group, and sections failing verification are left ou
   );
   assert.equal(broken.special, null);
   assert.ok(broken.themes);
+});
+
+test("a group split by 0/5 is named even when no other pair in the sequence has it", () => {
+  const names = new Set(fields.map((field) => field.name));
+  for (let n = 0; n < 1000; n++) {
+    const digits = String(n).padStart(3, "0");
+    const data = buildExportData(buildSequenceReport(digits), "other", at);
+    for (const { rules } of data.specialDigits)
+      for (const rule of rules) {
+        const named = rule.match(/một cặp (.*) · dạng/);
+        if (named) assert.ok(names.has(named[1]), `${digits}: ${rule}`);
+      }
+    for (const group of data.special?.groups ?? [])
+      assert.ok(
+        names.has(group.name.replace(/ \+ 0$/, "")),
+        `${digits}: ${group.name}`,
+      );
+  }
+  // 1-0-9: Diên Niên exists only as the pair around the 0.
+  const data = buildExportData(buildSequenceReport("109"), "other", at);
+  assert.deepEqual(data.specialDigits[0].rules, [
+    "Chen giữa một cặp Diên Niên · dạng X0Y (slide 26)",
+  ]);
+  assert.deepEqual(
+    data.special.groups.map((group) => group.name),
+    ["Diên Niên + 0"],
+  );
 });

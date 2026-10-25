@@ -3,7 +3,12 @@
 // table, slide sources and exclusions before anything is shown. It can only
 // prove the report is faithful to the material, never that it fits a person.
 
-import { buildReportSummary, findField, findNumberKind } from "./nls.ts";
+import {
+  buildReportSummary,
+  fieldName,
+  findField,
+  findNumberKind,
+} from "./nls.ts";
 import type { NumberKind, SequenceReportData } from "./nls.ts";
 import {
   generalQuestions,
@@ -181,8 +186,8 @@ export function buildAnalysisTrace(
             : {
                 rule:
                   note.start + 2 === index
-                    ? `Đứng sau cặp ${note.window.slice(0, 2)} (${groupName(report, note.group)}) · dạng XY${digit}`
-                    : `Chen giữa cặp ${note.window[0]}${note.window[2]} (${groupName(report, note.group)}) · dạng X${digit}Y`,
+                    ? `Đứng sau cặp ${note.window.slice(0, 2)} (${fieldName(note.group)}) · dạng XY${digit}`
+                    : `Chen giữa cặp ${note.window[0]}${note.window[2]} (${fieldName(note.group)}) · dạng X${digit}Y`,
                 source: note.source,
               },
         ),
@@ -242,11 +247,6 @@ export function buildAnalysisTrace(
     ],
   };
 }
-
-const groupName = (report: SequenceReportData, short?: string) =>
-  report.pairs.find((pair) => pair.field?.short === short)?.field?.name ??
-  short ??
-  "";
 
 function hit(texts: string[]) {
   for (const text of texts)

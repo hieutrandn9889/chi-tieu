@@ -3,7 +3,7 @@
 // pair notes are replaced by group names and positions, so a shared export
 // cannot rebuild a CCCD or phone number.
 
-import { buildReportSummary, findNumberKind } from "./nls.ts";
+import { buildReportSummary, fieldName, findNumberKind } from "./nls.ts";
 import type { NumberKind, SequenceReportData } from "./nls.ts";
 import {
   generalQuestions,
@@ -101,8 +101,6 @@ export function buildExportData(
     source: pair.field ? pair.field.source : pair.specialSource!,
   }));
 
-  const groupName = (short?: string) =>
-    report.pairs.find((pair) => pair.field?.short === short)?.field?.name ?? "";
   const specialDigits = [...digits]
     .map((digit, index) => ({ digit, index }))
     .filter(({ digit }) => digit === "0" || digit === "5")
@@ -113,11 +111,11 @@ export function buildExportData(
         if (note.digit !== digit) return [];
         if (note.start + 2 === index && note.window[2] === digit)
           return [
-            `Đứng sau một cặp ${groupName(note.group)} · dạng XY${digit} (slide ${note.source})`,
+            `Đứng sau một cặp ${fieldName(note.group)} · dạng XY${digit} (slide ${note.source})`,
           ];
         if (note.start + 1 === index && note.window[1] === digit)
           return [
-            `Chen giữa một cặp ${groupName(note.group)} · dạng X${digit}Y (slide ${note.source})`,
+            `Chen giữa một cặp ${fieldName(note.group)} · dạng X${digit}Y (slide ${note.source})`,
           ];
         return [];
       });
@@ -213,7 +211,7 @@ export function buildExportData(
               source: note.source,
             })),
             groups: extras.zeroGroups.map((group) => ({
-              name: `${groupName(group)} + 0`,
+              name: `${fieldName(group)} + 0`,
               source: zeroGroupSlides[group].source,
               items: zeroGroupSlides[group].items,
               hidden: zeroGroupSlides[group].hidden,
