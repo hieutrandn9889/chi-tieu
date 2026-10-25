@@ -102,3 +102,40 @@ test("group-with-0 details and slide 37–38 questions follow the sequence", () 
   assert.ok(!plain.includes("Riêng Ngũ Quỷ đi cùng 0"));
   assert.ok(plain.includes("dãy này không có cặp như vậy"));
 });
+
+test("the report opens with its plan and closes with the verification result", () => {
+  const html = renderReport(buildSequenceReport("143168"));
+  const plan = html.indexOf('id="report-plan-title"');
+  const summary = html.indexOf('id="report-summary-title"');
+  const verify = html.indexOf('id="report-verify-title"');
+  assert.ok(plan > 0 && plan < summary && summary < verify);
+  assert.ok(html.includes("Dãy khác · 6 chữ số · 5 cặp chồng lấn"));
+  assert.ok(html.includes(">6/6 kiểm tra đạt</h3>"));
+  assert.ok(html.includes("Chưa kiểm chứng được"));
+  assert.ok(html.includes('href="#report-verify-title"'));
+  assert.ok(!html.includes('class="verify-hidden"'));
+});
+
+test("a failing section is hidden with its reason; a core failure hides the report", () => {
+  const report = buildSequenceReport("14010");
+  const html = renderReport({
+    ...report,
+    specialNotes: report.specialNotes.map((note) => ({ ...note, source: 99 })),
+  });
+  assert.ok(html.includes('class="verify-hidden"'));
+  assert.ok(html.includes("Giữ nguyên số 0 và số 5"));
+  assert.ok(html.includes("chưa hiệu đính: 99"));
+  assert.ok(!html.includes('id="report-special-title"'));
+  assert.ok(html.includes('id="report-summary-title"'));
+
+  const broken = renderReport({
+    ...report,
+    pairs: report.pairs.map((pair, index) =>
+      index === 0 ? { ...pair, pair: "99" } : pair,
+    ),
+  });
+  assert.ok(broken.includes("Không hiển thị bản luận"));
+  assert.ok(!broken.includes('id="report-summary-title"'));
+  assert.ok(!broken.includes('id="report-themes-title"'));
+  assert.ok(broken.includes('id="report-verify-title"'));
+});

@@ -12,6 +12,7 @@
   --line: #dfe4d9;
   --wash: #f0f3e9;
   --accent-wash: #e5ecde;
+  --danger: #b04436;
   background: var(--paper);
   color: var(--ink);
   min-height: 100vh;
@@ -29,6 +30,7 @@
   --line: #344437;
   --wash: #1d2d23;
   --accent-wash: #293d2d;
+  --danger: #ef9a8c;
 }
 .nls-site h1,
 .nls-site h2,
@@ -914,6 +916,105 @@
 }
 .report-keywords {
   color: var(--green);
+}
+.report-plan,
+.report-verify {
+  margin-top: 24px;
+  padding: 20px 24px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  font-size: 12px;
+  line-height: 1.6;
+}
+.report-plan h3,
+.report-verify h3 {
+  font-size: 20px;
+  line-height: 1.4;
+  margin: 8px 0 6px;
+}
+.plan-input {
+  font-weight: 600;
+}
+.plan-steps {
+  display: grid;
+  gap: 6px;
+  margin: 10px 0;
+  padding-left: 20px;
+  list-style: decimal;
+}
+.plan-steps li span {
+  display: inline;
+}
+.plan-source {
+  margin-left: 8px;
+  color: var(--muted-ink);
+  font-size: 11px;
+}
+.plan-source::before {
+  content: "· ";
+}
+.verify-list {
+  display: grid;
+  gap: 8px;
+  margin: 12px 0 16px;
+}
+.verify-list li {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px;
+  align-items: start;
+}
+.verify-list li > svg {
+  margin-top: 3px;
+  color: var(--green);
+}
+.verify-list li.failed > svg,
+.verify-list li.failed strong {
+  color: var(--danger);
+}
+.verify-list li div {
+  display: grid;
+}
+.verify-list li span {
+  color: var(--muted-ink);
+}
+.report-verify h4 {
+  margin-bottom: 6px;
+  color: var(--muted-ink);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.verify-hidden,
+.verify-failed {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  margin-top: 24px;
+  padding: 14px 16px;
+  border: 1px solid var(--danger);
+  border-radius: 8px;
+  color: var(--danger);
+  font-size: 12px;
+  line-height: 1.6;
+}
+.verify-hidden > svg {
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+.verify-failed {
+  display: block;
+}
+.verify-failed h3 {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-size: 20px;
+}
+.verify-failed p {
+  color: var(--ink);
 }
 .report-summary {
   margin-top: 24px;

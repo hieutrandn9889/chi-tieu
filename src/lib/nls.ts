@@ -339,7 +339,7 @@ export function explainSpecialDigits(digits: string): SpecialNote[] {
         digit === "0"
           ? field.short === "TM"
             ? {
-                text: "Tuyệt Mệnh đi cùng 0: slide 26 ghi “mọi thứ đã ủ lâu rồi lên tới đỉnh điểm là đột nhiên bằng 0, không có kết quả”. Dòng sức khỏe của slide không được công cụ diễn giải.",
+                text: "Tuyệt Mệnh đi cùng 0: slide 26 ghi “mọi thứ đã ủ lâu rồi lên tới đỉnh điểm là đột nhiên bằng 0, không có kết quả”. Dòng 10 của slide về nhóm này không được công cụ diễn giải.",
                 source: 26,
               }
             : field.short === "PV"
