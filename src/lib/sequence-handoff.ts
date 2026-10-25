@@ -7,6 +7,11 @@ export function handOffSequence(value: string) {
   pending = value;
 }
 
+// Lets the report page open its quick-lookup tab without consuming the value.
+export function hasHandedOffSequence() {
+  return pending !== null;
+}
+
 export function takeHandedOffSequence() {
   const value = pending;
   pending = null;

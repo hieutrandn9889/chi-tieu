@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url";
 import test from "node:test";
 import {
   handOffSequence,
+  hasHandedOffSequence,
   takeHandedOffSequence,
 } from "../src/lib/sequence-handoff.ts";
 
@@ -29,4 +30,26 @@ test("the hand-off keeps the number out of the URL, history and storage", () => 
   // The detailed-report link is a plain path; the sequence only goes through memory.
   assert.match(lookup, /to="\/tra-cuu"\s+onClick=\{\(\) => handOffSequence\(input\)\}/);
   assert.doesNotMatch(lookup, /to=\{`\/tra-cuu[^`]*\$\{/);
+});
+
+test("the report page can see a handed-off sequence without taking it", () => {
+  assert.equal(hasHandedOffSequence(), false);
+  handOffSequence("143168");
+  assert.equal(hasHandedOffSequence(), true);
+  assert.equal(hasHandedOffSequence(), true);
+  assert.equal(takeHandedOffSequence(), "143168");
+  assert.equal(hasHandedOffSequence(), false);
+});
+
+test("the reading intake keeps every number out of the URL, history and storage", () => {
+  for (const file of [
+    "src/lib/intake.ts",
+    "src/components/ReadingIntake.tsx",
+    "src/pages/Lookup.tsx",
+  ])
+    assert.doesNotMatch(
+      read(file),
+      /localStorage|sessionStorage|indexedDB|history\.|location\.|searchParams|document\.cookie|fetch\(/,
+      file,
+    );
 });

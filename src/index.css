@@ -833,6 +833,245 @@
   font-size: 11px;
   list-style: disc;
 }
+/* Reading intake (slides 3, 36): several numbers, needs, then one summary. */
+.lookup-modes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+.intake-form {
+  display: grid;
+  gap: 18px;
+  margin-top: 24px;
+}
+.intake-fieldset {
+  min-width: 0;
+  margin: 0;
+  padding: 16px 18px 18px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface);
+}
+.intake-fieldset legend {
+  padding: 0 6px;
+  color: var(--green);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.intake-fieldset .number-kinds {
+  margin: 10px 0 0;
+}
+.intake-reveal,
+.intake-add,
+.intake-clear {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 36px;
+  color: var(--muted-ink);
+  font-size: 12px;
+}
+.intake-reveal:hover,
+.intake-add:hover:not(:disabled),
+.intake-clear:hover {
+  color: var(--green);
+}
+.intake-add:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.intake-field {
+  display: grid;
+  gap: 6px;
+  margin-top: 12px;
+}
+.intake-field label,
+.intake-label {
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 600;
+}
+.intake-optional {
+  color: var(--muted-ink);
+  font-weight: 400;
+}
+.intake-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.intake-row + .intake-row,
+.intake-field > div + div {
+  margin-top: 6px;
+}
+.intake-field input,
+.intake-usage {
+  min-width: 0;
+  min-height: 44px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 15px;
+}
+.intake-field input {
+  flex: 1;
+  width: 100%;
+}
+.intake-usage {
+  flex: 0 0 auto;
+  font-size: 13px;
+}
+.intake-field input:focus-visible,
+.intake-usage:focus-visible,
+.intake-remove:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 1px;
+}
+.intake-field input[aria-invalid="true"] {
+  border-color: var(--danger);
+}
+.intake-field .form-error {
+  margin-top: 0;
+}
+.intake-remove {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  color: var(--muted-ink);
+}
+.intake-remove:hover {
+  color: var(--danger);
+}
+.intake-hint {
+  margin-top: 6px;
+  color: var(--muted-ink);
+  font-size: 11px;
+  line-height: 1.6;
+}
+.intake-form .number-kind-note {
+  margin-top: 0;
+}
+.intake-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 20px;
+}
+.intake-summary,
+.intake-reports {
+  display: grid;
+  gap: 14px;
+}
+.intake-reports {
+  margin-top: 36px;
+}
+.intake-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+}
+.intake-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+.intake-table caption:not(.sr-only) {
+  padding: 10px 12px 0;
+  color: var(--muted-ink);
+  font-size: 11px;
+  text-align: left;
+}
+.intake-table th,
+.intake-table td {
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+}
+.intake-table tbody tr:last-child > * {
+  border-bottom: 0;
+}
+.intake-table thead th {
+  color: var(--muted-ink);
+  font-size: 11px;
+  font-weight: 600;
+}
+.intake-matrix th,
+.intake-matrix td {
+  white-space: nowrap;
+}
+.intake-matrix td {
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+.intake-matrix tbody th {
+  border-left: 3px solid var(--tone);
+}
+/* The group column stays put while the number columns scroll sideways. */
+.intake-matrix th:first-child {
+  position: sticky;
+  left: 0;
+  background: var(--surface);
+}
+.intake-masked {
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.08em;
+}
+.intake-occupation {
+  font-size: 12px;
+}
+.intake-need {
+  display: grid;
+  gap: 10px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+.intake-need h4 {
+  color: var(--green);
+  font-size: 15px;
+}
+.intake-need-item {
+  display: grid;
+  gap: 6px;
+  padding-left: 12px;
+  border-left: 3px solid var(--tone);
+  font-size: 12px;
+  line-height: 1.6;
+}
+.intake-need-item dl {
+  display: grid;
+  gap: 6px;
+}
+.intake-need-item dt {
+  color: var(--muted-ink);
+  font-size: 11px;
+}
+.intake-need-item .supplement-note {
+  margin: 2px 0;
+}
+.intake-need-item .supplement-note span {
+  color: var(--muted-ink);
+}
+.intake-questions-title {
+  color: var(--muted-ink);
+  font-size: 11px;
+  font-weight: 600;
+}
+.intake-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
 .compact-report-link {
   margin-top: 16px;
 }
@@ -2740,6 +2979,24 @@ details.question-block[open] summary {
   }
   .lookup-results {
     scroll-margin-top: 90px;
+  }
+  .intake-fieldset {
+    padding: 14px 14px 16px;
+  }
+  /* The number takes the full width; usage and remove share the next line. */
+  .intake-row {
+    flex-wrap: wrap;
+  }
+  .intake-row input {
+    flex-basis: 100%;
+  }
+  .intake-row .intake-usage {
+    flex: 1;
+  }
+  /* 16px keeps iOS from zooming into the field on focus. */
+  .intake-field input,
+  .intake-usage {
+    font-size: 16px;
   }
   .brand strong {
     font-size: 23px;
