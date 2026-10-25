@@ -46,10 +46,12 @@ function DistributionChart({ rows }: { rows: ExportData["distribution"] }) {
   const barHeight = 14;
   const max = Math.max(1, ...rows.map((row) => row.count));
   const height = rows.length * rowHeight + 8;
+  // Room for the "+n trong cặp 0/5" note after the longest bar.
+  const noteWidth = rows.some((row) => row.split > 0) ? 110 : 0;
   return (
     <svg
       className="pr-chart"
-      viewBox={`0 0 ${labelWidth + plotWidth + 40} ${height}`}
+      viewBox={`0 0 ${labelWidth + plotWidth + 40 + noteWidth} ${height}`}
       role="img"
       aria-label="Số cặp theo nhóm"
     >
@@ -93,6 +95,16 @@ function DistributionChart({ rows }: { rows: ExportData["distribution"] }) {
             >
               {row.count}
             </text>
+            {row.split > 0 && (
+              <text
+                x={x + width + 6 + String(row.count).length * 7 + 6}
+                y={y + barHeight - 3}
+                fill={INK_SECONDARY}
+                fontSize="10"
+              >
+                +{row.split} trong cặp 0/5
+              </text>
+            )}
           </g>
         );
       })}
@@ -241,6 +253,14 @@ export function PrintableReport({ data }: { data: ExportData }) {
               {segment.text}
             </p>
           ))}
+          {data.summary.split.map((item) => (
+            <p key={item.range}>
+              <span className="pr-muted">
+                Trong cặp chứa 0/5, vị trí {item.range}:
+              </span>{" "}
+              {item.name} · {item.effect} (slide {item.source})
+            </p>
+          ))}
           {data.summary.cautions.length > 0 && (
             <ul className="pr-list">
               {data.summary.cautions.map((caution) => (
@@ -263,6 +283,9 @@ export function PrintableReport({ data }: { data: ExportData }) {
                 {item.count}
                 <small> / {data.pairCount} cặp</small>
               </strong>
+              {item.split > 0 && (
+                <small>+{item.split} nhóm trong cặp 0/5</small>
+              )}
             </div>
           ))}
         </div>
@@ -282,6 +305,8 @@ export function PrintableReport({ data }: { data: ExportData }) {
           trung tính hay chứa 0/5; chữ trong ô là nhóm. Phân nhóm cát/hung theo
           ghi chép bổ sung, Phục Vị theo slide 8. Số liệu đầy đủ ở bảng mục kế
           tiếp.
+          {data.toneTotals.some((item) => item.split > 0) &&
+            " Nhóm đọc được trong cặp bị 0/5 chen giữa (dạng X0Y, X5Y) ghi riêng là “trong cặp 0/5”, không cộng vào số cặp."}
         </p>
       </Section>
 

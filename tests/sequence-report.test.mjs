@@ -226,3 +226,22 @@ test("web and print copies name a group that only appears split by 0/5", async (
   assert.ok(print.includes("Chen giữa một cặp Diên Niên · dạng X0Y"));
   assert.ok(!print.includes("một cặp  ·"));
 });
+
+test("web, print and summary list the groups split by 0/5", async () => {
+  const { buildExportData } = await import("../src/lib/report-export.ts");
+  const report = buildSequenceReport("0961742038");
+  const text = (html) => html.replace(/<!-- -->/g, "");
+  const web = text(renderReport(report, "phone"));
+  assert.ok(web.includes("Nhóm trong cặp bị 0/5 chen giữa"));
+  assert.ok(web.includes("Họa Hại · bị số 0 che · Slide 26"));
+  assert.ok(web.includes("Không tính vào các thanh trên"));
+  assert.ok(web.includes("theo dạng X0Y/X5Y (slide 26)"));
+  const print = text(
+    renderPrintable(
+      buildExportData(report, "phone", new Date(2026, 9, 25, 9, 5)),
+    ),
+  );
+  assert.ok(print.includes("Trong cặp chứa 0/5, vị trí 7–9:"));
+  assert.ok(print.includes("+1 nhóm trong cặp 0/5"));
+  assert.ok(print.includes("+1 trong cặp 0/5"));
+});

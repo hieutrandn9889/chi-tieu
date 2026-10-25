@@ -233,6 +233,15 @@ export function buildPdfDefinition(data: ExportData) {
           t(segment.text),
         ],
       })),
+      ...data.summary.split.map((item) => ({
+        text: [
+          {
+            text: `Trong cặp chứa 0/5, vị trí ${item.range}: `,
+            color: SECONDARY,
+          },
+          `${item.name} · ${item.effect} (slide ${item.source})`,
+        ],
+      })),
       data.summary.cautions.length ? list(data.summary.cautions) : "",
     );
 
@@ -263,6 +272,13 @@ export function buildPdfDefinition(data: ExportData) {
                   },
                 ],
               },
+              item.split > 0
+                ? {
+                    text: `+${item.split} nhóm trong cặp 0/5`,
+                    fontSize: 8,
+                    color: SECONDARY,
+                  }
+                : "",
             ],
           })),
         ],
@@ -277,7 +293,15 @@ export function buildPdfDefinition(data: ExportData) {
         body: data.distribution.map((row) => [
           { text: row.name, alignment: "right", color: SECONDARY, fontSize: 9 },
           bar(row.count, max, row.tone),
-          { text: String(row.count), bold: true, fontSize: 9 },
+          {
+            text: [
+              { text: String(row.count), bold: true },
+              row.split > 0
+                ? { text: `  +${row.split} trong cặp 0/5`, color: SECONDARY }
+                : "",
+            ],
+            fontSize: 9,
+          },
         ]),
       },
       layout: {
@@ -328,7 +352,11 @@ export function buildPdfDefinition(data: ExportData) {
       margin: [0, 0, 0, 6],
     },
     {
-      text: "Màu theo chú giải ở các ô số liệu phía trên: cát tinh, hung tinh, trung tính hay chứa 0/5; chữ trong ô là nhóm. Phân nhóm cát/hung theo ghi chép bổ sung, Phục Vị theo slide 8. Số liệu đầy đủ ở bảng mục kế tiếp.",
+      text:
+        "Màu theo chú giải ở các ô số liệu phía trên: cát tinh, hung tinh, trung tính hay chứa 0/5; chữ trong ô là nhóm. Phân nhóm cát/hung theo ghi chép bổ sung, Phục Vị theo slide 8. Số liệu đầy đủ ở bảng mục kế tiếp." +
+        (data.toneTotals.some((item) => item.split > 0)
+          ? " Nhóm đọc được trong cặp bị 0/5 chen giữa (dạng X0Y, X5Y) ghi riêng là “trong cặp 0/5”, không cộng vào số cặp."
+          : ""),
       color: SECONDARY,
       fontSize: 8.5,
     },

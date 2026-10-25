@@ -391,6 +391,53 @@ export function explainSpecialDigits(digits: string): SpecialNote[] {
   return notes.sort((a, b) => a.start - b.start);
 }
 
+export interface SplitGroup {
+  field: EnergyField;
+  digit: "0" | "5";
+  effect: "bị số 0 che" | "số 5 kích";
+  // 1-based digit positions of the X0Y / X5Y window.
+  start: number;
+  end: number;
+  source: number;
+}
+
+// A 0 or 5 inside a pair (X0Y, X5Y) still leaves the group of X and Y readable
+// under slides 26–27 (Phục Vị under slide 28): the 0 hides it, the 5 raises it.
+// Only these windows count; runs of 0/5 such as X00Y get no reading. The groups
+// are listed apart and never added to the pair counts.
+export function findSplitGroups(notes: SpecialNote[]): SplitGroup[] {
+  return notes.flatMap((note) =>
+    note.group && note.window.length === 3 && note.window[1] === note.digit
+      ? [
+          {
+            field: fields.find((field) => field.short === note.group)!,
+            digit: note.digit,
+            effect: note.digit === "0" ? "bị số 0 che" : "số 5 kích",
+            start: note.start + 1,
+            end: note.start + 3,
+            source: note.source,
+          },
+        ]
+      : [],
+  );
+}
+
+// "Sinh Khí (số 5 kích), Diên Niên (bị số 0 che) ×2"
+export function describeSplitGroups(groups: SplitGroup[]) {
+  const labels = groups.map(({ field, effect }) => `${field.name} (${effect})`);
+  return [...new Set(labels)]
+    .map((label) => {
+      const count = labels.filter((item) => item === label).length;
+      return count > 1 ? `${label} ×${count}` : label;
+    })
+    .join(", ");
+}
+
+export const splitSources = (groups: SplitGroup[]) =>
+  [...new Set(groups.map(({ source }) => source))]
+    .sort((a, b) => a - b)
+    .join(", ");
+
 // Each ordered row points only to an actual source section. No inferred reversals.
 const combinations: Record<string, Record<string, number>> = {
   TY: { TY: 50, SK: 52, DN: 54, PV: 55, HH: 56, LS: 58, TM: 59, NQ: 61 },
@@ -491,13 +538,20 @@ export function buildSequenceReport(input: string) {
         field: pair.field,
       });
   }
+  const specialNotes = explainSpecialDigits(
+    pairs[0].pair + pairs.slice(1).map((pair) => pair.pair[1]).join(""),
+  );
+  const splitGroups = findSplitGroups(specialNotes);
   const leadNames = leadingGroups.map((group) => group.field.name).join(", ");
   const overview =
-    groups.length === 0
+    (groups.length === 0
       ? "Mọi cặp trong dãy đều chứa số 0 hoặc 5. Chưa có cặp nào được phân loại bằng bảng 64 cặp cơ bản; cần đọc quy tắc riêng trước khi diễn giải."
       : leadingGroups.length === 1
         ? `${leadNames} xuất hiện nhiều nhất với ${leadingGroups[0].count}/${pairs.length} cặp trong toàn dãy. Phần bên dưới tổng hợp những chủ đề tài liệu gắn với các nhóm đã tìm thấy.`
-        : `${leadNames} cùng xuất hiện ${leadingGroups[0].count}/${pairs.length} cặp trong toàn dãy. Các nhóm này ngang nhau về số lần xuất hiện; không chọn một nhóm làm đại diện cho con người.`;
+        : `${leadNames} cùng xuất hiện ${leadingGroups[0].count}/${pairs.length} cặp trong toàn dãy. Các nhóm này ngang nhau về số lần xuất hiện; không chọn một nhóm làm đại diện cho con người.`) +
+    (splitGroups.length > 0
+      ? ` Trong các cặp chứa 0/5 còn đọc được ${describeSplitGroups(splitGroups)} theo dạng X0Y/X5Y (slide ${splitSources(splitGroups)}); các nhóm này không tính vào số cặp.`
+      : "");
   return {
     digitCount: pairs.length + 1,
     pairs,
@@ -509,9 +563,8 @@ export function buildSequenceReport(input: string) {
     orderedCombinations,
     chains,
     repetitions: runs.filter((run) => run.count > 1),
-    specialNotes: explainSpecialDigits(
-      pairs[0].pair + pairs.slice(1).map((pair) => pair.pair[1]).join(""),
-    ),
+    specialNotes,
+    splitGroups,
     overview,
   };
 }
@@ -524,12 +577,15 @@ export function buildReportSummary(report: SequenceReportData) {
   const total = report.pairs.length;
   const lead = report.leadingGroups;
   const headline =
-    report.groups.length === 0
+    (report.groups.length === 0
       ? `Dãy có ${report.digitCount} chữ số, tạo ${total} cặp. Mọi cặp đều chứa 0 hoặc 5 nên chưa có chủ đề nào được phân loại.`
       : `Dãy có ${report.digitCount} chữ số, tạo ${total} cặp thuộc ${report.groups.length}/8 nhóm. ` +
         (lead.length === 1
           ? `Xuất hiện nhiều nhất: ${lead[0].field.name} (${lead[0].count}/${total} cặp).`
-          : `Ngang nhau nhiều nhất: ${lead.map(({ field }) => field.name).join(", ")} (mỗi nhóm ${lead[0].count}/${total} cặp).`);
+          : `Ngang nhau nhiều nhất: ${lead.map(({ field }) => field.name).join(", ")} (mỗi nhóm ${lead[0].count}/${total} cặp).`)) +
+    (report.splitGroups.length > 0
+      ? ` Trong các cặp chứa 0/5 vẫn đọc được: ${describeSplitGroups(report.splitGroups)}.`
+      : "");
   const flow = report.chains.map((chain) => {
     const steps: { field: EnergyField; count: number }[] = [];
     for (const field of chain.fields) {
@@ -567,6 +623,7 @@ export function buildReportSummary(report: SequenceReportData) {
     headline,
     themes: report.groups.map(({ field, count }) => ({ field, count })),
     flow,
+    split: report.splitGroups,
     cautions,
     questions: lead
       .slice(0, 2)

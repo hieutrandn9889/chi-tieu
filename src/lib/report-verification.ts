@@ -338,6 +338,21 @@ export function verifyReport(
   });
 
   const summary = buildReportSummary(report);
+  // Re-derive every X0Y / X5Y window from the digits, independently of the
+  // report, and compare with the groups the summary lists.
+  const expectedSplit = [...digits].flatMap((digit, index) => {
+    const outer = digits[index - 1] + digits[index + 1];
+    const field = /[05]/.test(digit) && index > 0 ? findField(outer) : null;
+    return field ? [`${index}:${digit}:${field.short}`] : [];
+  });
+  const listedSplit = summary.split.map(
+    ({ start, digit, field, effect }) =>
+      `${start}:${digit}:${field.short}` +
+      (effect === (digit === "0" ? "bị số 0 che" : "số 5 kích") ? "" : "!"),
+  );
+  const splitOk =
+    expectedSplit.length === listedSplit.length &&
+    expectedSplit.every((item, index) => item === listedSplit[index]);
   const summaryOk =
     summary.themes.reduce((sum, item) => sum + item.count, 0) ===
       report.matchedCount &&
@@ -346,10 +361,13 @@ export function verifyReport(
     "summary",
     "summary",
     "Tóm tắt khớp phần chi tiết",
-    report.groups.flatMap(({ field, reading }) => [
-      field.source,
-      reading.source,
-    ]),
+    [
+      ...report.groups.flatMap(({ field, reading }) => [
+        field.source,
+        reading.source,
+      ]),
+      ...summary.split.map(({ source }) => source),
+    ],
     [
       summary.headline,
       ...summary.flow.map((segment) => segment.text),
@@ -359,10 +377,12 @@ export function verifyReport(
   );
   checks.push({
     ...summaryCheck,
-    ok: summaryOk && summaryCheck.ok,
-    detail: summaryOk
-      ? summaryCheck.detail
-      : "Số liệu tóm tắt lệch với phần chi tiết.",
+    ok: summaryOk && splitOk && summaryCheck.ok,
+    detail: !summaryOk
+      ? "Số liệu tóm tắt lệch với phần chi tiết."
+      : !splitOk
+        ? "Nhóm trong cặp bị 0/5 chen giữa không khớp với dãy."
+        : summaryCheck.detail,
   });
 
   if (report.specialPairs.length > 0) {

@@ -96,3 +96,12 @@ test("the PDF names a group that only appears split by 0/5", () => {
   assert.ok(text.includes("Chen giữa một cặp Diên Niên · dạng X0Y"));
   assert.ok(!text.includes("một cặp  ·"));
 });
+
+test("the PDF lists groups split by 0/5 in the summary, tiles and chart", () => {
+  const { definition } = definitionFor("0961742038", "phone");
+  const text = JSON.stringify(definition.content);
+  assert.ok(text.includes("Trong cặp chứa 0/5, vị trí 7–9: "));
+  assert.ok(text.includes("Họa Hại · bị số 0 che (slide 26)"));
+  assert.ok(text.includes("+1 nhóm trong cặp 0/5"));
+  assert.ok(text.includes("  +1 trong cặp 0/5"));
+});

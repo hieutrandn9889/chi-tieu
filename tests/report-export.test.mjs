@@ -126,3 +126,23 @@ test("a group split by 0/5 is named even when no other pair in the sequence has 
     ["Diên Niên + 0"],
   );
 });
+
+test("tiles and the chart show split groups beside, not inside, the pair counts", () => {
+  const data = buildExportData(
+    buildSequenceReport("0961742038"),
+    "phone",
+    at,
+  );
+  const tile = (tone) => data.toneTotals.find((item) => item.tone === tone);
+  assert.equal(tile("hung").split, 1);
+  assert.equal(tile("cat").split, 0);
+  assert.equal(
+    data.toneTotals.reduce((sum, item) => sum + item.count, 0),
+    data.pairCount,
+  );
+  const row = data.distribution.find((item) => item.short === "HH");
+  assert.deepEqual([row.count, row.split], [1, 1]);
+  assert.deepEqual(data.summary.split, [
+    { name: "Họa Hại", effect: "bị số 0 che", range: "7–9", source: 26 },
+  ]);
+});

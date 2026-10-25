@@ -150,6 +150,12 @@ export function buildExportData(
       ? {
           headline: summary.headline,
           flow: summary.flow,
+          split: summary.split.map(({ field, effect, start, end, source }) => ({
+            name: field.name,
+            effect,
+            range: `${start}–${end}`,
+            source,
+          })),
           cautions: summary.cautions,
           questions: summary.questions.map(({ field, question }) => ({
             name: field.name,
@@ -157,11 +163,16 @@ export function buildExportData(
           })),
         }
       : null,
+    // `split` counts groups read inside a 0/5 pair (X0Y, X5Y); they are shown
+    // beside the pair counts, never added to them.
     toneTotals: (["cat", "hung", "neutral", "special"] as ExportTone[]).map(
       (tone) => ({
         tone,
         label: EXPORT_TONE_LABELS[tone],
         count: cells.filter((cell) => cell.tone === tone).length,
+        split: report.splitGroups.filter(
+          ({ field }) => toneOf(field.short) === tone,
+        ).length,
       }),
     ),
     // All eight groups appear, so a missing group is visible as zero.
@@ -180,13 +191,21 @@ export function buildExportData(
             TM: "Tuyệt Mệnh",
             NQ: "Ngũ Quỷ",
           }[short]!;
-        return { short, name, tone: toneOf(short), count: group?.count ?? 0 };
+        return {
+          short,
+          name,
+          tone: toneOf(short),
+          count: group?.count ?? 0,
+          split: report.splitGroups.filter(({ field }) => field.short === short)
+            .length,
+        };
       }),
       {
         short: "0/5",
         name: "Chứa 0/5",
         tone: "special" as ExportTone,
         count: report.specialPairs.length,
+        split: 0,
       },
     ],
     cells,

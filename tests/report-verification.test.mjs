@@ -173,3 +173,22 @@ test("the analysis trace names a group that only appears split by 0/5", () => {
     ["Chen giữa cặp 14 (Sinh Khí) · dạng X5Y"],
   );
 });
+
+test("the summary is hidden when its split groups do not match the digits", () => {
+  const report = buildSequenceReport("0961742038");
+  assert.equal(verifyReport(report).failed.size, 0);
+  const dropped = verifyReport({ ...report, splitGroups: [] });
+  assert.deepEqual([...dropped.failed], ["summary"]);
+  assert.equal(
+    dropped.checks.find((check) => check.id === "summary").detail,
+    "Nhóm trong cặp bị 0/5 chen giữa không khớp với dãy.",
+  );
+  const relabelled = verifyReport({
+    ...report,
+    splitGroups: report.splitGroups.map((item) => ({
+      ...item,
+      effect: "số 5 kích",
+    })),
+  });
+  assert.deepEqual([...relabelled.failed], ["summary"]);
+});
