@@ -15,6 +15,7 @@ import {
   checkPhonePattern,
   findPairNote,
   groupNotes,
+  supplementTone,
 } from "./nls-supplement.ts";
 
 // Slides proofread against their images; kept equal to
@@ -139,6 +140,113 @@ export function buildReportPlan(
     ],
   };
 }
+
+const toneLabel = { cat: "Cát", hung: "Hung", neutral: "Trung tính" } as const;
+
+// Step-by-step trace of what the analysis did, numbered like the plan, so a
+// reader can follow each input to its result. It only restates the report.
+export function buildAnalysisTrace(
+  report: SequenceReportData,
+  numberKind: NumberKind,
+) {
+  const digits = digitsOf(report);
+  const pairs = report.pairs.map((pair) => ({
+    position: `${pair.index + 1}–${pair.index + 2}`,
+    pair: pair.pair,
+    group: pair.field?.name ?? "Chưa phân loại",
+    tone: pair.field ? toneLabel[supplementTone[pair.field.short]] : "—",
+    source: pair.field
+      ? `Slide ${pair.field.source}`
+      : `Slide ${pair.specialSource}`,
+    note: pair.field ? "" : "Chứa 0/5, đọc theo bước 2",
+  }));
+
+  const specialDigits = [...digits]
+    .map((digit, index) => ({ digit, index }))
+    .filter(({ digit }) => digit === "0" || digit === "5")
+    .map(({ digit, index }) => {
+      const notes = report.specialNotes.filter((note) =>
+        note.window.length === 1
+          ? note.start === index
+          : note.digit === digit &&
+            ((note.window[2] === digit && note.start + 2 === index) ||
+              (note.window[1] === digit && note.start + 1 === index)),
+      );
+      return {
+        position: index + 1,
+        digit,
+        rules: notes.map((note) =>
+          note.window.length === 1
+            ? { rule: "Số 0 ở cuối dãy", source: note.source }
+            : {
+                rule:
+                  note.start + 2 === index
+                    ? `Đứng sau cặp ${note.window.slice(0, 2)} (${groupName(report, note.group)}) · dạng XY${digit}`
+                    : `Chen giữa cặp ${note.window[0]}${note.window[2]} (${groupName(report, note.group)}) · dạng X${digit}Y`,
+                source: note.source,
+              },
+        ),
+      };
+    });
+
+  const extras = selectReportExtras(report);
+  const usedPairNotes = [
+    ...new Set(
+      report.groups.flatMap(({ occurrences }) =>
+        occurrences.map((pair) => findPairNote(pair.pair)?.pairs.join("/")),
+      ),
+    ),
+  ].filter(Boolean);
+  const phone =
+    numberKind === "phone" ? checkPhonePattern(digits, report.pairs) : null;
+
+  return {
+    pairs,
+    classified: report.matchedCount,
+    special: report.specialPairs.length,
+    specialDigits,
+    counts: report.groups.map(({ field, count }) => ({
+      name: field.name,
+      count,
+      share: Math.round((count / report.pairs.length) * 100),
+    })),
+    leading: report.leadingGroups.map(({ field }) => field.name),
+    chains: report.chains.map(
+      (chain) =>
+        `Vị trí ${chain.start}–${chain.end}: ${chain.fields.map((field) => field.name).join(" → ")}`,
+    ),
+    repetitions: report.repetitions.map(
+      (run) =>
+        `${run.field.name} lặp ${run.count} cặp liền nhau ở vị trí ${run.start}–${run.end}`,
+    ),
+    questions: [
+      ...extras.nqQuestions.map(
+        (entry) =>
+          `${entry.combination.first.name} + Ngũ Quỷ (${entry.combination.occurrences
+            .map((item) => `vị trí ${item.index + 1}–${item.index + 3}`)
+            .join(", ")}) → câu hỏi “${entry.topic}” ở slide 38`,
+      ),
+      ...(extras.ngQuyZero
+        ? ["Ngũ Quỷ đi cùng 0 → câu hỏi “Sứ mệnh – Áp lực” ở slide 37"]
+        : []),
+      "Luôn kèm bộ câu hỏi chung và câu hỏi chốt ở slide 37",
+    ],
+    supplement: [
+      `Mô tả nhóm cho ${report.groups.length} nhóm có trong dãy`,
+      `Ghi chú ý nghĩa cặp: ${usedPairNotes.length ? usedPairNotes.join(", ") : "không có"}`,
+      ...(phone
+        ? [
+            `Quy tắc số điện thoại: ${phone.warnings.length} dấu hiệu cần xem lại, ${phone.strengths.length} dấu hiệu quý cách`,
+          ]
+        : []),
+    ],
+  };
+}
+
+const groupName = (report: SequenceReportData, short?: string) =>
+  report.pairs.find((pair) => pair.field?.short === short)?.field?.name ??
+  short ??
+  "";
 
 function hit(texts: string[]) {
   for (const text of texts)

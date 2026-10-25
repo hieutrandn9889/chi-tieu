@@ -917,6 +917,70 @@
 .report-keywords {
   color: var(--green);
 }
+.report-analysis {
+  margin-top: 16px;
+  padding: 20px 24px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  font-size: 12px;
+  line-height: 1.6;
+}
+.report-analysis h3 {
+  font-size: 20px;
+  line-height: 1.4;
+  margin: 8px 0 6px;
+}
+.report-analysis {
+  min-width: 0;
+}
+/* minmax(0, …) and min-width: 0 let the pair table scroll inside its box
+   instead of widening the page on phones. */
+.analysis-steps {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 14px;
+  margin-top: 14px;
+}
+.analysis-steps > li {
+  min-width: 0;
+  padding-left: 14px;
+  border-left: 2px solid var(--line);
+}
+.analysis-steps h4 {
+  margin-bottom: 4px;
+  color: var(--green);
+  font-size: 12px;
+  font-weight: 600;
+}
+.analysis-steps details {
+  margin-top: 8px;
+}
+.analysis-steps summary {
+  color: var(--green);
+  cursor: pointer;
+}
+.analysis-table-wrap {
+  max-width: 100%;
+  margin-top: 8px;
+  overflow-x: auto;
+}
+.analysis-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11px;
+  white-space: nowrap;
+}
+.analysis-table th,
+.analysis-table td {
+  padding: 6px 10px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+}
+.analysis-table th {
+  color: var(--muted-ink);
+  font-weight: 600;
+}
 .report-plan,
 .report-verify {
   margin-top: 24px;
