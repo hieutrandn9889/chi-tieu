@@ -43,6 +43,22 @@ export const EXPORT_TONE_LABELS: Record<ExportTone, string> = {
   special: "Chứa 0/5",
 };
 
+function luminance(hex: string) {
+  const channel = (offset: number) => {
+    const value = parseInt(hex.slice(offset, offset + 2), 16) / 255;
+    return value <= 0.03928 ? value / 12.92 : ((value + 0.055) / 1.055) ** 2.4;
+  };
+  return 0.2126 * channel(1) + 0.7152 * channel(3) + 0.0722 * channel(5);
+}
+
+// A label inside a colored fill takes white or ink, whichever contrasts more.
+export function inkOn(fill: string) {
+  const l = luminance(fill);
+  return 1.05 / (l + 0.05) >= (l + 0.05) / (luminance("#0b0b0b") + 0.05)
+    ? "#ffffff"
+    : "#0b0b0b";
+}
+
 const digitsOf = (report: SequenceReportData) =>
   report.pairs[0].pair +
   report.pairs

@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { EXPORT_COLORS, EXPORT_TONE_LABELS } from "@/lib/report-export";
+import { EXPORT_COLORS, EXPORT_TONE_LABELS, inkOn } from "@/lib/report-export";
 import type { ExportData, ExportTone } from "@/lib/report-export";
 
 // Print-only A4 report. It renders from ExportData, which carries no digits of
@@ -9,22 +9,6 @@ import type { ExportData, ExportTone } from "@/lib/report-export";
 const INK = "#0b0b0b";
 const INK_SECONDARY = "#52514e";
 const AXIS = "#c3c2b7";
-
-function luminance(hex: string) {
-  const channel = (offset: number) => {
-    const value = parseInt(hex.slice(offset, offset + 2), 16) / 255;
-    return value <= 0.03928 ? value / 12.92 : ((value + 0.055) / 1.055) ** 2.4;
-  };
-  return 0.2126 * channel(1) + 0.7152 * channel(3) + 0.0722 * channel(5);
-}
-
-// A label inside a colored fill takes white or ink, whichever contrasts more.
-function labelColor(fill: string) {
-  const l = luminance(fill);
-  return 1.05 / (l + 0.05) >= (l + 0.05) / (luminance(INK) + 0.05)
-    ? "#ffffff"
-    : INK;
-}
 
 const fillFor = (tone: ExportTone) =>
   tone === "special" ? "url(#pr-hatch)" : EXPORT_COLORS[tone];
@@ -153,7 +137,7 @@ function PositionStrip({ cells }: { cells: ExportData["cells"] }) {
               fill={
                 cell.tone === "special"
                   ? "#ffffff"
-                  : labelColor(EXPORT_COLORS[cell.tone])
+                  : inkOn(EXPORT_COLORS[cell.tone])
               }
             >
               {cell.short}
@@ -294,9 +278,10 @@ export function PrintableReport({ data }: { data: ExportData }) {
           <PositionStrip cells={data.cells} />
         </figure>
         <p className="pr-muted">
-          Màu theo chú giải ở các ô số liệu phía trên: cát tinh, hung tinh, trung
-          tính hay chứa 0/5; chữ trong ô là nhóm. Phân nhóm cát/hung theo ghi chép bổ sung, Phục Vị theo slide
-          8. Số liệu đầy đủ ở bảng mục kế tiếp.
+          Màu theo chú giải ở các ô số liệu phía trên: cát tinh, hung tinh,
+          trung tính hay chứa 0/5; chữ trong ô là nhóm. Phân nhóm cát/hung theo
+          ghi chép bổ sung, Phục Vị theo slide 8. Số liệu đầy đủ ở bảng mục kế
+          tiếp.
         </p>
       </Section>
 
