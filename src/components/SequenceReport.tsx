@@ -5,6 +5,7 @@ import {
   Layers3,
   Lightbulb,
   ListChecks,
+  MessageCircleQuestion,
   NotebookPen,
   ShieldCheck,
   Smartphone,
@@ -18,6 +19,12 @@ import {
   groupNotes,
   supplementSource,
 } from "@/lib/nls-supplement";
+import {
+  generalQuestions,
+  ngQuyZeroQuestions,
+  nqPairQuestions,
+  zeroGroupSlides,
+} from "@/lib/nls-slide-notes";
 
 export function SequenceReport({
   report,
@@ -37,6 +44,24 @@ export function SequenceReport({
           report.pairs,
         )
       : null;
+  const zeroGroups = [
+    ...new Set(
+      report.specialNotes
+        .filter((note) => note.digit === "0" && note.group)
+        .map((note) => note.group!),
+    ),
+  ].filter((group) => zeroGroupSlides[group]);
+  const groupName = (short: string) =>
+    report.pairs.find((pair) => pair.field?.short === short)?.field?.name ??
+    short;
+  // Slide 38 questions apply to a group followed by Ngũ Quỷ (A + NQ).
+  const nqQuestions = report.orderedCombinations
+    .filter((item) => item.second.short === "NQ")
+    .flatMap((item) =>
+      nqPairQuestions
+        .filter((entry) => entry.first === item.first.short)
+        .map((entry) => ({ ...entry, combination: item })),
+    );
   return (
     <article className="sequence-report" aria-label="Bản luận giải dãy số">
       <header className="report-heading">
@@ -123,6 +148,7 @@ export function SequenceReport({
         {report.groups.length > 0 && (
           <a href="#report-themes-title">Luận từng nhóm</a>
         )}
+        <a href="#report-questions-title">Câu hỏi đối chiếu</a>
       </nav>
 
       <dl className="report-stats">
@@ -312,7 +338,40 @@ export function SequenceReport({
                 </li>
               ))}
             </ul>
-          ) : (
+          ) : null}
+          {zeroGroups.length > 0 && (
+            <div className="zero-group-details">
+              {zeroGroups.map((group) => {
+                const slide = zeroGroupSlides[group];
+                return (
+                  <div key={group}>
+                    <h4>
+                      {groupName(group)} + 0 · Slide {slide.source}
+                    </h4>
+                    <ul className="summary-list">
+                      {slide.items.map((item) => (
+                        <li key={item.heading}>
+                          <strong>{item.heading}</strong>
+                          {item.detail ? `: ${item.detail}` : ""}
+                        </li>
+                      ))}
+                    </ul>
+                    <p className="quiet-note">
+                      Slide còn {slide.hidden} ý về sức khỏe, hôn nhân đổ vỡ
+                      hoặc tâm linh không hiển thị.{" "}
+                      <Link
+                        className="text-link"
+                        to={`/thu-vien?slide=${slide.source}`}
+                      >
+                        Xem slide {slide.source} <ArrowUpRight size={13} />
+                      </Link>
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+          {report.specialNotes.length === 0 && (
             <p className="quiet-note">
               Các số 0/5 trong dãy không đứng sau hoặc chen giữa một cặp đã
               phân loại, nên slide 26–28 chưa có câu giải thích riêng cho vị trí
@@ -519,6 +578,83 @@ export function SequenceReport({
           </div>
         </section>
       )}
+
+      <section
+        className="report-section"
+        aria-labelledby="report-questions-title"
+      >
+        <span className="section-label">
+          <MessageCircleQuestion size={15} /> 03 · CÂU HỎI KHAI THÁC VÀ ĐỐI
+          CHIẾU
+        </span>
+        <h3 id="report-questions-title">Câu hỏi để trò chuyện và tự đối chiếu</h3>
+        <p>
+          Tài liệu dùng câu hỏi để hiểu bối cảnh trước khi nhận định (slide 5,
+          36–38). Câu hỏi không phải lời khẳng định: trả lời “không” cũng là một
+          kết quả đối chiếu.
+        </p>
+        {nqQuestions.length > 0 && (
+          <div className="question-block">
+            <h4>Câu hỏi riêng theo dãy · Slide 38</h4>
+            {nqQuestions.map((entry) => (
+              <div key={`${entry.first}:${entry.topic}`}>
+                <span className="pair-position">
+                  {entry.combination.first.name} + {entry.combination.second.name}{" "}
+                  ·{" "}
+                  {entry.combination.occurrences
+                    .map(
+                      (item) =>
+                        `vị trí ${item.index + 1}–${item.index + 3} (${item.window})`,
+                    )
+                    .join(", ")}{" "}
+                  · {entry.topic}
+                </span>
+                <ul className="summary-list">
+                  {entry.questions.map((question) => (
+                    <li key={question}>{question}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        )}
+        {zeroGroups.includes("NQ") && (
+          <div className="question-block">
+            <h4>{ngQuyZeroQuestions.topic} · Slide 37</h4>
+            <ul className="summary-list">
+              {ngQuyZeroQuestions.questions.map((question) => (
+                <li key={question}>{question}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+        <details className="question-block">
+          <summary>Bộ câu hỏi chung · Slide {generalQuestions.source}</summary>
+          {generalQuestions.groups.map((group) => (
+            <div key={group.topic}>
+              <h4>{group.topic}</h4>
+              <ul className="summary-list">
+                {group.questions.map((question) => (
+                  <li key={question}>{question}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+          <p className="quiet-note">
+            Bộ câu hỏi chung còn {generalQuestions.hidden} câu về sức khỏe, tâm
+            linh và người thứ ba không hiển thị.
+          </p>
+        </details>
+        <p className="question-closing">
+          <strong>Câu hỏi chốt (slide 37):</strong> {generalQuestions.closing}
+        </p>
+        {!nqQuestions.length && (
+          <p className="quiet-note">
+            Câu hỏi riêng ở slide 38 dành cho nhóm đứng ngay trước Ngũ Quỷ; dãy
+            này không có cặp như vậy.
+          </p>
+        )}
+      </section>
 
       <footer className="report-privacy">
         <ShieldCheck size={18} />

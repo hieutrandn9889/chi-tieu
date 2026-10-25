@@ -36,7 +36,7 @@ Ngày: 24/10/2026. Người dùng đã chọn chuyển website quản lý chi ti
 
 Chi tiết bằng chứng trong [KIEM-TRA.md](KIEM-TRA.md). Preview dùng riêng `http://127.0.0.1:5176/`, bật `strictPort`; backend hiện có dùng `8791`. Cổng `5173` được giữ cho Auto-pilot và đã kiểm tra vẫn trả đúng website.
 
-Bản chuyển đổi có 17 slide trọng tâm đã đối chiếu thủ công (thêm slide 4 Cấu trúc CCCD, slide 26–27 về số 0 và số 5), 116 slide còn OCR chưa hiệu đính toàn văn, một slide chữ gốc và 9 slide trống. Hoàn tất phiên bản web đầu tiên không đồng nghĩa đã hiệu đính toàn bộ tài liệu.
+Bản chuyển đổi có 26 slide trọng tâm đã đối chiếu thủ công (thêm slide 4 Cấu trúc CCCD, slide 26–27 về số 0 và số 5, slide 29–35 về từng nhóm đi cùng số 0, slide 37–38 về câu hỏi khai thác và đối chiếu), 107 slide còn OCR chưa hiệu đính toàn văn, một slide chữ gốc và 9 slide trống. Hoàn tất phiên bản web đầu tiên không đồng nghĩa đã hiệu đính toàn bộ tài liệu.
 
 ## Nghiên cứu tiếp sau phiên bản đầu
 

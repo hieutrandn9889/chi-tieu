@@ -306,6 +306,9 @@ const zeroTopics: Record<string, string> = {
 export interface SpecialNote {
   start: number;
   window: string;
+  digit: "0" | "5";
+  // Short name of the group the 0/5 sits with; absent for a trailing 0.
+  group?: string;
   text: string;
   source: number;
 }
@@ -362,13 +365,20 @@ export function explainSpecialDigits(digits: string): SpecialNote[] {
                   text: `${field.name} (hung tinh) đi cùng 5: slide 27 ghi “5 hiển lộ xấu, hung cực mạnh mẽ”.`,
                   source: 27,
                 };
-      notes.push({ start: candidate.start, window, ...note });
+      notes.push({
+        start: candidate.start,
+        window,
+        digit: digit as "0" | "5",
+        group: field.short,
+        ...note,
+      });
     }
   });
   if (digits.endsWith("0"))
     notes.push({
       start: digits.length - 1,
       window: "0",
+      digit: "0",
       text: "Số 0 ở cuối dãy: slide 26 ghi “trong cuối dãy số thì công dã tràng, mọi thứ = 0”.",
       source: 26,
     });
