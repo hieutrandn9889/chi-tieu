@@ -61,15 +61,19 @@ export function SequenceReport({
     () => buildExportData(report, numberKind, generatedAt),
     [report, numberKind, generatedAt],
   );
-  function exportPdf() {
-    const previous = document.title;
-    document.title = exportData.fileName;
-    const restore = () => {
-      document.title = previous;
-      window.removeEventListener("afterprint", restore);
-    };
-    window.addEventListener("afterprint", restore);
-    window.print();
+  const [pdfState, setPdfState] = useState<"idle" | "working" | "error">(
+    "idle",
+  );
+  // Builds the PDF in the browser and downloads it; the library loads on click.
+  async function exportPdf() {
+    setPdfState("working");
+    try {
+      const { downloadReportPdf } = await import("@/lib/report-pdf");
+      await downloadReportPdf(buildExportData(report, numberKind, new Date()));
+      setPdfState("idle");
+    } catch {
+      setPdfState("error");
+    }
   }
   const summary = buildReportSummary(report);
   const phoneCheck =
@@ -172,12 +176,20 @@ export function SequenceReport({
       {heading}
 
       <div className="report-export">
-        <button className="nls-button" type="button" onClick={exportPdf}>
-          <FileDown size={16} /> Xuất báo cáo PDF
+        <button
+          className="nls-button"
+          type="button"
+          onClick={exportPdf}
+          disabled={pdfState === "working"}
+          aria-busy={pdfState === "working"}
+        >
+          <FileDown size={16} />{" "}
+          {pdfState === "working" ? "Đang tạo PDF…" : "Xuất báo cáo PDF"}
         </button>
-        <p className="quiet-note">
-          Mở hộp thoại In, chọn “Lưu thành PDF”. Bản xuất có biểu đồ, che dãy số
-          và chỉ hiện 2 số cuối.
+        <p className="quiet-note" role="status">
+          {pdfState === "error"
+            ? "Chưa tạo được file PDF. Hãy thử lại; nếu vẫn lỗi, dùng Ctrl + P để in hoặc lưu PDF."
+            : "Tải về file PDF có biểu đồ, tạo ngay trên trình duyệt. Dãy số được che, chỉ hiện 2 số cuối."}
         </p>
       </div>
       {mounted &&
