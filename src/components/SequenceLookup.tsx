@@ -19,7 +19,7 @@ import {
   normalizeNumber,
   numberKinds,
 } from "@/lib/nls";
-import type { NumberKind } from "@/lib/nls";
+import type { NumberKind, SequenceReportData } from "@/lib/nls";
 import { SequenceReport } from "@/components/SequenceReport";
 import {
   handOffSequence,
@@ -84,48 +84,7 @@ export function SequenceLookup({ compact = false }: { compact?: boolean }) {
     inputRef.current?.focus();
   }
   const quickSummary = compact && result ? buildReportSummary(result) : null;
-  const pairResults = result && (
-    <>
-      <div className="results-heading">
-        <h3>{result.pairs.length} cặp số liên tiếp</h3>
-        <span>Tách chồng lấn, giữ nguyên thứ tự</span>
-      </div>
-      <div className="pair-results">
-        {result.pairs.map((item) =>
-          item.field ? (
-            <Link
-              key={item.index}
-              className={`pair-result tone-${item.field.theme}`}
-              to={`/tu-truong/${item.field.id}`}
-            >
-              <span className="pair-position">
-                VỊ TRÍ {item.index + 1}–{item.index + 2}
-              </span>
-              <strong>{item.pair}</strong>
-              <span>
-                {item.field.name} <ArrowRight size={13} />
-              </span>
-            </Link>
-          ) : (
-            <div key={item.index} className="pair-result special-pair">
-              <span className="pair-position">
-                VỊ TRÍ {item.index + 1}–{item.index + 2}
-              </span>
-              <strong>{item.pair}</strong>
-              <span>Có số 0 hoặc 5</span>
-              <Link to={`/thu-vien?slide=${item.specialSource || 28}`}>
-                Đọc quy tắc riêng <ArrowRight size={12} />
-              </Link>
-            </div>
-          ),
-        )}
-      </div>
-      <p className="result-context">
-        <BookOpen size={16} /> Kết quả phân loại theo bảng trong tài liệu. Cặp
-        chứa 0/5 cần đọc riêng; không tự bỏ hoặc thay chữ số.
-      </p>
-    </>
-  );
+  const pairResults = result && <PairResults result={result} />;
   return (
     <div className={`lookup-box ${compact ? "compact" : ""}`}>
       <div className="lookup-intro">
@@ -319,5 +278,51 @@ export function SequenceLookup({ compact = false }: { compact?: boolean }) {
         </div>
       )}
     </div>
+  );
+}
+
+// The "Từng cặp và vị trí" list inside a report; shared with the reading intake.
+export function PairResults({ result }: { result: SequenceReportData }) {
+  return (
+    <>
+      <div className="results-heading">
+        <h3>{result.pairs.length} cặp số liên tiếp</h3>
+        <span>Tách chồng lấn, giữ nguyên thứ tự</span>
+      </div>
+      <div className="pair-results">
+        {result.pairs.map((item) =>
+          item.field ? (
+            <Link
+              key={item.index}
+              className={`pair-result tone-${item.field.theme}`}
+              to={`/tu-truong/${item.field.id}`}
+            >
+              <span className="pair-position">
+                VỊ TRÍ {item.index + 1}–{item.index + 2}
+              </span>
+              <strong>{item.pair}</strong>
+              <span>
+                {item.field.name} <ArrowRight size={13} />
+              </span>
+            </Link>
+          ) : (
+            <div key={item.index} className="pair-result special-pair">
+              <span className="pair-position">
+                VỊ TRÍ {item.index + 1}–{item.index + 2}
+              </span>
+              <strong>{item.pair}</strong>
+              <span>Có số 0 hoặc 5</span>
+              <Link to={`/thu-vien?slide=${item.specialSource || 28}`}>
+                Đọc quy tắc riêng <ArrowRight size={12} />
+              </Link>
+            </div>
+          ),
+        )}
+      </div>
+      <p className="result-context">
+        <BookOpen size={16} /> Kết quả phân loại theo bảng trong tài liệu. Cặp
+        chứa 0/5 cần đọc riêng; không tự bỏ hoặc thay chữ số.
+      </p>
+    </>
   );
 }

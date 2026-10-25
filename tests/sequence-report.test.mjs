@@ -24,6 +24,15 @@ buildSync({
       export function renderPrintable(data) {
         return renderToStaticMarkup(createElement(PrintableReport, { data }));
       }
+      import { ReadingIntake, IntakeResults } from './src/components/ReadingIntake.tsx';
+      export function renderIntakeForm() {
+        return renderToStaticMarkup(createElement(StaticRouter, { location: '/tra-cuu' },
+          createElement(ReadingIntake)));
+      }
+      export function renderIntakeResults(props) {
+        return renderToStaticMarkup(createElement(StaticRouter, { location: '/tra-cuu' },
+          createElement(IntakeResults, { onSelect() {}, ...props })));
+      }
     `,
     resolveDir: root,
     loader: "tsx",
@@ -35,7 +44,8 @@ buildSync({
   platform: "node",
   format: "esm",
 });
-const { renderReport, renderPrintable } = await import(pathToFileURL(output).href);
+const { renderReport, renderPrintable, renderIntakeForm, renderIntakeResults } =
+  await import(pathToFileURL(output).href);
 
 // The owner chose to remove the two-field combination readings from the report.
 test("the rendered report shows no two-field combination section or link", () => {
@@ -244,4 +254,61 @@ test("web, print and summary list the groups split by 0/5", async () => {
   assert.ok(print.includes("Trong cặp chứa 0/5, vị trí 7–9:"));
   assert.ok(print.includes("+1 nhóm trong cặp 0/5"));
   assert.ok(print.includes("+1 trong cặp 0/5"));
+});
+
+test("the intake form asks for the slide 3 and 36 numbers, not name, birth or plate", () => {
+  const html = renderIntakeForm().replace(/<!-- -->/g, "");
+  for (const label of [
+    "CCCD",
+    "Số điện thoại đang dùng",
+    "Số điện thoại đã dùng trước đây",
+    "Số nhà",
+    "Mong muốn luận",
+    "Công việc, tình trạng hiện tại",
+    "Thời gian đã dùng",
+  ])
+    assert.ok(html.includes(label), label);
+  // Name, birth date/time and plates are explained, never asked.
+  assert.doesNotMatch(html, /<label[^>]*>[^<]*(Họ tên|Ngày sinh|Giờ sinh|Biển số)/);
+  assert.ok(html.includes("Phiếu không hỏi các thông tin này"));
+  // Every number field starts concealed.
+  assert.equal((html.match(/type="password"/g) || []).length, 4);
+});
+
+test("the intake results show masked numbers, the tally and the first report", async () => {
+  const { readIntake, combineIntake, buildNeedBlocks } = await import(
+    "../src/lib/intake.ts"
+  );
+  const digits = ["001431681414", "0961742038"];
+  const { entries } = readIntake([
+    { id: "cccd", role: "cccd", value: digits[0] },
+    {
+      id: "phone-current",
+      role: "phone-current",
+      value: digits[1],
+      usage: "3–5 năm",
+    },
+  ]);
+  const summary = combineIntake(entries);
+  const html = renderIntakeResults({
+    entries,
+    summary,
+    blocks: buildNeedBlocks(summary, ["work"]),
+    occupation: "Làm tự do",
+    active: "cccd",
+  }).replace(/<!-- -->/g, "");
+  const tally = html.slice(0, html.indexOf('class="intake-reports"'));
+  assert.ok(tally.includes("••••••••••14"));
+  assert.ok(tally.includes("••••••••38"));
+  assert.ok(tally.includes("Số cặp của từng nhóm trong mỗi dãy"));
+  assert.ok(tally.includes("phép đếm của công cụ"));
+  assert.ok(tally.includes("Tình trạng bạn chọn: <strong>Làm tự do</strong>"));
+  assert.ok(tally.includes("Công việc – Sự nghiệp"));
+  for (const value of digits)
+    for (let i = 0; i + 4 <= value.length; i++)
+      assert.ok(!tally.includes(value.slice(i, i + 4)), value.slice(i, i + 4));
+  // One report at a time, for the selected number.
+  assert.equal((html.match(/role="tabpanel"/g) || []).length, 1);
+  assert.ok(html.includes('aria-selected="true"'));
+  assert.ok(html.includes("Bản luận giải dãy số"));
 });
