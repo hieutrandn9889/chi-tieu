@@ -16,9 +16,9 @@ buildSync({
       import { renderToStaticMarkup } from 'react-dom/server';
       import { StaticRouter } from 'react-router-dom/server.js';
       import { SequenceReport } from './src/components/SequenceReport.tsx';
-      export function renderReport(report) {
+      export function renderReport(report, numberKind) {
         return renderToStaticMarkup(createElement(StaticRouter, { location: '/tra-cuu' },
-          createElement(SequenceReport, { report, children: null })));
+          createElement(SequenceReport, { report, numberKind, children: null })));
       }
     `,
     resolveDir: root,
@@ -53,4 +53,24 @@ test("the rendered report opens with a quick summary before the detailed section
   const special = renderReport(buildSequenceReport("005050"));
   assert.match(special, /chưa có chủ đề nào được phân loại/);
   assert.doesNotMatch(special, /Mạch đọc theo thứ tự/);
+});
+
+test("phone checks render only for the phone kind and are labelled as supplementary", () => {
+  const report = buildSequenceReport("0961742138");
+  const phone = renderReport(report, "phone");
+  assert.match(phone, /id="report-phone-title"/);
+  assert.match(phone, /Hai hung tinh đứng cạnh nhau/);
+  assert.match(phone, /Ghi chép bổ sung|GHI CHÉP BỔ SUNG/);
+  assert.doesNotMatch(renderReport(report, "other"), /report-phone-title/);
+  assert.doesNotMatch(renderReport(report), /report-phone-title/);
+});
+
+test("field cards keep supplementary notes apart and 0/5 notes cite their slide", () => {
+  const html = renderReport(buildSequenceReport("14010"));
+  assert.match(html, /class="supplement-note"/);
+  assert.ok(html.includes("Ghi chép bổ sung (ngoài slide)"));
+  assert.ok(html.includes("Cặp 14/41"));
+  assert.equal((html.match(/Sinh Khí đi cùng 0/g) || []).length, 2);
+  assert.match(html, /cuối dãy/);
+  assert.ok(html.includes("/thu-vien?slide=26"));
 });

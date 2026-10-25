@@ -5,20 +5,38 @@ import {
   Layers3,
   Lightbulb,
   ListChecks,
+  NotebookPen,
   ShieldCheck,
+  Smartphone,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { buildReportSummary } from "@/lib/nls";
-import type { SequenceReportData } from "@/lib/nls";
+import type { NumberKind, SequenceReportData } from "@/lib/nls";
+import {
+  checkPhonePattern,
+  findPairNote,
+  groupNotes,
+  supplementSource,
+} from "@/lib/nls-supplement";
 
 export function SequenceReport({
   report,
+  numberKind = "other",
   children,
 }: {
   report: SequenceReportData;
+  numberKind?: NumberKind;
   children: ReactNode;
 }) {
   const summary = buildReportSummary(report);
+  const phoneCheck =
+    numberKind === "phone"
+      ? checkPhonePattern(
+          report.pairs[0].pair +
+            report.pairs.map((pair) => pair.pair[1]).slice(1).join(""),
+          report.pairs,
+        )
+      : null;
   return (
     <article className="sequence-report" aria-label="Bản luận giải dãy số">
       <header className="report-heading">
@@ -275,6 +293,37 @@ export function SequenceReport({
             .
           </p>
           <p>Không bỏ hoặc thay chữ số để tạo cặp mới.</p>
+          {report.specialNotes.length > 0 ? (
+            <ul className="special-notes">
+              {report.specialNotes.map((note) => (
+                <li key={`${note.start}:${note.window}:${note.source}`}>
+                  <span className="pair-position">
+                    {note.window === "0"
+                      ? `VỊ TRÍ ${note.start + 1}`
+                      : `VỊ TRÍ ${note.start + 1}–${note.start + 3} (${note.window})`}
+                  </span>
+                  {note.text}{" "}
+                  <Link
+                    className="text-link"
+                    to={`/thu-vien?slide=${note.source}`}
+                  >
+                    Slide {note.source} <ArrowUpRight size={13} />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className="quiet-note">
+              Các số 0/5 trong dãy không đứng sau hoặc chen giữa một cặp đã
+              phân loại, nên slide 26–28 chưa có câu giải thích riêng cho vị trí
+              này.
+            </p>
+          )}
+          <p className="quiet-note">
+            Câu trích là quan điểm của tài liệu, không phải dự báo về người mang
+            dãy số. Phân nhóm cát/hung để áp câu về số 5 lấy từ ghi chép bổ
+            sung; Phục Vị theo slide 8.
+          </p>
           <div className="report-source-links">
             {[
               ...new Set(
@@ -297,6 +346,54 @@ export function SequenceReport({
                 </Link>
               ))}
           </div>
+        </section>
+      )}
+
+      {phoneCheck && (
+        <section
+          className="report-section supplement-section"
+          aria-labelledby="report-phone-title"
+        >
+          <span className="section-label">
+            <Smartphone size={15} /> {supplementSource.label.toUpperCase()}
+          </span>
+          <h3 id="report-phone-title">Nhận biết số điện thoại theo ghi chép</h3>
+          <p>
+            Các quy tắc dưới đây lấy từ ghi chép bổ sung, không thuộc slide.
+            Slide 46 nhắc rằng tốt hay xấu còn tùy vị trí các cặp và kết cấu
+            chuyển hóa, nên đây chỉ là điểm để tự đối chiếu.
+          </p>
+          <div className="phone-check-grid">
+            <div className="summary-block">
+              <h4>Dấu hiệu cần xem lại</h4>
+              {phoneCheck.warnings.length > 0 ? (
+                <ul className="summary-list">
+                  {phoneCheck.warnings.map((warning) => (
+                    <li key={warning}>{warning}</li>
+                  ))}
+                </ul>
+              ) : (
+                <p>Không thấy hai hung tinh đứng cạnh nhau hay số 0 ngoài đầu số.</p>
+              )}
+            </div>
+            <div className="summary-block">
+              <h4>Dấu hiệu quý cách</h4>
+              {phoneCheck.strengths.length > 0 ? (
+                <ul className="summary-list">
+                  {phoneCheck.strengths.map((strength) => (
+                    <li key={strength}>{strength}</li>
+                  ))}
+                </ul>
+              ) : (
+                <p>Không thấy hai cát tinh đứng cạnh nhau hay đoạn chuyển từ hung sang cát.</p>
+              )}
+            </div>
+          </div>
+          <ul className="summary-list quiet-note">
+            {phoneCheck.notAutomated.map((rule) => (
+              <li key={rule}>{rule}</li>
+            ))}
+          </ul>
         </section>
       )}
 
@@ -371,6 +468,42 @@ export function SequenceReport({
                     <p>{reading.question}</p>
                   </div>
                 </div>
+                <details className="supplement-note">
+                  <summary>
+                    <NotebookPen size={15} /> {supplementSource.label} (ngoài
+                    slide)
+                  </summary>
+                  <dl>
+                    <div>
+                      <dt>Tính cách</dt>
+                      <dd>{groupNotes[field.short].personality}</dd>
+                    </div>
+                    <div>
+                      <dt>Công việc</dt>
+                      <dd>{groupNotes[field.short].work}</dd>
+                    </div>
+                    <div>
+                      <dt>Học tập</dt>
+                      <dd>{groupNotes[field.short].study}</dd>
+                    </div>
+                    {[
+                      ...new Map(
+                        occurrences.map((pair) => [
+                          findPairNote(pair.pair),
+                          pair.pair,
+                        ]),
+                      ),
+                    ].map(([note, pair]) =>
+                      note ? (
+                        <div key={pair}>
+                          <dt>Cặp {note.pairs.join("/")}</dt>
+                          <dd>{note.note}</dd>
+                        </div>
+                      ) : null,
+                    )}
+                  </dl>
+                  <p>{supplementSource.note}</p>
+                </details>
                 <p className="report-field-note">{field.note}</p>
                 <Link
                   className="text-link"

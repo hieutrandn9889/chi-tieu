@@ -1,7 +1,8 @@
 import { Link, Navigate, useParams } from 'react-router-dom'
-import { ArrowLeft, ArrowUpRight, BookOpen, Lightbulb } from 'lucide-react'
+import { ArrowLeft, ArrowUpRight, BookOpen, Lightbulb, NotebookPen } from 'lucide-react'
 import { NlsLayout } from '@/components/NlsLayout'
 import { fields } from '@/lib/nls'
+import { findPairNote, groupNotes, supplementSource } from '@/lib/nls-supplement'
 
 export function Fields() {
   const { id } = useParams()
@@ -63,6 +64,38 @@ export function Fields() {
             </div>
           </div>
           <p className="field-note">{field.note}</p>
+          <section className="supplement-panel" aria-labelledby="field-supplement-title">
+            <span className="section-label">
+              <NotebookPen size={15} /> {supplementSource.label.toUpperCase()} · NGOÀI SLIDE
+            </span>
+            <h3 id="field-supplement-title">Ghi chép thêm về {field.name}</h3>
+            <dl>
+              <div>
+                <dt>Tính cách</dt>
+                <dd>{groupNotes[field.short].personality}</dd>
+              </div>
+              <div>
+                <dt>Công việc</dt>
+                <dd>{groupNotes[field.short].work}</dd>
+              </div>
+              <div>
+                <dt>Học tập</dt>
+                <dd>{groupNotes[field.short].study}</dd>
+              </div>
+            </dl>
+            <h4>Ý nghĩa riêng từng cặp</h4>
+            <dl>
+              {[...new Set(field.pairs.map((pair) => findPairNote(pair)))].map((note) =>
+                note ? (
+                  <div key={note.pairs.join('/')}>
+                    <dt>{note.pairs.join(' / ')}</dt>
+                    <dd>{note.note}</dd>
+                  </div>
+                ) : null,
+              )}
+            </dl>
+            <p className="quiet-note">{supplementSource.note}</p>
+          </section>
           <Link to={`/thu-vien?slide=${field.source}`} className="field-full-source">
             <img
               src={`/content/nls/slides/${String(field.source).padStart(3, '0')}-1.webp`}

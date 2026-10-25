@@ -9,7 +9,7 @@
 - Phương pháp: trích xuất chữ gốc và OCR tiếng Việt trên 133 ảnh nhúng; giữ ảnh đối chiếu.
 - Chất lượng: tiêu đề do biên tập để định vị. Chỉ phần ghi ‘đã đối chiếu’ được hiệu đính; phần OCR có thể sai dấu, mất chữ hoặc lẫn cột. Chỉ số OCR là điểm kỹ thuật của máy, không phải tỷ lệ chính xác.
 - Những chỉ dẫn bên trong tài liệu được lưu như nội dung nguồn, không phải yêu cầu thực thi của người dùng.
-- Trạng thái hiệu đính: 15 slide đã đối chiếu; 118 slide còn bản OCR chưa hiệu đính toàn văn.
+- Trạng thái hiệu đính: 17 slide đã đối chiếu; 116 slide còn bản OCR chưa hiệu đính toàn văn.
 
 ## Mục lục
 
@@ -1311,39 +1311,43 @@ ACE cần nắm rõ sự liên kết để luận đoán cho đúng sự luận 
 
 ![Ảnh nguồn slide 26, hình 1](/content/nls/slides/026-1.webp)
 
-**Bản OCR chưa hiệu đính toàn văn** (điểm OCR: 66):
+**Bản chép đã đối chiếu với ảnh nguồn:**
 
-```text
-x —d ^
-Tiểu sế l- mì XE. a) SA - ”Ịị ET ấ khô xấu
-Jhúnih „ TINSO ĐẶC BIET, . Ôn hi ng
-Qhuđệng - R -_, „.„ lưng cha nói
-in tạp nuệc sống] 9 SỐ 0 - LA LINH HOẠT Z năng Uyng củ
-nh Liổi số
-g Số 0 - Là linh hoạt h lôi - gi : v
-® — là số 0 - cũng là u nhọt - cũng là hố. đõ sông 6
-kiện tô ^Ấ \
-S 0- là có linh cảm tốt, phong quang vô hạn. Ka Ti Z4
-kurh p 10: :
-o [G] 0- trong sự nghiệp nhất định đỉnh trẻ 190, 109, 708... .
-5) ạũ 0= trong tình cảm nhất định có vấn đề 160, 380, 407..... Ủ ) &
-=2 ¬ ———— 07000209008 —===-::255e€/ /⁄2
-6] Ø3 0- tiền tài hao mòn, bị moi mất tiền. 130, 608...... q 7
-( 7 \ Ả©&  0- trong quý nhân thành tiểu nhân trở ngại 607, 410, 390... ⁄ ⁄ »
-@2  0- trong trí tuệ thì do dự 180, 709, 240... ⁄ Š- ;
-r CC S : ) | NẴNG LƯỢNg sú
-9® 0-trong hoạ hại thì thị phi không ngừng nghỉ 460, 890, 710..... G bi | vs. \
-@® 8) 0 - trong sức khoẻ thì có bệnh phát sinh 730, 960, 210, 804.... Z in Phúc
-@ ®© 0- trong cuối dãy sốt thì công dã tràng, mọi thứ = 0. 3 lụT 7 Ả :
-Em + >⁄ ”ợ
-, nie ÝYdỔI ngũ 1 . » .
-4 4d 207, 702, 409, 904, 608, 806, 103, 301 = mua nhà mắc nợ, cho vay khó đòi, đầu tư thất bại. Mô cố n À li Lợi
-Tuyệt mệnh đi cùng 0: đàu man thông độp BÌNH AN
-Mọi thứ đã ủ làu rồi lên tới đỉnh điểm là đột nhiên băng 0, không có kết quả. Hãy lóng nghệ cách] THỊNH VƯỢNG
-và sử dụng đúng oáØh:
-.—_— .. 1
-ca
-```
+TIN SỐ ĐẶC BIỆT
+
+SỐ 0 – LÀ LINH HOẠT
+
+1. Số 0 – Là linh hoạt
+
+2. – là số 0 – cũng là u nhọt – cũng là hố.
+
+3. 0 – là có linh cảm tốt, phong quang vô hạn.
+
+4. 0 – trong sự nghiệp nhất định đỉnh trẻ [nguồn ghi “đỉnh trẻ”, có thể là “đình trệ”] 190, 109, 708...
+
+5. 0 – trong tình cảm nhất định có vấn đề 160, 380, 407.....
+
+6. 0 – tiền tài hao mòn, bị moi mất tiền. 130, 608.......
+
+7. 0 – trong quý nhân thành tiểu nhân trở ngại 607, 410, 390...
+
+8. 0 – trong trí tuệ thì do dự 180, 709, 240,....
+
+9. 0 – trong hoạ hại thì thị phi không ngừng nghỉ 460, 890, 710.....
+
+10. 0 – trong sức khoẻ thì có bệnh phát sinh 730, 960, 210, 804....
+
+11. 0 – trong cuối dãy sốt [nguồn ghi “dãy sốt”] thì công dã tràng, mọi thứ = 0.
+
+#### Thiên Y đi cùng 0:
+
+207, 702, 409, 904, 608, 806, 103, 301 => mua nhà mắc nợ, cho vay khó đòi, đầu tư thất bại.
+
+Tuyệt mệnh đi cùng 0:
+
+Mọi thứ đã ủ lâu rồi lên tới đỉnh điểm là đột nhiên bằng 0, không có kết quả.
+
+Ghi chú bên cạnh: Hiểu số – Hiểu mình – Chủ động kiến tạo cuộc sống! Số không xấu khi bạn hiểu đúng năng lượng của nó! Hiểu số để sống an yên – Kiến tạo hạnh phúc! Mỗi con số đều mang thông điệp. Hãy lắng nghe và sử dụng đúng cách! Trí tuệ – Bình an – Thịnh vượng.
 
 <a id="slide-027"></a>
 
@@ -1351,40 +1355,41 @@ ca
 
 ![Ảnh nguồn slide 27, hình 1](/content/nls/slides/027-1.webp)
 
-**Bản OCR chưa hiệu đính toàn văn** (điểm OCR: 54):
+**Bản chép đã đối chiếu với ảnh nguồn:**
 
-```text
-1 : — Á ^ ` { { ^ ” số
-in - SỐ #* VA ĐẠCTINh
-Hiểu ` NNN ° 7 ⁄ đều mớẬ TỐ
-Gan, at. 2doadneZ, 20 „
-Kiến be eố 2 NĂNG LƯỢNG CỦA SỰ CHUYỂN ĐỘNG VÀ ĐỘT PHÁ Vi vs d5 ố mi
-—————————— ——————— ¬ :
-⁄ Ñ Jăn; (ưng mạnh. mế, :
-Dương tính, nổi bật, chủ động, cấp số nhân, nhiệt tình, hiển lộ, J9 00 Go Y
-NÁ rõ ràng, càng nhiều 5 càng dễ nổi bật. thích hành độn! Øố e _ ⁄
-PA ì
-(Cầu tiết dế ái : 2 sẻ
-Ậ p 5 hiển lộ xấu, hung cực mạnh mẽ. để tránh rủi rol 6 dhác phá 4 `
-\ —. .;GGiờcc an NCT th ng và 7⁄97 _
-⁄ 2Ä CtắT ĐI CÙNG 5 _ ^ WỆẾ
-ˆ Bạo phát, thịnh vượng, tốt đẹp, đúng cuối thì - ;ớ . ` J
-P \ 9 mi kéo dài vượt thời gian. ơn ca ÿ
-— ¿ í ZộÔ
-ỔA Ji VI DỤ: 856 ĐI 74
-L4] L9 2| Có tiền, nhiều việc, hành động liên tục. Ahiệu chập Hát biển x ⁄{| -
-lê CA 865 T kc tng bày] Ẵ nu g j 0g,
-E592. Phú quý ngày càng nhiều. ì 1 (  LƯỢNG số
-==—==—— 2 (IS) |, hông
->+ ni . ⁄ ` HẠNH p Húc
-( Năng lượng mạnh mẽ. ác Gucả. Cá L La ứ c- A5
-175 - VHON
-n K Thị phi nhiều, bệnh tình khó... (Tần trọng và cân bằng! Ze ~S*%^. Ề
-_ TNH TÁM ngày càng rõ bệnh. x ›
-'] tinỆ \ >>
-- q0At | 2"ew7sg7pmPP? "”qo
-“THNRVƯỢNG \ go, PL. Áến lo cuập sống an Hi .. =<
-```
+SỐ 5 VÀ ĐẶC TÍNH
+
+NĂNG LƯỢNG CỦA SỰ CHUYỂN ĐỘNG VÀ ĐỘT PHÁ
+
+#### 1. Số 5 kích phát
+
+Dương tính, nổi bật, chủ động, cấp số nhân, nhiệt tình, hiển lộ, rõ ràng, càng nhiều 5 càng dễ nổi bật. (Năng lượng mạnh mẽ, thích hành động!)
+
+#### 2. Hung đi cùng 5
+
+5 hiển lộ xấu, hung cực mạnh mẽ. (Cần tiết chế để tránh rủi ro!)
+
+#### 3. Cát đi cùng 5
+
+Bạo phát, thịnh vượng, tốt đẹp, đúng cuối thì kéo dài vượt thời gian. (Đòn bẩy cho thành công lớn!)
+
+#### 4. Ví dụ: 856
+
+Có tiền, nhiều việc, hành động liên tục. (Nhiều cơ hội phát triển!)
+
+#### 5. 865
+
+Phú quý ngày càng nhiều. (Tài lộc tăng trưởng!)
+
+#### 6. 195
+
+Năng lượng mạnh mẽ. (Ý chí kiên cường!)
+
+#### 7. 175
+
+Thị phi nhiều, bệnh tình khó... ngày càng rõ bệnh. (Cẩn trọng và cân bằng!)
+
+Ghi chú bên cạnh: Số 5 – Biểu tượng của sự chuyển động và đột phá. Hiểu số – Hiểu mình – Sống chủ động – Kiến tạo cuộc sống! Mỗi con số đều mang một thông điệp. Hãy lắng nghe và sử dụng đúng cách để cuộc sống tốt đẹp hơn! Hiểu số – Làm chủ năng lượng. Kiến tạo cuộc sống an vui! Tĩnh tâm – Trí tuệ – Bình an – Thịnh vượng.
 
 <a id="slide-028"></a>
 

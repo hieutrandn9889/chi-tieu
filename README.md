@@ -14,6 +14,8 @@ Báo cáo tóm lược quan điểm tài liệu để tham khảo; tần suất 
 
 Ô tra cứu có bộ chọn loại số: CCCD (bắt buộc 12 số, chỉ giải thích cấu trúc theo slide 4, không giải mã tỉnh/giới tính/năm sinh), số điện thoại (đổi +84 thành 0), số nhà và biển số (chỉ lấy chữ số theo thứ tự, báo các ký tự đã bỏ qua), dãy khác. Cả năm loại dùng chung một cách luận cặp, vì tài liệu chưa có quy tắc riêng cho từng loại.
 
+Báo cáo giải thích số 0/5 theo slide 26–28 khi số 0/5 đứng sau hoặc chen giữa một cặp đã phân loại. Một số ghi chú lấy từ file Excel của chủ dự án được hiển thị riêng với nhãn “Ghi chép bổ sung (ngoài slide)”: mô tả theo nhóm, ý nghĩa từng cặp và quy tắc nhận biết số điện thoại. Chi tiết phần đã dùng và đã loại trong [GHI-CHEP-BO-SUNG.md](docs/nls/GHI-CHEP-BO-SUNG.md).
+
 Phần luận sâu hiện có 8 hồ sơ nhiều khía cạnh. Báo cáo đọc mạch các nhóm, giữ các đoạn ngắt 0/5 và nhận diện lặp liền nhau. Dữ liệu 48 chiều kết hợp vẫn còn trong mã nhưng không hiển thị. Mục lục trong báo cáo giúp đi thẳng tới từng phần.
 
 ## Chạy local
@@ -36,7 +38,7 @@ Các trang học và tra cứu chạy hoàn toàn trên frontend. Nếu cần ch
 - `docs/nls/hieu-dinh-slides.json`: các bản chép đã đối chiếu ảnh; không ghi đè kết quả OCR thô trong cache.
 - `docs/nls/conversion-report.json`: số slide đã đối chiếu, bản OCR còn lại, slide trống và chữ gốc.
 
-File có 143 slide, 133 ảnh nhúng được trích xuất, 9 slide trống và một slide dùng chữ PowerPoint. Đã hiệu đính 15 slide trọng tâm; 118 slide vẫn có bản OCR chưa hiệu đính toàn văn. Ảnh đối chiếu luôn được giữ trong thư viện. Nội dung huyền học phản ánh quan điểm tài liệu nguồn.
+File có 143 slide, 133 ảnh nhúng được trích xuất, 9 slide trống và một slide dùng chữ PowerPoint. Đã hiệu đính 17 slide trọng tâm; 116 slide vẫn có bản OCR chưa hiệu đính toàn văn. Ảnh đối chiếu luôn được giữ trong thư viện. Nội dung huyền học phản ánh quan điểm tài liệu nguồn.
 
 ## Luồng chuyển đổi có thể chạy lại
 
@@ -74,4 +76,4 @@ npm run typecheck:worker
 
 Bộ kiểm tra xác nhận 64 cặp cơ bản không trùng/thiếu, tách cặp chồng lấn, bảo toàn số 0/5, đầu vào không hợp lệ, chiều kết hợp, tìm tiếng Việt không dấu, thứ tự 143 slide và các đường dẫn ảnh/Markdown.
 
-Số nhập tra cứu chỉ được xử lý trong bộ nhớ trình duyệt. Tiến độ sáu bài học được lưu trong localStorage trên máy đang dùng. Công cụ không tự luận giải số 0/5, lưu niên hoặc nội lực khi nguồn chưa đủ quy tắc rõ ràng, và không dự báo sức khỏe/tài chính từ dãy số.
+Số nhập tra cứu chỉ được xử lý trong bộ nhớ trình duyệt. Tiến độ sáu bài học được lưu trong localStorage trên máy đang dùng. Công cụ chỉ giải thích số 0/5 ở những vị trí slide 26–28 có quy tắc, trích nguyên câu của tài liệu; không tự luận lưu niên hoặc nội lực khi nguồn chưa đủ quy tắc rõ ràng, và không diễn giải sức khỏe từ dãy số.
