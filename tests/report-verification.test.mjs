@@ -7,9 +7,47 @@ import { buildSequenceReport, fields } from "../src/lib/nls.ts";
 import {
   PROOFREAD_SLIDES,
   UNREVIEWED_SLIDE_COUNT,
+  buildAnalysisTrace,
   buildReportPlan,
   verifyReport,
 } from "../src/lib/report-verification.ts";
+
+test("the analysis trace restates every step of the report it describes", () => {
+  const trace = buildAnalysisTrace(buildSequenceReport("14010"), "other");
+  assert.deepEqual(
+    trace.pairs.map((row) => [row.position, row.pair, row.group, row.tone]),
+    [
+      ["1–2", "14", "Sinh Khí", "Cát"],
+      ["2–3", "40", "Chưa phân loại", "—"],
+      ["3–4", "01", "Chưa phân loại", "—"],
+      ["4–5", "10", "Chưa phân loại", "—"],
+    ],
+  );
+  assert.equal(trace.classified + trace.special, trace.pairs.length);
+  assert.deepEqual(
+    trace.specialDigits.map((item) => [item.position, item.rules.map((r) => r.rule)]),
+    [
+      [3, ["Đứng sau cặp 14 (Sinh Khí) · dạng XY0", "Chen giữa cặp 41 (Sinh Khí) · dạng X0Y"]],
+      [5, ["Số 0 ở cuối dãy"]],
+    ],
+  );
+
+  const nq = buildAnalysisTrace(buildSequenceReport("61810"), "other");
+  assert.deepEqual(nq.counts, [
+    { name: "Ngũ Quỷ", count: 2, share: 50 },
+    { name: "Lục Sát", count: 1, share: 25 },
+  ]);
+  assert.deepEqual(nq.repetitions, ["Ngũ Quỷ lặp 2 cặp liền nhau ở vị trí 2–4"]);
+  assert.ok(nq.questions.some((q) => q.startsWith("Lục Sát + Ngũ Quỷ (vị trí 1–3)")));
+  assert.ok(nq.questions.includes("Ngũ Quỷ đi cùng 0 → câu hỏi “Sứ mệnh – Áp lực” ở slide 37"));
+  assert.ok(nq.supplement.includes("Ghi chú ý nghĩa cặp: 18/81, 16/61"));
+
+  const plain = buildAnalysisTrace(buildSequenceReport("143168"), "other");
+  assert.deepEqual(plain.specialDigits, []);
+  assert.equal(plain.counts.reduce((sum, item) => sum + item.count, 0), plain.classified);
+  // A Phục Vị pair shows as neutral, following slide 8.
+  assert.equal(buildAnalysisTrace(buildSequenceReport("411"), "other").pairs[1].tone, "Trung tính");
+});
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const conversion = JSON.parse(

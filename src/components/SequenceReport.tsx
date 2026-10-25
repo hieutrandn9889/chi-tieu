@@ -8,6 +8,7 @@ import {
   ClipboardList,
   Layers3,
   Lightbulb,
+  Microscope,
   ListChecks,
   MessageCircleQuestion,
   NotebookPen,
@@ -30,6 +31,7 @@ import {
   zeroGroupSlides,
 } from "@/lib/nls-slide-notes";
 import {
+  buildAnalysisTrace,
   buildReportPlan,
   selectReportExtras,
   verifyReport,
@@ -63,6 +65,7 @@ export function SequenceReport({
     short;
   const plan = buildReportPlan(report, numberKind);
   const verification = verifyReport(report, numberKind);
+  const trace = buildAnalysisTrace(report, numberKind);
   const passed = verification.checks.filter((check) => check.ok).length;
   const shown = (section: ReportSection) => !verification.failed.has(section);
   // A section that fails its check is replaced by a note, never shown wrong.
@@ -163,6 +166,126 @@ export function SequenceReport({
         </p>
       </section>
 
+      <section
+        className="report-analysis"
+        aria-labelledby="report-analysis-title"
+      >
+        <span className="section-label">
+          <Microscope size={15} /> PHÂN TÍCH CHI TIẾT
+        </span>
+        <h3 id="report-analysis-title">Các bước đã thực hiện</h3>
+        <p>
+          Mỗi bước ứng với một dòng của kế hoạch: đầu vào, cách làm và kết quả
+          dùng cho các phần bên dưới.
+        </p>
+        <ol className="analysis-steps">
+          <li>
+            <h4>Bước 1 · Tách cặp và xếp nhóm</h4>
+            <p>
+              Lấy hai chữ số liền nhau, dịch từng vị trí một:{" "}
+              {trace.pairs.length} cặp chồng lấn. {trace.classified} cặp tra
+              được trong bảng 64 cặp; {trace.special} cặp chứa 0/5 chuyển sang
+              bước 2.
+            </p>
+            <details>
+              <summary>Xem bảng từng cặp</summary>
+              <div className="analysis-table-wrap">
+                <table className="analysis-table">
+                  <thead>
+                    <tr>
+                      <th>Vị trí</th>
+                      <th>Cặp</th>
+                      <th>Nhóm</th>
+                      <th>Cát/hung</th>
+                      <th>Nguồn</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {trace.pairs.map((row) => (
+                      <tr key={row.position}>
+                        <td>{row.position}</td>
+                        <td>
+                          <b>{row.pair}</b>
+                        </td>
+                        <td>{row.note || row.group}</td>
+                        <td>{row.tone}</td>
+                        <td>{row.source}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <p className="quiet-note">
+                Cát/hung theo ghi chép bổ sung; Phục Vị để trung tính theo slide
+                8.
+              </p>
+            </details>
+          </li>
+          <li>
+            <h4>Bước 2 · Đọc số 0 và số 5</h4>
+            {trace.specialDigits.length > 0 ? (
+              <ul className="summary-list">
+                {trace.specialDigits.map((item) => (
+                  <li key={item.position}>
+                    Vị trí {item.position} (số {item.digit}):{" "}
+                    {item.rules.length > 0
+                      ? item.rules
+                          .map((rule) => `${rule.rule}, slide ${rule.source}`)
+                          .join("; ")
+                      : numberKind === "phone" && item.position === 1
+                        ? "số 0 đầu của nhà mạng, không đọc theo quy tắc"
+                        : "không đứng sau hay chen giữa một cặp đã phân loại, slide 26–28 không có quy tắc cho vị trí này"}
+                    .
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p>Dãy không có số 0 hoặc số 5, bỏ qua bước này.</p>
+            )}
+          </li>
+          <li>
+            <h4>Bước 3 · Thống kê nhóm và mạch đọc</h4>
+            <p>
+              {trace.counts.length > 0
+                ? `Số cặp theo nhóm: ${trace.counts
+                    .map(
+                      (item) => `${item.name} ${item.count} (${item.share}%)`,
+                    )
+                    .join(
+                      ", ",
+                    )}. Xuất hiện nhiều nhất: ${trace.leading.join(", ")}.`
+                : "Chưa có cặp nào được phân loại nên không có thống kê nhóm."}
+            </p>
+            {(trace.chains.length > 0 || trace.repetitions.length > 0) && (
+              <ul className="summary-list">
+                {trace.chains.map((chain) => (
+                  <li key={chain}>{chain}</li>
+                ))}
+                {trace.repetitions.map((run) => (
+                  <li key={run}>{run}</li>
+                ))}
+              </ul>
+            )}
+          </li>
+          <li>
+            <h4>Bước 4 · Chọn câu hỏi đối chiếu</h4>
+            <ul className="summary-list">
+              {trace.questions.map((question) => (
+                <li key={question}>{question}</li>
+              ))}
+            </ul>
+          </li>
+          <li>
+            <h4>Bước 5 · Ghi chép bổ sung</h4>
+            <ul className="summary-list">
+              {trace.supplement.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </li>
+        </ol>
+      </section>
+
       {!shown("summary") && hiddenNote("summary", "Tóm tắt nhanh")}
       {shown("summary") && (
         <section
@@ -235,6 +358,7 @@ export function SequenceReport({
       )}
 
       <nav className="reading-navigation" aria-label="Mục lục bản luận">
+        <a href="#report-analysis-title">Phân tích</a>
         <a href="#report-overview-title">Tổng hợp</a>
         {report.chains.length > 0 && (
           <a href="#report-structure-title">Kết cấu dãy</a>

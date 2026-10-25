@@ -116,6 +116,28 @@ test("the report opens with its plan and closes with the verification result", (
   assert.ok(!html.includes('class="verify-hidden"'));
 });
 
+test("the detailed analysis sits between the plan and the summary", () => {
+  const html = renderReport(buildSequenceReport("143168"));
+  const plan = html.indexOf('id="report-plan-title"');
+  const analysis = html.indexOf('id="report-analysis-title"');
+  const summary = html.indexOf('id="report-summary-title"');
+  assert.ok(plan < analysis && analysis < summary);
+  for (const step of [1, 2, 3, 4, 5])
+    assert.ok(html.includes(`Bước ${step} · `), `Bước ${step}`);
+  const table = html.slice(html.indexOf('class="analysis-table"'));
+  assert.equal(
+    (table.slice(0, table.indexOf("</table>")).match(/<tr>/g) || []).length,
+    6, // header + 5 pairs
+  );
+  assert.ok(html.includes("Dãy không có số 0 hoặc số 5, bỏ qua bước này."));
+  assert.ok(html.includes('href="#report-analysis-title"'));
+
+  const phone = renderReport(buildSequenceReport("0961742038"), "phone");
+  assert.ok(phone.includes("số 0 đầu của nhà mạng"));
+  assert.ok(phone.includes("Đứng sau cặp 42 (Ngũ Quỷ) · dạng XY0, slide 26"));
+  assert.ok(phone.includes("Quy tắc số điện thoại: 5 dấu hiệu cần xem lại"));
+});
+
 test("a failing section is hidden with its reason; a core failure hides the report", () => {
   const report = buildSequenceReport("14010");
   const html = renderReport({
